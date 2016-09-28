@@ -5,6 +5,11 @@ Created on 20.03.2015
 @author: cheshire
 '''
 import sys
+
+from cryptography.hazmat.primitives.interfaces import MACContext
+from numpy.lib.financial import mirr
+from xml2po import Main
+
 import confCompute
 from resultsOutput import *
 from confCompute import *
@@ -112,7 +117,14 @@ class spGeneral:
         self.wlSelStore[obj1][9]=1
         self.entry_zeroWave.set_text( self.wlSelStore[obj1][0]+ "; "+mstr(self.wlSelStore[obj1][1]))
         self.entry_cwl.set_text( mstr(self.wlSelStore[obj1][1]) )
-    
+
+    def on_entry19_changed(self, obj):
+        try:
+            self.sys.resPlot.pixel_size = float(self.entry_pixelSize.get_text())
+            self.on_entry14_changed(self.entry_zeroOrder)
+        except ValueError:
+            pass
+
     def on_entry12_changed(self,obj):
         ElementsName=self.entry_Wl.get_text().split(';')
         name,wl = self.sys.findWaveLength(ElementsName)
@@ -127,7 +139,8 @@ class spGeneral:
     def on_button2_clicked(self,obj):
         self.sys.centralWave=float(self.entry_cwl.get_text())
         self.sys.crystalR=float(self.entry_R.get_text())
-        
+        self.sys.resPlot.pixel_size = float(self.entry_pixelSize.get_text())
+
         #self.sys.crystal2d[0]=float(self.entry_2d.get_text())
         
         self.sys.crystalW=float(self.entry_cW.get_text())
@@ -225,6 +238,7 @@ class spGeneral:
         self.winProgress.destroy()
         self.chButton2.destroy()		
         self.win.destroy()
+        self.ImageSaveWindow.destroy()
         
     def on_filechooserbutton3_file_set(self,obj):
         self.saveFile = obj.get_filenames()[0]
@@ -262,13 +276,42 @@ class spGeneral:
         
     def on_cellrenderertext4_edited(self,obj1,obj2,obj3):
         self.wlSelStore[obj2][1]=float(obj3.replace(',','.'))
-        self.wlSelStore[obj2][10] = self.wlSelStore[obj2][1];
-        self.wlSelStore[obj2][11] = 1.0;
+        self.wlSelStore[obj2][10] = self.wlSelStore[obj2][1]
+        self.wlSelStore[obj2][11] = 1.0
         self.updWaveLength()
                         
         if (len(self.wlSelStore) == int(obj2)+1):
             self.wlSelStore.append([mstr(int(obj2)+1)])
-    
+
+    def on_button11_clicked(self, obj1):
+        additional_order_line = []
+        Orders = [int(a) for a in self.entry_Orders.get_text().split()]
+        MainOrder = int(self.entry_zeroOrder.get_text())
+        CurrentLinesNames = []
+        CurrentLines = []
+        for line in self.wlSelStore:
+            if (not "_order_" in line[0]):
+                CurrentLines.append(line)
+            CurrentLinesNames.append(line[0])
+
+        for current_line in CurrentLines:
+            for order in Orders:
+                if (order != 1):
+                    new_line = list(current_line)
+                    new_line[1] = current_line[1] * MainOrder * self.sys.crystal2d[order-1] / (
+                        order * self.sys.crystal2d[MainOrder-1])
+                    new_line[10] = new_line[1]
+                    new_line[0] = current_line[0] + "_order_"+str(order)
+
+                    new_line = [new_line[0], new_line[1], 0, 0, 0, 0, 0, 0, 0, 0, new_line[10], float(MainOrder) / float(order)]
+                    if (not new_line[0] in CurrentLinesNames):
+                        additional_order_line.append(new_line)
+
+        for new_line in additional_order_line:
+            self.wlSelStore.append(new_line)
+
+        self.updWaveLength()
+
     def on_treeview1_row_activated(self,obj1,obj2,obj3):
         
         if (self.isCentralLineSelected):
@@ -392,7 +435,38 @@ class spGeneral:
     
     def on_button6_clicked(self,obj):
         self.fileChoose.show_all()
-        
+
+    def on_button12_clicked(self, obj):
+        self.ImageSaveWindow.show_all()
+
+    def on_button14_clicked(self, obj):
+        self.ImageSaveWindow.hide()
+
+    def on_button13_clicked(self, obj):
+        self.ImageSaveWindow.hide()
+
+        save_file_patter = self.ImageSaveWindow.get_filename()
+
+        film_file_name = save_file_patter + "_film.png"
+        self.sys.resPlot.filmFig.savefig(film_file_name, dpi=600)
+
+        mirror_file_name = save_file_patter + "_mirror.png"
+        self.sys.resPlot.mirrorFig.savefig(mirror_file_name, dpi=600)
+
+        spectrum_file_name = save_file_patter + "_spectr.eps"
+        self.sys.resPlot.xResFig.savefig(spectrum_file_name)
+
+        spectrum_file_name_txt = save_file_patter + "_spectr.txt"
+
+        file_object = open(spectrum_file_name_txt, "w+")
+        for line in self.sys.resPlot.xResAxix.lines:
+            xd = line.get_xdata()
+            yd = line.get_ydata()
+            file_object.write("New line\n")
+            file_object.write(xd,yd)
+
+
+
     def on_button7_clicked(self,obj):
         self.saveFile = self.fileChoose.get_filename()
         self.button_fc.set_label( os.path.basename(self.saveFile) )
@@ -470,7 +544,9 @@ class spGeneral:
         
         self.sys.FilmSizeW=float(self.entry_filmSizeW.get_text())
         self.sys.FilmSizeH=float(self.entry_filmSizeH.get_text())
-        
+
+        self.sys.resPlot.pixel_size = float(self.entry_pixelSize.get_text())
+
         #self.detXlimits = [-self.sys.FilmSizeW/2.0 , self.sys.FilmSizeW/2.0]
         #self.detYlimits = [-self.sys.FilmSizeH/2.0 , self.sys.FilmSizeH/2.0]
         #self.setDetLimits()
@@ -546,15 +622,7 @@ class spGeneral:
                         print ("Kay Error in dispCurve dict")
         
         self.addDataToTable(deforder)            
-      
-        '''self.MinWl[1].set_text(mstr(self.FilmResult[order][maxWlCount - 2][1]))
-        self.MinWl[2].set_text(mstr(self.Res[order][maxWlCount - 2][3]))
-        
-        self.MaxWl[1].set_text(mstr(self.FilmResult[order][maxWlCount - 1][1]))
-        self.MaxWl[2].set_text(mstr(self.Res[order][maxWlCount - 1][3]))'''
-        
-        '''self.sys.WaveLengths=self.sys.WaveLengths[:-2]'''
-        
+
         self.getDetLimits()
         self.setDetLimits()
         
@@ -596,8 +664,8 @@ class spGeneral:
         self.sys.WaveLimits=[w1,w2]
         
         data += "Reflection limits for " + self.entry_zeroOrder.get_text() + " order\n"
-        data += "Min wavelength = "+self.MinWl[0].get_text()+"\tPosition = "+self.MinWl[1].get_text()+"\tReflectivity = "+self.MinWl[2].get_text()+"\n"
-        data += "Min wavelength = "+self.MaxWl[0].get_text()+"\tPosition = "+self.MaxWl[1].get_text()+"\tReflectivity = "+self.MaxWl[2].get_text()+"\n"
+        data += "Min wavelength = "+self.MinWl[0].get_text()+"\tPosition = "+self.MinWl[1].get_text()+"\n"
+        data += "Min wavelength = "+self.MaxWl[0].get_text()+"\tPosition = "+self.MaxWl[1].get_text()+"\n"
         
         data += "***************************************************************\n"
         data +="Name\tWavelength\tCaptured\tReflected\tReflectivity\tCoords\tMagnification\tFWHM\tOrder\n"
@@ -662,11 +730,13 @@ class spGeneral:
     def initWindow(self):
         self.builder=Gtk.Builder()
         self.builder.add_objects_from_file('sys/spectr.glade',('liststore1','liststore2','liststore3','window1',
-        														'filechooserdialog1','pwindow',''))
+        														'filechooserdialog1','pwindow',
+                                                               'filechooserdialog2',''))
         self.win=self.builder.get_object('window1')
         self.winProgress=self.builder.get_object('pwindow')
         
         self.fileChoose = self.builder.get_object('filechooserdialog1')
+        self.ImageSaveWindow = self.builder.get_object('filechooserdialog2')
 
         self.wlStore=self.builder.get_object('liststore1')
         self.wlSelStore=self.builder.get_object('liststore2')
@@ -709,9 +779,11 @@ class spGeneral:
         self.slitPos = self.builder.get_object('entry19')
         self.slitSizeW = self.builder.get_object('entry20')
         self.slitSizeH = self.builder.get_object('entry21')
+
+        self.entry_pixelSize = self.builder.get_object('entry19')
         
-        self.MinWl=[self.builder.get_object('label27'),self.builder.get_object('entry23'),self.builder.get_object('entry26')]
-        self.MaxWl=[self.builder.get_object('label28'),self.builder.get_object('entry25'),self.builder.get_object('entry27')]
+        self.MinWl=[self.builder.get_object('label27'),self.builder.get_object('label35')]
+        self.MaxWl=[self.builder.get_object('label28'),self.builder.get_object('label37')]
         
         self.entryXlim=[self.builder.get_object('entry15'), self.builder.get_object('entry22')]
         self.entryYlim=[self.builder.get_object('entry28'), self.builder.get_object('entry24')]
@@ -728,7 +800,7 @@ class spGeneral:
         self.sw2=self.builder.get_object('scrolledwindow6')
         self.sw3=self.builder.get_object('scrolledwindow7')  
         
-        self.waveRes=self.builder.get_object('scrolledwindow5')  
+        self.waveRes=self.builder.get_object('scrolledwindow5')
         self.xRes=self.builder.get_object('scrolledwindow8')
         
         self.outBuf=self.outText.get_buffer()

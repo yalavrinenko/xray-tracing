@@ -162,11 +162,11 @@ class systemConfig:
             [w1,w2]=self.calcLimWaveLength(idx)
             
             self.WaveLengths += [w2] 
-            self.WaveIntensity += [1.0]
+            self.WaveIntensity += [0.0]
             self.dWaveLength += [w2]
                  
             self.WaveLengths += [w1]
-            self.WaveIntensity += [1.0]
+            self.WaveIntensity += [0.0]
             self.dWaveLength += [w1]
             
             fileName = "par/Order_" + mstr(idx)+".par"
@@ -335,7 +335,7 @@ class systemConfig:
     def execThread(self, params, ew,es):
         loc = locale.getlocale(locale.LC_ALL)
         if sys.platform.startswith('linux'):
-		    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+            locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
         else:
             locale.setlocale(locale.LC_ALL,'English_United States') 
                

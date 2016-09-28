@@ -89,6 +89,7 @@ class resPlot():
 
     wList = {}
     reflList = {}
+    pixel_size = 0.0001
 
     def __init__(self, fAx,fFf, mAx,mFf, rAx,rFf,wrAx,xrA,xrF,oB):
         self.filmAxix=fAx
@@ -188,7 +189,7 @@ class resPlot():
         if (limits != []):
             self.reflAxix.set_xlim([min(limits)*0.95, max(limits)*1.05])
             hlimits = [mrefl for i in limits]
-            self.reflAxix.bar(limits,hlimits,0.006,color = 'red')
+            self.reflAxix.bar(limits,hlimits,0.006, color='red', edgecolor='red')
         
         for key in self.wList.iterkeys():
             self.reflAxix.plot(self.wList[key],self.reflList[key],u'o')
@@ -212,7 +213,7 @@ class resPlot():
         if (limits != []):
             self.reflAxix.set_xlim([min(limits)*0.95, max(limits)*1.05])
             hlimits = [mrefl for i in limits]
-            self.reflAxix.bar(limits,hlimits,0.006,color = 'red')
+            self.reflAxix.bar(limits,hlimits,0.006, color='red', edgecolor='red')
         
         for key in self.wList.iterkeys():
             self.reflAxix.plot(self.wList[key],self.reflList[key],u'o')
@@ -243,6 +244,8 @@ class resPlot():
             if (pattern in l):
                 s=l[len(pattern)+1:-1].split()
                 self.wList[fileName] += [float(s[0])]
+                if (float(s[2]) == 0):
+                    s[2] = "1.0"
                 self.reflList[fileName] += [float(s[3]) / float(s[2]) *100.0]
                 ToRet += [[float(s[0]), float(s[2]), float(s[3]), float(s[3]) / float(s[2])]]
         
@@ -355,21 +358,17 @@ class resPlot():
             targetOrder = dispOrders[i]
             
             colors = self.normalizeWl(mainOrder, targetOrder, colors, cr2d)
-         
-            self.filmAxix.scatter(-numpy.array(x), z, marker='.', c=colors)
-              
-            dxm, dxh = self.filmAxix.get_xlim()
-            dx = (dxh - dxm) / 2
-            sx = (dxh + dxm) / 2
-            
-            dym, dyh = self.filmAxix.get_ylim()
-            dy = (dyh - dym) / 2
-            sy = (dyh + dym) / 2
-            
-            dmax = max(dx, dy)
-            
-            self.filmAxix.set_xlim(sx - dmax, sx + dmax)
-            self.filmAxix.set_ylim(sy - dmax, sy + dmax)
+            try:
+                max_nbins_x = abs(abs(max(x)) - abs(min(x))) / self.pixel_size + 1
+            except ValueError:
+                max_nbins_x = 100
+                print ("Max value error. NBINS is incorrect\n")
+
+            H, xe, ze = numpy.histogram2d(x, z, bins=(max_nbins_x, max_nbins_x))
+            xv, zv = numpy.meshgrid(xe, ze)
+
+            self.filmAxix.pcolormesh(xv, zv, numpy.transpose(H), cmap='plasma')
+
             self.filmFig.canvas.draw()
         
             #pltx=list(x)
