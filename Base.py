@@ -6,9 +6,6 @@ Created on 20.03.2015
 '''
 import sys
 
-from cryptography.hazmat.primitives.interfaces import MACContext
-from numpy.lib.financial import mirr
-from xml2po import Main
 
 import confCompute
 from resultsOutput import *

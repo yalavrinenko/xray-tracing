@@ -1,0 +1,111 @@
+Input File Name = par/Order_1.par
+
+[VAR SECTION]------------------------------------
+
+rayCount = 100000
+isRad = 0
+rayByIter = 100000
+sourceDistance = 1107.520000
+sourceSize = 1.000000
+sourceSize_W = 0.050000
+sourceSize_H = 0.050000
+aperture = 0.035260
+src_type = 1
+H = -1.000000
+orientation = -1
+waveLenghtCount = 7
+WaveLenghts:
+		6.635000+-0.006635.	I = 1.000000
+		6.314000+-0.006314.	I = 1.000000
+		6.175000+-0.006175.	I = 1.000000
+		6.627500+-0.006627.	I = 0.500000
+		6.307000+-0.006307.	I = 0.500000
+		5.459620+-0.005460.	I = 0.000000
+		7.037680+-0.007038.	I = 0.000000
+		0.000000+-0.006635.	I = 1.000000
+		0.000000+-0.006635.	I = 1.000000
+		0.000000+-0.006635.	I = 1.000000
+		0.000000+-0.006635.	I = 1.000000
+		0.000000+-0.006635.	I = 1.000000
+		0.000000+-0.006635.	I = 1.000000
+		0.000000+-0.006635.	I = 1.000000
+		0.000000+-0.006635.	I = 1.000000
+		0.000000+-0.006635.	I = 1.000000
+mirrorR = 150.000000
+mirrorTheta = 90.000000
+mirrorPsi = 90.000000
+dmTh = 2.292443
+dmPsi = 8.820148
+breggAngle = 0.835716
+programAngle = 0.735080
+dprogramAngle = 0.003840
+mirrorDumpFileName = results/Order_1.dump
+refValue = 1.000000
+reflectionFileName = example\quartz100.curve
+reflStep = 0.000017
+reflSize = 441
+crystal2d = 8.512000
+mirrorType = 0
+dumpPlaneName = results/Order_1/
+startPoint = 111.266000
+planeCount = 1.000000
+planeStep = 10.000000
+planeSize = -1.000000
+planeSizeW = 500.000000
+planeSizeH = 400.000000
+logFileName = results/Order_1.log
+dumpDirection = Mirror
+objStartPoint = -1.000000
+objPlaneCount = -1.000000
+objPlaneStep = -1.000000
+objPlaneSize = -1.000000
+objPlaneSizeH = -1.000000
+objPlaneSizeW = -1.000000
+gridPos = 0.000000
+gridSize = 1000.000000
+gridType = slit
+whiteConst = 0.000000
+blackConst = 0.000000
+[END VAR SECTION]------------------------------------
+
+
+Rmirror	=	150
+[MIRROR]
+[X,Y,Z][0, 671.533, 0]
+
+[LIGHT SOURCE]
+[X,Y,Z][-742.755, 0, 0]
+Size	=	1
+Dist	=	1107.52
+Set wave lenght	=	6.635
+Set wave dlenght	=	0.006635
+Set wave intensity	=	1
+[lambda gen catch relf I]=	6.635	100000	12057	111	0.00920627
+Set wave lenght	=	6.314
+Set wave dlenght	=	0.006314
+Set wave intensity	=	1
+[lambda gen catch relf I]=	6.314	100000	11874	97	0.00816911
+Set wave lenght	=	6.175
+Set wave dlenght	=	0.006175
+Set wave intensity	=	1
+[lambda gen catch relf I]=	6.175	100000	12050	113	0.00937759
+Set wave lenght	=	6.6275
+Set wave dlenght	=	0.0066275
+Set wave intensity	=	0.5
+[lambda gen catch relf I]=	6.6275	50000	5997	54	0.0090045
+Set wave lenght	=	6.307
+Set wave dlenght	=	0.006307
+Set wave intensity	=	0.5
+[lambda gen catch relf I]=	6.307	50000	5989	67	0.0111872
+Set wave lenght	=	5.45962
+Set wave dlenght	=	0.00545962
+Set wave intensity	=	0
+[lambda gen catch relf I]=	5.45962	0	0	0	nan
+Set wave lenght	=	7.03768
+Set wave dlenght	=	0.00703768
+Set wave intensity	=	0
+[lambda gen catch relf I]=	7.03768	0	0	0	nan
+Done!
+ Cleaning memory...
+Clean!
+Working time:	3 sec.

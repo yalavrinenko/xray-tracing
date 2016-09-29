@@ -367,7 +367,7 @@ class resPlot():
             H, xe, ze = numpy.histogram2d(x, z, bins=(max_nbins_x, max_nbins_x))
             xv, zv = numpy.meshgrid(xe, ze)
 
-            self.filmAxix.pcolormesh(xv, zv, numpy.transpose(H), cmap='plasma')
+            self.filmAxix.pcolormesh(xv, zv, numpy.transpose(H))
 
             self.filmFig.canvas.draw()
         

@@ -364,12 +364,6 @@ class systemConfig:
                 os.system("rm results/"+pFileName+".dump")
                 os.system("rm results/"+pFileName+".log")
                 
-                #os.system("bin/Ray-trace "+par)
-
-                #self.execThread(par, 0, 0)
-                #self.exitThreadFlags = False
-                #progressLoggerThread = threading.Thread(target=self.progressLogger, args = (0, 0))
-                #progressLoggerThread.start()
                                              
                 self.exitMainCompThread = False  
                 t1 = threading.Thread(target = self.execThread, args=(par, 0, 0))               
@@ -382,10 +376,7 @@ class systemConfig:
                 
                 self.resPlot.plotWaveLengthUp(self.WaveLengths, self.WaveLimits)
                 self.resPlot.plotMirror("results/"+pFileName+".dump",self.crystalW,self.crystalH)
-                
-                #list = glob.glob("results/"+pFileName+"/"+"*.dmp")
-                #self.resPlot.plotFilm(list[0],self.zeroWave,self.WaveLengths)
-                
+                                
                 self.isCompute = len(parFiles)
             else:
                 print ('OS Windows')
@@ -406,10 +397,15 @@ class systemConfig:
 
                 par.replace('\\','/')
                 
-                Result[int(pFileName.split('_')[1])] = self.resPlot.plotReflResults("results\\"+pFileName+".log")
-                
-                self.resPlot.plotWaveLengthUp(self.WaveLengths)
-                self.resPlot.plotMirror("results\\"+pFileName+".dump",self.crystalW,self.crystalH)
+                try:
+                    Result[int(pFileName.split('_')[1])] = self.resPlot.plotReflResults("results\\"+pFileName+".log")
+                    self.resPlot.plotWaveLengthUp(self.WaveLengths, self.WaveLimits)
+                    self.resPlot.plotMirror("results\\"+pFileName+".dump",self.crystalW,self.crystalH)
+                except (ValueError):
+                    return False
+                    print("Catch ValueError exeption!!!!. Processing incomplete.")
+                except KeyError:
+                    print("Catch KeyError exeption!!!!. Processing incomplete.")
                 
                 #list = glob.glob("results\\"+pFileName+"\\"+"*.dmp")
                 #self.resPlot.plotFilm(list[0],self.zeroWave,self.WaveLengths)
