@@ -2,42 +2,40 @@ Input File Name = par/Order_1.par
 
 [VAR SECTION]------------------------------------
 
-rayCount = 100000
+rayCount = 1000000
 isRad = 0
 rayByIter = 100000
-sourceDistance = 1107.520000
+sourceDistance = 100.000000
 sourceSize = 1.000000
 sourceSize_W = 0.050000
 sourceSize_H = 0.050000
-aperture = 0.035260
+aperture = 0.628776
 src_type = 1
 H = -1.000000
 orientation = -1
 waveLenghtCount = 7
 WaveLenghts:
-		6.635000+-0.006635.	I = 1.000000
-		6.314000+-0.006314.	I = 1.000000
-		6.175000+-0.006175.	I = 1.000000
-		6.627500+-0.006627.	I = 0.500000
-		6.307000+-0.006307.	I = 0.500000
-		5.459620+-0.005460.	I = 0.000000
-		7.037680+-0.007038.	I = 0.000000
-		0.000000+-0.006635.	I = 1.000000
-		0.000000+-0.006635.	I = 1.000000
-		0.000000+-0.006635.	I = 1.000000
-		0.000000+-0.006635.	I = 1.000000
-		0.000000+-0.006635.	I = 1.000000
-		0.000000+-0.006635.	I = 1.000000
-		0.000000+-0.006635.	I = 1.000000
-		0.000000+-0.006635.	I = 1.000000
-		0.000000+-0.006635.	I = 1.000000
+		8.148000+-0.008148.	I = 1.000000
+		8.100000+-0.008100.	I = 1.000000
+		8.030340+-0.008030.	I = 1.000000
+		8.037200+-0.008037.	I = 0.500000
+		8.110000+-0.008110.	I = 0.500000
+		7.941510+-0.007942.	I = 0.000000
+		8.274910+-0.008275.	I = 0.000000
+		0.000000+-0.008148.	I = 1.000000
+		0.000000+-0.008148.	I = 1.000000
+		0.000000+-0.008148.	I = 1.000000
+		0.000000+-0.008148.	I = 1.000000
+		0.000000+-0.008148.	I = 1.000000
+		0.000000+-0.008148.	I = 1.000000
+		0.000000+-0.008148.	I = 1.000000
 mirrorR = 150.000000
 mirrorTheta = 90.000000
 mirrorPsi = 90.000000
 dmTh = 2.292443
 dmPsi = 8.820148
-breggAngle = 0.835716
-programAngle = 0.735080
+breggAngle = 1.258393
+programAngle = 0.312403
 dprogramAngle = 0.003840
 mirrorDumpFileName = results/Order_1.dump
 refValue = 1.000000
@@ -47,7 +45,7 @@ reflSize = 441
 crystal2d = 8.512000
 mirrorType = 0
 dumpPlaneName = results/Order_1/
-startPoint = 111.266000
+startPoint = 372.028000
 planeCount = 1.000000
 planeStep = 10.000000
 planeSize = -1.000000
@@ -71,41 +69,41 @@ blackConst = 0.000000
 
 Rmirror	=	150
 [MIRROR]
-[X,Y,Z][0, 671.533, 0]
+[X,Y,Z][0, -54.8402, 0]
 
 [LIGHT SOURCE]
-[X,Y,Z][-742.755, 0, 0]
+[X,Y,Z][-30.7347, 0, 0]
 Size	=	1
-Dist	=	1107.52
-Set wave lenght	=	6.635
-Set wave dlenght	=	0.006635
+Dist	=	100
+Set wave lenght	=	8.148
+Set wave dlenght	=	0.008148
 Set wave intensity	=	1
-[lambda gen catch relf I]=	6.635	100000	12057	111	0.00920627
-Set wave lenght	=	6.314
-Set wave dlenght	=	0.006314
+[lambda gen catch relf I]=	8.148	1e+006	49941	817	0.0163593
+Set wave lenght	=	8.1
+Set wave dlenght	=	0.0081
 Set wave intensity	=	1
-[lambda gen catch relf I]=	6.314	100000	11874	97	0.00816911
-Set wave lenght	=	6.175
-Set wave dlenght	=	0.006175
+[lambda gen catch relf I]=	8.1	1e+006	49998	894	0.0178807
+Set wave lenght	=	8.03034
+Set wave dlenght	=	0.0080303
 Set wave intensity	=	1
-[lambda gen catch relf I]=	6.175	100000	12050	113	0.00937759
-Set wave lenght	=	6.6275
-Set wave dlenght	=	0.0066275
+[lambda gen catch relf I]=	8.03034	1e+006	49787	1025	0.0205877
+Set wave lenght	=	8.0372
+Set wave dlenght	=	0.0080372
 Set wave intensity	=	0.5
-[lambda gen catch relf I]=	6.6275	50000	5997	54	0.0090045
-Set wave lenght	=	6.307
-Set wave dlenght	=	0.006307
+[lambda gen catch relf I]=	8.0372	500000	25089	476	0.0189725
+Set wave lenght	=	8.11
+Set wave dlenght	=	0.00811
 Set wave intensity	=	0.5
-[lambda gen catch relf I]=	6.307	50000	5989	67	0.0111872
-Set wave lenght	=	5.45962
-Set wave dlenght	=	0.00545962
+[lambda gen catch relf I]=	8.11	500000	25239	449	0.0177899
+Set wave lenght	=	7.94151
+Set wave dlenght	=	0.00794151
 Set wave intensity	=	0
-[lambda gen catch relf I]=	5.45962	0	0	0	nan
-Set wave lenght	=	7.03768
-Set wave dlenght	=	0.00703768
+[lambda gen catch relf I]=	7.94151	0	0	0	nan
+Set wave lenght	=	8.27491
+Set wave dlenght	=	0.00827491
 Set wave intensity	=	0
-[lambda gen catch relf I]=	7.03768	0	0	0	nan
+[lambda gen catch relf I]=	8.27491	0	0	0	nan
 Done!
  Cleaning memory...
 Clean!
-Working time:	3 sec.
+Working time:	35 sec.

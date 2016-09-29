@@ -146,7 +146,7 @@ class systemConfig:
             cosT = np.dot(r1,r2) / (np.dot(r1,r1)**0.5 * np.dot(r2,r2)**0.5)
             Theta = np.pi/2.0 - np.arccos(cosT)
             P = self.crystal2d[order - 1] * np.sin(Theta)
-            waves += [P / order]        
+            waves += [P * order]        
         
         return [np.max(waves), np.min(waves)]
 
@@ -181,7 +181,7 @@ class systemConfig:
             outFile.write("$wA = "+ mstr(self.crystalW) + "\n")
             outFile.write("$hA = "+ mstr(self.crystalH) + "\n")
             outFile.write("$ScattAngle = "+ mstr(self.BraggA) + "\n")
-            outFile.write("$Cr2D = "+ mstr(self.crystal2d[idx] / (idx+1)) + "\n")
+            outFile.write("$Cr2D = "+ mstr(self.crystal2d[idx]) + "\n")
             outFile.write("$DistrWidth = "+ mstr(self.DistrHW[idx]) + "\n")
             outFile.write("$RFile = "+ self.DistrFileName[idx] + "\n")
             outFile.write("$RSize = "+ mstr(self.DistrSize[idx])+ "\n")
@@ -237,6 +237,12 @@ class systemConfig:
                 self.rayTraceLib = CDLL("./cpp/win-x86/libRaytrace.dll")
                 print("Use x86 version.\n")
             print ('OS Windows')
+
+    def free_lib(self):
+        if (not sys.platform.startswith('linux')):
+            libHandle = self.rayTraceLib._handle
+            del self.rayTraceLib
+            windll.kernel32.FreeLibrary(libHandle)
     
     def get_srcDist(self):
         return mstr(self.SrcDist)

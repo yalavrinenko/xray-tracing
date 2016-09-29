@@ -231,6 +231,7 @@ class spGeneral:
 		
     def on_window1_delete_event(self, obj, data):
         Gtk.main_quit()	
+        self.sys.free_lib()
         self.fileChoose.destroy()	       
         self.winProgress.destroy()
         self.chButton2.destroy()		
@@ -295,8 +296,8 @@ class spGeneral:
             for order in Orders:
                 if (order != 1):
                     new_line = list(current_line)
-                    new_line[1] = current_line[1] * MainOrder * self.sys.crystal2d[order-1] / (
-                        order * self.sys.crystal2d[MainOrder-1])
+                    new_line[1] = current_line[1] * order / MainOrder * (
+                        self.sys.crystal2d[MainOrder - 1] / self.sys.crystal2d[order -1])
                     new_line[10] = new_line[1]
                     new_line[0] = current_line[0] + "_order_"+str(order)
 
@@ -587,7 +588,8 @@ class spGeneral:
         
         self.winProgress.show_all()
         ##########################        
-        self.sys.Orders=[int(a) for a in self.entry_Orders.get_text().split()]
+        #self.sys.Orders=[int(a) for a in self.entry_Orders.get_text().split()]
+        self.sys.Orders=[int(a) for a in self.entry_zeroOrder.get_text().split()]
         deforder = int(self.entry_zeroOrder.get_text()) if int(self.entry_zeroOrder.get_text()) in self.sys.Orders else self.sys.Orders[0]
         self.on_entry14_changed(self.entry_zeroOrder)
         
