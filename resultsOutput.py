@@ -82,7 +82,9 @@ def readFile(file, x, y, z, colors):
         y.append(wy)
         z.append(wz)
         colors.append(c)
-        
+
+
+    f.close()        
     print (file,len(x))
 
 class resPlot():
@@ -367,7 +369,7 @@ class resPlot():
             H, xe, ze = numpy.histogram2d(x, z, bins=(max_nbins_x, max_nbins_x))
             xv, zv = numpy.meshgrid(xe, ze)
 
-            self.filmAxix.pcolormesh(xv, zv, numpy.transpose(H))
+            self.filmAxix.pcolormesh(xv, zv, numpy.transpose(H), cmap = 'Greys')
 
             self.filmFig.canvas.draw()
         

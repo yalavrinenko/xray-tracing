@@ -97,7 +97,8 @@ class systemConfig:
     DistrSize = {}
     Orders = []
     resPlot = None
-    
+    mainOrder = 1
+
     SlitPos = 0.0
     SlitW = 0.0
     SlitH = 0.0
@@ -146,7 +147,7 @@ class systemConfig:
             cosT = np.dot(r1,r2) / (np.dot(r1,r1)**0.5 * np.dot(r2,r2)**0.5)
             Theta = np.pi/2.0 - np.arccos(cosT)
             P = self.crystal2d[order - 1] * np.sin(Theta)
-            waves += [P * order]        
+            waves += [P]        
         
         return [np.max(waves), np.min(waves)]
 
@@ -412,6 +413,8 @@ class systemConfig:
                     print("Catch ValueError exeption!!!!. Processing incomplete.")
                 except KeyError:
                     print("Catch KeyError exeption!!!!. Processing incomplete.")
+                except MemoryError:
+                	print("Catch MemoryError exeption!!!!. Processing incomplete.")
                 
                 #list = glob.glob("results\\"+pFileName+"\\"+"*.dmp")
                 #self.resPlot.plotFilm(list[0],self.zeroWave,self.WaveLengths)
@@ -454,7 +457,11 @@ class systemConfig:
         self.dispData()
                 
     def updateConfigNCW(self):
-        sTheta = self.centralWave / self.crystal2d[0]
+
+        centralWave = self.centralWave * self.mainOrder / (
+                        self.crystal2d[0] / self.crystal2d[self.mainOrder - 1])
+
+        sTheta = centralWave / self.crystal2d[0]
         if (sTheta > 1.0):
             self.dispError("Bad central wave for selected order. Use wavelength less than " + mstr(self.crystal2d[0]) + " [A]")
             return
@@ -551,9 +558,12 @@ class systemConfig:
             self.resPlot.plotWaveLength(self.WaveLengths, self.WaveLimits)
     
     def computFSSR1(self):
-        sTheta = self.centralWave / self.crystal2d[0]
+        centralWave = self.centralWave * self.mainOrder / (
+                        self.crystal2d[0] / self.crystal2d[self.mainOrder - 1])
+
+        sTheta = centralWave / self.crystal2d[self.mainOrder - 1]
         if (sTheta > 1.0):
-            self.dispError("Bad central wave for selected order. Use wavelength less than " + mstr(self.crystal2d[0]) + " [A]")
+            self.dispError("Bad central wave for selected order. Use wavelength less than " + mstr(self.crystal2d[self.mainOrder - 1]) + " [A]")
             return
         
         self.BraggA = math.asin(sTheta) * 180.0 / math.pi
