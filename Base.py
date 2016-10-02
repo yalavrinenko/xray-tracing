@@ -301,7 +301,7 @@ class spGeneral:
                     new_line[10] = new_line[1]
                     new_line[0] = current_line[0] + "_order_"+str(order)
 
-                    new_line = [new_line[0], new_line[1], 0, 0, 0, 0, 0, 0, 0, 0, new_line[10], float(MainOrder) / float(order)]
+                    new_line = [new_line[0], new_line[1], 0, 0, 0, 0, 0, 0, order, 0, new_line[10], float(MainOrder) / float(order)]
                     if (not new_line[0] in CurrentLinesNames):
                         additional_order_line.append(new_line)
 
@@ -321,7 +321,7 @@ class spGeneral:
         selected=self.TreeVievPrep.get_selection()
         model,titer=selected.get_selected()
         if titer is not None:
-            toAppend = [model.get_value(titer,0), model.get_value(titer,1), 0, 0,0,0,0,0,0,0,model.get_value(titer,1),1.0]
+            toAppend = [model.get_value(titer,0), model.get_value(titer,1), 0, 0,0,0,0,0,self.sys.mainOrder,0,model.get_value(titer,1),1.0]
             self.wlSelStore.append(toAppend)
                 
         self.updWaveLength()
@@ -330,7 +330,7 @@ class spGeneral:
         selected=self.TreeVievPrep.get_selection()
         model,titer=selected.get_selected()
         if titer is not None:
-            toAppend = [model.get_value(titer,0), model.get_value(titer,1), 0, 0,0,0,0,0,0,0,model.get_value(titer,1),1.0]
+            toAppend = [model.get_value(titer,0), model.get_value(titer,1), 0, 0,0,0,0,0,self.sys.mainOrder,0,model.get_value(titer,1),1.0]
             self.wlSelStore.append(toAppend)
             
         if (self.isCentralLineSelected):
@@ -609,6 +609,13 @@ class spGeneral:
             else:
                 list = glob.glob("results\\"+pFileName+"\\"+"*.dmp")
             
+            '''
+            if sys.platform.startswith('linux'):
+                list = glob.glob("results/"+pFileName+"/"+mstr(self.sys.DstDist)+".dmp") 
+            else:
+                list = glob.glob("results\\"+pFileName+"\\"+mstr(self.sys.DstDist)+".dmp")
+            '''
+
             self.FilmResult[order] = self.sys.resPlot.analizeFilm(list[0], self.sys.WaveLengths, self.sys.dWaveLength, self.sys.zeroWave)
             if order == deforder:
                 if len(self.sys.resPlot.dispCurve) == 0:
@@ -628,10 +635,16 @@ class spGeneral:
         self.dumpDataToLog()
         
     def on_entry14_changed(self,obj):
+    	try:
+    		self.sys.mainOrder = int(self.entry_zeroOrder.get_text())
+    	except ValueError:
+    		pass
+
         if (isfloat(obj.get_text()) and self.sys.isCompute):            
             if (not self.sys.isCompute == 0):
                 order = self.entry_zeroOrder.get_text()
-                Orders=[int(a) for a in self.entry_Orders.get_text().split()]
+                
+                Orders=[int(a) for a in self.entry_zeroOrder.get_text().split()]
                 
                 if (self.isCentralLineSelected):
                     [w1,w2]=self.sys.calcLimWaveLength(int(order))
@@ -709,7 +722,7 @@ class spGeneral:
                 self.wlSelStore[idx][2]=int(el[1])
                 self.wlSelStore[idx][3]=int(el[2])
                 self.wlSelStore[idx][4]=float(el[3])
-                self.wlSelStore[idx][8]=order
+                
                 
         if (order in self.FilmResult):
             for wl in self.FilmResult[order]:
@@ -724,7 +737,7 @@ class spGeneral:
                 
                 self.wlSelStore[idx][6]=float(wl[2])/self.sys.SrcSizeH
                 self.wlSelStore[idx][7]=float(wl[3])
-                self.wlSelStore[idx][8]=order  
+                
     
     def initWindow(self):
         self.builder=Gtk.Builder()
