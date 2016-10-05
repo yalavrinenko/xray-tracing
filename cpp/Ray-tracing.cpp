@@ -255,10 +255,12 @@ int RayTracing(int argc, char* argv) {
 
 		int rayByIter = p->rayByIter;
 
-		while (generatedRay < p->rayCount * currentWaveLenght.intensity) {
+		while (generatedRay < p->rayCount * currentWaveLenght.intensity && rayByIter > 0) {
 
 			if (rayByIter > (p->rayCount * currentWaveLenght.intensity - generatedRay))
 				rayByIter = p->rayCount * currentWaveLenght.intensity - generatedRay;
+
+			cout << rayByIter <<"\t"<< generatedRay <<endl;
 
 			tRay *ray = light->GenerateRays(currentWaveLenght.waveLenght,
 					currentWaveLenght.dwaveLenght, rayByIter);
