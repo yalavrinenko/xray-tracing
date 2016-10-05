@@ -286,6 +286,204 @@ missing module named PySide - imported by matplotlib.backends.qt4_compat, PySide
 missing module named PySide.__version_info__ - imported by PySide, matplotlib.backends.qt4_compat
 missing module named PySide.QtGui - imported by PySide, matplotlib.backends.qt4_compat
 missing module named PySide.__version__ - imported by PySide, matplotlib.backends.qt4_compat
+missing module named 'nose.plugins'.multiprocess - imported by 'nose.plugins', matplotlib
+missing module named 'nose.plugins'.PluginManager - imported by 'nose.plugins', matplotlib
+missing module named 'nose.plugins'.ErrorClassPlugin - imported by 'nose.plugins', numpy.testing.noseclasses, matplotlib.testing.noseclasses
+missing module named 'nose.plugins'.ErrorClass - imported by 'nose.plugins', numpy.testing.noseclasses, matplotlib.testing.noseclasses
+missing module named 'nose.plugins' - imported by numpy.testing.noseclasses, numpy.testing.nosetester, matplotlib, matplotlib.testing.noseclasses
+missing module named 'nose.plugins'.Plugin - imported by 'nose.plugins', numpy.testing.noseclasses
+missing module named 'nose.plugins'.doctests - imported by 'nose.plugins', numpy.testing.noseclasses
+missing module named nose - imported by numpy.testing.decorators, numpy.testing.noseclasses, numpy.testing.nosetester, matplotlib
+missing module named matplotlib.cbook.mkdirs - imported by matplotlib.cbook, matplotlib.finance, matplotlib.texmanager, matplotlib
+missing module named matplotlib.cbook.is_string_like - imported by matplotlib.cbook, matplotlib.pylab, matplotlib.lines, matplotlib.markers, matplotlib.text, matplotlib.font_manager, matplotlib.mathtext, matplotlib.backends.backend_agg, matplotlib.legend, matplotlib.table, matplotlib.pyplot, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gdk, matplotlib.backends.backend_gtk, matplotlib.backends.backend_cairo, matplotlib.backends.backend_qt4, matplotlib.backends.backend_tkagg, matplotlib.backends.backend_wx
+missing module named matplotlib.checkdep_ghostscript - imported by matplotlib, matplotlib.backends.backend_ps
+missing module named matplotlib.is_interactive - imported by matplotlib, matplotlib.backend_bases
+missing module named matplotlib.ttconv.convert_ttf_to_ps - imported by matplotlib.ttconv, matplotlib.backends.backend_ps
+missing module named matplotlib.transforms.Bbox - imported by matplotlib.transforms, matplotlib.path, matplotlib.artist, matplotlib.lines, matplotlib.text, matplotlib.image, matplotlib.legend, matplotlib.offsetbox, matplotlib.table, matplotlib.projections.geo, matplotlib.projections.polar, matplotlib.tight_layout, matplotlib.tight_bbox, matplotlib.backends.backend_pdf, matplotlib.figure, matplotlib.backends.backend_agg, matplotlib.backend_bases, matplotlib.backends.backend_cairo, matplotlib.backends.backend_template
+missing module named matplotlib.figure.Figure - imported by matplotlib.figure, matplotlib.image, matplotlib.legend, matplotlib.pyplot, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_agg, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gtk3agg, matplotlib.backends.backend_gtkagg, matplotlib.backends.backend_gdk, matplotlib.backends.backend_gtk, matplotlib.backends.backend_cairo, matplotlib.backends.backend_qt4agg, matplotlib.backends.backend_qt4, matplotlib.backends.backend_tkagg, matplotlib.backends.backend_wx, matplotlib.backends.backend_wxagg, matplotlib.backends.backend_template
+missing module named matplotlib.backends.backend_agg.FigureCanvasAgg - imported by matplotlib.backends.backend_agg, matplotlib.image, matplotlib.tight_layout, matplotlib.backend_bases, matplotlib.backends.backend_gtkagg, matplotlib.backends.backend_qt4agg, matplotlib.backends.backend_tkagg, matplotlib.backends.backend_wxagg
+missing module named matplotlib.backend_bases.NonGuiException - imported by matplotlib.backend_bases, matplotlib.figure
+missing module named matplotlib.transforms.Affine2D - imported by matplotlib.transforms, matplotlib.path, matplotlib.markers, matplotlib.text, matplotlib.projections.geo, matplotlib.projections.polar, matplotlib.tight_bbox, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.figure, matplotlib.textpath, matplotlib.backend_bases, matplotlib.backends.backend_ps, matplotlib.finance, matplotlib.backends.backend_gdk, matplotlib.backends.backend_cairo, matplotlib.backends.backend_wx
+missing module named matplotlib.transforms.BboxTransformTo - imported by matplotlib.transforms, matplotlib.path, matplotlib.text, matplotlib.legend, matplotlib.projections.geo, matplotlib.projections.polar, matplotlib.figure
+missing module named matplotlib.text._process_text_args - imported by matplotlib.text, matplotlib.figure, matplotlib.backends.backend_wx
+missing module named matplotlib.text.Text - imported by matplotlib.text, matplotlib.table, matplotlib.pyplot, matplotlib.figure, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_wx
+missing module named matplotlib.cbook._InstanceMethodPickler - imported by matplotlib.cbook, matplotlib.offsetbox
+missing module named matplotlib.image.BboxImage - imported by matplotlib.image, matplotlib.offsetbox
+missing module named matplotlib._png.read_png - imported by matplotlib._png, matplotlib.texmanager
+missing module named matplotlib.mathtext.MathTextParser - imported by matplotlib.mathtext, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_agg, matplotlib.textpath, matplotlib.backends.backend_ps, matplotlib.backends.backend_gdk, matplotlib.backends.backend_cairo, matplotlib.backends.backend_qt4
+missing module named matplotlib.ft2font.FT2Image - imported by matplotlib.ft2font, matplotlib.mathtext
+missing module named matplotlib.ft2font.LOAD_FORCE_AUTOHINT - imported by matplotlib.ft2font, matplotlib.mathtext, matplotlib.backends.backend_agg
+missing module named matplotlib.cbook.Bunch - imported by matplotlib.cbook, matplotlib.mathtext, matplotlib.backends.backend_pdf
+missing module named matplotlib.cbook.get_realpath_and_stat - imported by matplotlib.cbook, matplotlib.mathtext, matplotlib.backends.backend_pdf, matplotlib.backends.backend_ps
+missing module named numpy.isinf - imported by numpy, matplotlib.mathtext
+missing module named numpy.inf - imported by numpy, matplotlib.mathtext
+missing module named unicodedata.ucd_3_2_0 - imported by unicodedata, stringprep, encodings.idna
+missing module named matplotlib.ft2font.LOAD_TARGET_LIGHT - imported by matplotlib.ft2font, matplotlib.textpath
+missing module named matplotlib.ft2font.LOAD_NO_HINTING - imported by matplotlib.ft2font, matplotlib.textpath, matplotlib.mathtext, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_agg, matplotlib.backends.backend_ps
+missing module named matplotlib.ft2font.KERNING_DEFAULT - imported by matplotlib.ft2font, matplotlib.textpath, matplotlib.mathtext, matplotlib.backends.backend_svg, matplotlib.backends.backend_ps
+missing module named matplotlib.ft2font.FT2Font - imported by matplotlib.ft2font, matplotlib.textpath, matplotlib.mathtext, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_agg, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf
+missing module named matplotlib.path.Path - imported by matplotlib.path, matplotlib.hatch, matplotlib.transforms, matplotlib.artist, matplotlib.patches, matplotlib.bezier, matplotlib.mlab, matplotlib.lines, matplotlib.markers, matplotlib.textpath, matplotlib.tri.triplot, matplotlib.projections.geo, matplotlib.projections.polar, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_agg, matplotlib.backend_bases, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_cairo, matplotlib.backends.backend_wx
+missing module named matplotlib.cbook.deprecated - imported by matplotlib.cbook, matplotlib.path
+missing module named matplotlib.cbook.simple_linear_interpolation - imported by matplotlib.cbook, matplotlib.path
+missing module named matplotlib._path.update_path_extents - imported by matplotlib._path, matplotlib.transforms
+missing module named matplotlib._path.affine_transform - imported by matplotlib._path, matplotlib.transforms
+missing module named matplotlib._path.count_bboxes_overlapping_bbox - imported by matplotlib._path, matplotlib.transforms
+missing module named matplotlib.text.Annotation - imported by matplotlib.text, matplotlib.pyplot
+missing module named matplotlib.text._AnnotationBase - imported by matplotlib.text, matplotlib.offsetbox
+missing module named matplotlib.lines.Line2D - imported by matplotlib.lines, matplotlib.text, matplotlib.legend, matplotlib.legend_handler, matplotlib.pyplot, matplotlib.widgets, matplotlib.finance
+missing module named matplotlib.cbook.is_math_text - imported by matplotlib.cbook, matplotlib.markers
+missing module named matplotlib.cbook.is_numlike - imported by matplotlib.cbook, matplotlib.units, matplotlib.lines, matplotlib.markers, matplotlib.pyplot
+missing module named matplotlib.cbook.ls_mapper - imported by matplotlib.cbook, matplotlib.lines, matplotlib.tri.triplot
+missing module named matplotlib.cbook.maxdict - imported by matplotlib.cbook, matplotlib.path, matplotlib.text, matplotlib.mathtext, matplotlib.backends.backend_agg, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.textpath, matplotlib.backends.backend_ps
+missing module named pytz - imported by matplotlib.dates, matplotlib.axis
+missing module named matplotlib.cbook.dedent - imported by matplotlib.cbook, matplotlib.pylab, matplotlib.scale, matplotlib.pyplot
+missing module named matplotlib.cbook.mplDeprecation - imported by matplotlib.cbook, matplotlib.patches, matplotlib.backend_bases, matplotlib.backends.backend_wx
+missing module named matplotlib.collections.PathCollection - imported by matplotlib.collections, matplotlib.legend
+missing module named matplotlib.collections.RegularPolyCollection - imported by matplotlib.collections, matplotlib.legend
+missing module named matplotlib.collections.CircleCollection - imported by matplotlib.collections, matplotlib.legend
+missing module named matplotlib.collections.LineCollection - imported by matplotlib.collections, matplotlib.legend, matplotlib.finance
+missing module named matplotlib._delaunay.nn_interpolate_unstructured - imported by matplotlib._delaunay, matplotlib.delaunay.interpolate
+missing module named matplotlib._delaunay.nn_interpolate_grid - imported by matplotlib._delaunay, matplotlib.delaunay.interpolate
+missing module named matplotlib._delaunay.linear_interpolate_grid - imported by matplotlib._delaunay, matplotlib.delaunay.interpolate
+missing module named matplotlib._delaunay.compute_planes - imported by matplotlib._delaunay, matplotlib.delaunay.interpolate
+missing module named numpy.lib.i0 - imported by numpy.lib, numpy.dual
+missing module named numpy.lib.add_newdoc - imported by numpy.lib, numpy.add_newdocs
+missing module named numpy.testing.Tester - imported by numpy.testing, numpy.oldnumeric, numpy.random, numpy.fft, scipy, numpy.core, numpy.numarray, numpy.matrixlib, numpy.linalg, numpy.ma, numpy.lib, numpy, numpy.polynomial, numpy.f2py, numpy.distutils
+missing module named numpy.testing.noseclasses.NumpyTestProgram - imported by numpy.testing.noseclasses, numpy.testing.nosetester
+missing module named numpy.testing.nosetester.import_nose - imported by numpy.testing.nosetester, numpy.testing.utils
+missing module named numpy.testing.noseclasses.KnownFailure - imported by numpy.testing.noseclasses, numpy.testing.nosetester
+missing module named numpy.testing.noseclasses.Unplugger - imported by numpy.testing.noseclasses, numpy.testing.nosetester
+missing module named numpy.testing.noseclasses.NumpyDoctest - imported by numpy.testing.noseclasses, numpy.testing.nosetester
+missing module named 'nose.util'.src - imported by 'nose.util', numpy.testing.noseclasses
+missing module named 'nose.util' - imported by numpy.testing.noseclasses
+missing module named numpy.fft.ifft - imported by numpy.fft, scipy
+missing module named numpy.fft.fft - imported by numpy.fft, scipy
+missing module named numpy.random.randn - imported by numpy.random, scipy
+missing module named numpy.random.rand - imported by numpy.random, scipy
+missing module named numpy.array2string - imported by numpy, numpy.oldnumeric.array_printer
+missing module named numpy.dot - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.place - imported by numpy, numpy.oldnumeric.misc
+missing module named numpy.convolve - imported by numpy, numpy.oldnumeric.misc
+missing module named numpy.searchsorted - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.correlate - imported by numpy, numpy.oldnumeric.misc
+missing module named numpy.e - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.resize - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.put - imported by numpy, numpy.oldnumeric.misc
+missing module named numpy.diagonal - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.transpose - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.vdot - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.around - imported by numpy, numpy.oldnumeric.misc
+missing module named numpy.sort - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.argsort - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.pi - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.array_str - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.inner - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.swapaxes - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.choose - imported by numpy, numpy.oldnumeric.misc
+missing module named numpy.array_repr - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.outer - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.size - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.allclose - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.shape - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.sign - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.ufuncs
+missing module named numpy.rank - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.putmask - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.clip - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.concatenate - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.arccosh - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.bitwise_and - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.less_equal - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.arccos - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.fmod - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.minimum - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.equal - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.left_shift - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.true_divide - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.tanh - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.greater_equal - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.logical_not - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.not_equal - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.cos - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.remainder - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.multiply - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.sinh - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.arctanh - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.ceil - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.arcsin - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.power - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.greater - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.bitwise_xor - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.maximum - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.sin - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.log10 - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.absolute - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.floor_divide - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.right_shift - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.add - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.arctan - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.sqrt - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.negative - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.invert - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.subtract - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.floor - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.fabs - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.log - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.logical_xor - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.divide - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.tan - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.conjugate - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.logical_and - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.hypot - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.bitwise_or - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.logical_or - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.cosh - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.arctan2 - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.less - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.arcsinh - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.exp - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
+missing module named numpy.deprecate - imported by numpy, numpy.oldnumeric.compat, numpy.ctypeslib
+missing module named numpy.core.numeric.subtract - imported by numpy.core.numeric, numpy.lib.twodim_base
+missing module named numpy.core.numeric.multiply - imported by numpy.core.numeric, numpy.lib.twodim_base
+missing module named numpy.core.numeric.diagonal - imported by numpy.core.numeric, numpy.lib.twodim_base
+missing module named numpy.core.numeric.equal - imported by numpy.core.numeric, numpy.lib.twodim_base
+missing module named numpy.core.numeric.greater_equal - imported by numpy.core.numeric, numpy.lib.twodim_base
+missing module named numpy.core.numeric.integer - imported by numpy.core.numeric, numpy.lib.function_base
+missing module named numpy.core.numeric.intp - imported by numpy.core.numeric, numpy.lib.function_base
+missing module named numpy.core.numeric.around - imported by numpy.core.numeric, numpy.lib.function_base
+missing module named numpy.core.numeric.ScalarType - imported by numpy.core.numeric, numpy.lib.index_tricks, numpy.lib.function_base
+missing module named numpy.core.numeric.alltrue - imported by numpy.core.numeric, numpy.lib.index_tricks, numpy.lib.twodim_base
+missing module named numpy.core.numeric.cumprod - imported by numpy.core.numeric, numpy.lib.index_tricks
+missing module named numpy.core.numeric.obj2sctype - imported by numpy.core.numeric, numpy.lib.type_check
+missing module named numpy.core.numeric.isnan - imported by numpy.core.numeric, numpy.lib.type_check
+missing module named numpy.core.numeric.any - imported by numpy.core.numeric, numpy.lib.scimath
+missing module named numpy.core.numeric.absolute - imported by numpy.core.numeric, numpy.core
+missing module named numpy.core.numeric.uint8 - imported by numpy.core.numeric, numpy.core.memmap
+missing module named numpy.eye - imported by numpy, numpy.core.numeric
+missing module named numpy.core.multiarray.datetime_data - imported by numpy.core.multiarray, numpy.core.numerictypes, numpy.core.arrayprint
+missing module named numpy.core.multiarray.datetime_as_string - imported by numpy.core.multiarray, numpy.core.numerictypes, numpy.core.arrayprint
+missing module named numpy.core.multiarray.format_longfloat - imported by numpy.core.multiarray, numpy.core.arrayprint
+missing module named numpy.core.umath.absolute - imported by numpy.core.umath, numpy.core.arrayprint
+missing module named numpy.core.umath.isinf - imported by numpy.core.umath, numpy.core.arrayprint
+missing module named numpy.core.umath.minimum - imported by numpy.core.umath, numpy.core.arrayprint
+missing module named numpy.core.umath.maximum - imported by numpy.core.umath, numpy.core.arrayprint
+missing module named numpy.core.umath.not_equal - imported by numpy.core.umath, numpy.core.arrayprint
+missing module named numpy.core.umath.isnan - imported by numpy.core.umath, numpy.core.arrayprint, numpy.lib.function_base
+missing module named numpy.core.numeric.asanyarray - imported by numpy.core.numeric, numpy.core.fromnumeric, numpy.core._methods, numpy.core.shape_base, numpy.lib.type_check, numpy.lib.function_base, numpy.lib.twodim_base, numpy.matrixlib.defmatrix, numpy.lib.shape_base
+missing module named numpy.core.numeric.concatenate - imported by numpy.core.numeric, numpy.core.fromnumeric, numpy.lib.function_base, numpy.matrixlib.defmatrix, numpy.lib.shape_base
+missing module named numpy.core.numeric.asarray - imported by numpy.core.numeric, numpy.core.fromnumeric, numpy.lib.scimath, numpy.lib.type_check, numpy.lib.index_tricks, numpy.lib.function_base, numpy.lib.twodim_base, numpy.lib.shape_base
+missing module named _dotblas.vdot - imported by _dotblas, numpy.core.numeric
+missing module named _dotblas.dot - imported by _dotblas, numpy.core.numeric
+missing module named _dotblas.inner - imported by _dotblas, numpy.core.numeric
+missing module named _dotblas.restoredot - imported by _dotblas, numpy.core.numeric
+missing module named _dotblas.alterdot - imported by _dotblas, numpy.core.numeric
+missing module named _dotblas - imported by numpy.core.numeric
+missing module named numpy.core.numerictypes.number - imported by numpy.core.numerictypes, numpy.lib.function_base
+missing module named numpy.core.numerictypes.object_ - imported by numpy.core.numerictypes, numpy.core.defchararray
+missing module named numpy.core.numerictypes.integer - imported by numpy.core.numerictypes, numpy.core.defchararray
+missing module named numpy.core.numerictypes.string_ - imported by numpy.core.numerictypes, numpy.core.defchararray
+missing module named numpy.core.numerictypes.character - imported by numpy.core.numerictypes, numpy.core.defchararray
+missing module named numpy.core.numerictypes.bool_ - imported by numpy.core.numerictypes, numpy.core.defchararray
+missing module named numpy.core.numerictypes.unicode_ - imported by numpy.core.numerictypes, numpy.core.defchararray
 missing module named __builtin__.unicode - imported by __builtin__, numpy.core.numerictypes, numpy.lib._iotools, numpy
 missing module named __builtin__.bool - imported by __builtin__, numpy.core.numerictypes, numpy.lib._iotools, numpy
 missing module named __builtin__.complex - imported by __builtin__, numpy.core.numerictypes, numpy.lib._iotools, numpy
@@ -293,157 +491,6 @@ missing module named __builtin__.float - imported by __builtin__, numpy.core.num
 missing module named __builtin__.int - imported by __builtin__, numpy.core.numerictypes, numpy.lib._iotools, numpy
 missing module named __builtin__.str - imported by __builtin__, numpy.core.numerictypes, numpy.lib._iotools, numpy
 missing module named __builtin__.object - imported by __builtin__, numpy.core.numerictypes, numpy.lib._iotools, numpy
-missing module named __builtin__.pow - imported by __builtin__, future.builtins.misc
-missing module named __builtin__.unichr - imported by __builtin__, future.builtins.misc
-missing module named unicodedata.ucd_3_2_0 - imported by unicodedata, stringprep, encodings.idna
-missing module named codecs.mbcs_encode - imported by codecs, encodings.mbcs
-missing module named codecs.mbcs_decode - imported by codecs, encodings.mbcs
-missing module named matplotlib.transforms.Bbox - imported by matplotlib.transforms, matplotlib.path, matplotlib.artist, matplotlib.lines, matplotlib.text, matplotlib.image, matplotlib.legend, matplotlib.offsetbox, matplotlib.table, matplotlib.projections.geo, matplotlib.projections.polar, matplotlib.tight_layout, matplotlib.tight_bbox, matplotlib.backends.backend_pdf, matplotlib.figure, matplotlib.backends.backend_agg, matplotlib.backend_bases, matplotlib.backends.backend_cairo, matplotlib.backends.backend_template
-missing module named matplotlib.path.Path - imported by matplotlib.path, matplotlib.hatch, matplotlib.transforms, matplotlib.artist, matplotlib.patches, matplotlib.bezier, matplotlib.mlab, matplotlib.lines, matplotlib.markers, matplotlib.textpath, matplotlib.tri.triplot, matplotlib.projections.geo, matplotlib.projections.polar, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_agg, matplotlib.backend_bases, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_cairo, matplotlib.backends.backend_wx
-missing module named matplotlib.cbook.deprecated - imported by matplotlib.cbook, matplotlib.path
-missing module named matplotlib.rcParams - imported by matplotlib, matplotlib.ticker, matplotlib.path, matplotlib.artist, matplotlib.lines, matplotlib.markers, matplotlib.text, matplotlib.font_manager, matplotlib.textpath, matplotlib.mathtext, matplotlib.backends.backend_agg, matplotlib.figure, matplotlib.image, matplotlib.texmanager, matplotlib.dviread, matplotlib.axis, matplotlib.legend, matplotlib.offsetbox, matplotlib.pyplot, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backend_bases, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gdk, matplotlib.backends.backend_gtk, matplotlib.backends.qt4_compat, matplotlib.backends.windowing, matplotlib.backends.backend_wx
-missing module named matplotlib.cbook.simple_linear_interpolation - imported by matplotlib.cbook, matplotlib.path
-missing module named matplotlib.cbook.maxdict - imported by matplotlib.cbook, matplotlib.path, matplotlib.text, matplotlib.mathtext, matplotlib.backends.backend_agg, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.textpath, matplotlib.backends.backend_ps
-missing module named matplotlib.pylab.figure - imported by matplotlib.pylab, matplotlib.cbook
-missing module named numpy.random.randn - imported by numpy.random, scipy
-missing module named numpy.random.rand - imported by numpy.random, scipy
-missing module named numpy.testing.Tester - imported by numpy.testing, numpy.oldnumeric, numpy.random, numpy.fft, scipy, numpy.core, numpy.numarray, numpy.matrixlib, numpy.linalg, numpy.ma, numpy.lib, numpy, numpy.polynomial, numpy.f2py, numpy.distutils
-missing module named numpy.testing.noseclasses.NumpyTestProgram - imported by numpy.testing.noseclasses, numpy.testing.nosetester
-missing module named numpy.testing.nosetester.import_nose - imported by numpy.testing.nosetester, numpy.testing.utils
-missing module named numpy.testing.noseclasses.KnownFailure - imported by numpy.testing.noseclasses, numpy.testing.nosetester
-missing module named numpy.testing.noseclasses.Unplugger - imported by numpy.testing.noseclasses, numpy.testing.nosetester
-missing module named 'nose.plugins' - imported by numpy.testing.noseclasses, numpy.testing.nosetester, matplotlib, matplotlib.testing.noseclasses
-missing module named 'nose.plugins'.multiprocess - imported by 'nose.plugins', matplotlib
-missing module named 'nose.plugins'.PluginManager - imported by 'nose.plugins', matplotlib
-missing module named 'nose.plugins'.Plugin - imported by 'nose.plugins', numpy.testing.noseclasses
-missing module named 'nose.plugins'.ErrorClassPlugin - imported by 'nose.plugins', numpy.testing.noseclasses, matplotlib.testing.noseclasses
-missing module named 'nose.plugins'.ErrorClass - imported by 'nose.plugins', numpy.testing.noseclasses, matplotlib.testing.noseclasses
-missing module named 'nose.plugins'.doctests - imported by 'nose.plugins', numpy.testing.noseclasses
-missing module named numpy.testing.noseclasses.NumpyDoctest - imported by numpy.testing.noseclasses, numpy.testing.nosetester
-missing module named 'nose.util'.src - imported by 'nose.util', numpy.testing.noseclasses
-missing module named 'nose.util' - imported by numpy.testing.noseclasses
-missing module named numpy.lib.add_newdoc - imported by numpy.lib, numpy.add_newdocs
-missing module named numpy.compat.long - imported by numpy.compat, numpy.core.numerictypes, numpy.core.defchararray, numpy.core.records, numpy.core.memmap, numpy.numarray.numerictypes, numpy.numarray.functions, numpy.lib.function_base, numpy.lib.format, numpy.lib._iotools, numpy.ma.core, numpy.lib.arrayterator, numpy.lib.arraypad, numpy
-missing module named numpy.ma.nomask - imported by numpy.ma, numpy.ma.mrecords
-missing module named numpy.ma.filled - imported by numpy.ma, numpy.ma.mrecords
-missing module named numpy.ma.masked_array - imported by numpy.ma, numpy.ma.mrecords
-missing module named numpy.ma.getdata - imported by numpy.ma, numpy.ma.mrecords
-missing module named numpy.ma.getmaskarray - imported by numpy.ma, numpy.ma.mrecords
-missing module named numpy.ma.masked - imported by numpy.ma, numpy.ma.mrecords
-missing module named numpy.ma.MAError - imported by numpy.ma, numpy.ma.mrecords
-missing module named numpy.compat.isfileobj - imported by numpy.compat, numpy.core.records, numpy.lib.format
-missing module named numpy.core.multiarray._vec_string - imported by numpy.core.multiarray, numpy.core.defchararray
-missing module named numpy.core.multiarray._flagdict - imported by numpy.core.multiarray, numpy.ctypeslib
-missing module named numpy.core.multiarray.flagsobj - imported by numpy.core.multiarray, numpy.ctypeslib
-missing module named numpy.core.multiarray.format_longfloat - imported by numpy.core.multiarray, numpy.core.arrayprint
-missing module named numpy.core.multiarray.datetime_as_string - imported by numpy.core.multiarray, numpy.core.numerictypes, numpy.core.arrayprint
-missing module named numpy.core.multiarray.busday_offset - imported by numpy.core.multiarray, numpy.core.numerictypes
-missing module named numpy.core.multiarray.busday_count - imported by numpy.core.multiarray, numpy.core.numerictypes
-missing module named numpy.core.multiarray.busdaycalendar - imported by numpy.core.multiarray, numpy.core.numerictypes
-missing module named numpy.core.multiarray.datetime_data - imported by numpy.core.multiarray, numpy.core.numerictypes, numpy.core.arrayprint
-missing module named numpy.core.multiarray.typeinfo - imported by numpy.core.multiarray, numpy.core.numerictypes
-missing module named numpy.core.multiarray.is_busday - imported by numpy.core.multiarray, numpy.core.numerictypes
-missing module named numpy.core.multiarray.empty - imported by numpy.core.multiarray, numpy.core._internal, numpy.core.numerictypes
-missing module named numpy.core.multiarray.array - imported by numpy.core.multiarray, numpy.core._internal, numpy.core.numerictypes
-missing module named numpy.core.multiarray.ndarray - imported by numpy.core.multiarray, numpy.core._internal, numpy.core.numerictypes
-missing module named numpy.core.multiarray.dtype - imported by numpy.core.multiarray, numpy.core._internal, numpy.core.numerictypes
-missing module named numpy.core.numerictypes.object_ - imported by numpy.core.numerictypes, numpy.core.defchararray
-missing module named numpy.core.numerictypes.integer - imported by numpy.core.numerictypes, numpy.core.defchararray
-missing module named numpy.core.numerictypes.string_ - imported by numpy.core.numerictypes, numpy.core.defchararray
-missing module named numpy.core.numerictypes.character - imported by numpy.core.numerictypes, numpy.core.defchararray
-missing module named numpy.core.numerictypes.bool_ - imported by numpy.core.numerictypes, numpy.core.defchararray
-missing module named numpy.core.numerictypes.unicode_ - imported by numpy.core.numerictypes, numpy.core.defchararray
-missing module named numpy.core.isscalar - imported by numpy.core, numpy.lib.polynomial
-missing module named numpy.core.hstack - imported by numpy.core, numpy.lib.shape_base, numpy.lib.polynomial
-missing module named numpy.core.atleast_3d - imported by numpy.core, numpy.lib.shape_base
-missing module named numpy.core.vstack - imported by numpy.core, numpy.lib.shape_base
-missing module named numpy.core.dot - imported by numpy.core, numpy.linalg.linalg, numpy.lib.polynomial
-missing module named numpy.core.finfo - imported by numpy.core, numpy.linalg.linalg, numpy.lib.polynomial
-missing module named numpy.core.Inf - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.geterrobj - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.newaxis - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.maximum - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.double - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.amin - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.amax - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.complexfloating - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.multiply - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.broadcast - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.inexact - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.transpose - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.empty_like - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.empty - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.ravel - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.rollaxis - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.zeros - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.add - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.errstate - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.sqrt - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.cdouble - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.sum - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.size - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.array - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.single - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.fastCopyAndTranspose - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.longdouble - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.csingle - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.intc - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.all - imported by numpy.core, numpy.linalg.linalg
-missing module named numpy.core.ndarray - imported by numpy.core, numpy.lib.utils
-missing module named numpy.core.ufunc - imported by numpy.core, numpy.lib.utils
-missing module named numpy.core.product - imported by numpy.core, numpy.lib.utils, numpy.linalg.linalg
-missing module named numpy.core.asarray - imported by numpy.core, numpy.lib.utils, numpy.linalg.linalg
-missing module named numpy.core.atleast_2d - imported by numpy.core, numpy.lib.function_base
-missing module named numpy.core.atleast_1d - imported by numpy.core, numpy.lib.function_base, numpy.lib.polynomial
-missing module named numpy.core.linspace - imported by numpy.core, numpy.lib.function_base
-missing module named numpy.core.number - imported by numpy.core, numpy.testing.utils
-missing module named numpy.core.float_ - imported by numpy.core, numpy.testing.utils
-missing module named numpy.core.signbit - imported by numpy.core, numpy.testing.utils
-missing module named numpy.core.float64 - imported by numpy.core, numpy.testing.utils
-missing module named numpy.core.isinf - imported by numpy.core, numpy.testing.utils
-missing module named numpy.core.isfinite - imported by numpy.core, numpy.testing.utils, numpy.linalg.linalg
-missing module named numpy.core.isnan - imported by numpy.core, numpy.testing.utils
-missing module named numpy.core.float32 - imported by numpy.core, numpy.testing.utils
-missing module named numpy.core.integer - imported by numpy.core, numpy.fft.helper
-missing module named numpy.core.conjugate - imported by numpy.core, numpy.fft.fftpack
-missing module named numpy.core.numeric.absolute - imported by numpy.core.numeric, numpy.core
-missing module named numpy.core.numeric.asanyarray - imported by numpy.core.numeric, numpy.core.fromnumeric, numpy.core._methods, numpy.core.shape_base, numpy.lib.type_check, numpy.lib.function_base, numpy.lib.twodim_base, numpy.matrixlib.defmatrix, numpy.lib.shape_base
-missing module named numpy.core.numeric.uint8 - imported by numpy.core.numeric, numpy.core.memmap
-missing module named numpy.core.numeric.concatenate - imported by numpy.core.numeric, numpy.core.fromnumeric, numpy.lib.function_base, numpy.matrixlib.defmatrix, numpy.lib.shape_base
-missing module named numpy.core.umath.mod - imported by numpy.core.umath, numpy.lib.function_base
-missing module named numpy.core.umath.less_equal - imported by numpy.core.umath, numpy.lib.function_base
-missing module named numpy.core.umath.log10 - imported by numpy.core.umath, numpy.lib.function_base
-missing module named numpy.core.umath.pi - imported by numpy.core.umath, numpy.lib.function_base
-missing module named numpy.core.umath.multiply - imported by numpy.core.umath, numpy.lib.function_base
-missing module named numpy.core.umath.exp - imported by numpy.core.umath, numpy.lib.function_base
-missing module named numpy.core.umath.sqrt - imported by numpy.core.umath, numpy.lib.function_base
-missing module named numpy.core.umath.add - imported by numpy.core.umath, numpy.lib.function_base
-missing module named numpy.core.umath.frompyfunc - imported by numpy.core.umath, numpy.lib.function_base
-missing module named numpy.core.umath.sin - imported by numpy.core.umath, numpy.lib.function_base
-missing module named numpy.core.umath.arctan2 - imported by numpy.core.umath, numpy.lib.function_base
-missing module named numpy.core.umath.cos - imported by numpy.core.umath, numpy.lib.function_base
-missing module named numpy.core.umath.absolute - imported by numpy.core.umath, numpy.core.arrayprint
-missing module named numpy.core.umath.isinf - imported by numpy.core.umath, numpy.core.arrayprint
-missing module named numpy.core.umath.minimum - imported by numpy.core.umath, numpy.core.arrayprint
-missing module named numpy.core.umath.maximum - imported by numpy.core.umath, numpy.core.arrayprint
-missing module named numpy.core.umath.not_equal - imported by numpy.core.umath, numpy.core.arrayprint
-missing module named numpy.core.umath.isnan - imported by numpy.core.umath, numpy.core.arrayprint, numpy.lib.function_base
-missing module named numpy.ndarray - imported by numpy, numpy.numarray.compat, numpy.ma.core, numpy.ma.extras, numpy.ma.mrecords, numpy.ctypeslib
-missing module named numpy.recarray - imported by numpy, numpy.ma.mrecords
-missing module named numpy.array - imported by numpy, numpy.ma.core, numpy.ma.extras, numpy.ma.mrecords, numpy.ctypeslib
-missing module named numpy.bool_ - imported by numpy, numpy.ma.core, numpy.ma.mrecords
-missing module named numpy.dtype - imported by numpy, numpy.ma.mrecords, numpy.ctypeslib
-missing module named numpy.ma.MaskedArray - imported by numpy.ma, numpy.lib.npyio, numpy.ma.mrecords
-missing module named numpy.ma.make_mask_descr - imported by numpy.ma, numpy.lib.npyio
-missing module named future_builtins.map - imported by future_builtins, numpy.lib.npyio
-missing module named future_builtins.oct - imported by future_builtins, future.builtins.misc
-missing module named future_builtins.ascii - imported by future_builtins, future.builtins.misc
-missing module named future_builtins.hex - imported by future_builtins, future.builtins.misc
-missing module named numpy.compat.asbytes - imported by numpy.compat, numpy.core._internal, numpy.core.defchararray, numpy.linalg.linalg, numpy.lib.format, numpy.lib._iotools, numpy.lib.npyio
-missing module named numpy.compat.asbytes_nested - imported by numpy.compat, numpy.lib._iotools, numpy.lib.npyio
-missing module named numpy.compat.unicode - imported by numpy.compat, numpy.lib.npyio
-missing module named numpy.compat.bytes - imported by numpy.compat, numpy.core._internal, numpy.core.numerictypes, numpy.core.records, numpy.lib._iotools, numpy.lib.npyio
-missing module named numpy.compat.asstr - imported by numpy.compat, numpy.lib.npyio
 missing module named builtins.str - imported by builtins, numpy.core.numerictypes, numpy.lib._iotools, numpy
 missing module named builtins.bool - imported by builtins, numpy.core.numerictypes, numpy.lib._iotools, numpy
 missing module named builtins.complex - imported by builtins, numpy.core.numerictypes, numpy.lib._iotools, numpy
@@ -498,6 +545,12 @@ missing module named future.utils.PY26 - imported by future.utils, future.backpo
 missing module named future.utils.native - imported by future.utils, future.types.newint
 missing module named future.utils.isint - imported by future.utils, future.types.newint
 missing module named future.utils.PY3 - imported by future.utils, future.types.newbytes, future.types.newstr, future.types.newint, future.standard_library, future.backports.urllib.request, future.backports.email.feedparser, future.backports.misc, future.moves.test, future.moves.test.support, future.moves.dbm, future.moves.dbm.ndbm, future.moves.dbm.dumb, future.moves.dbm.gnu, future.builtins.newsuper, future.builtins
+missing module named __builtin__.pow - imported by __builtin__, future.builtins.misc
+missing module named __builtin__.unichr - imported by __builtin__, future.builtins.misc
+missing module named future_builtins.oct - imported by future_builtins, future.builtins.misc
+missing module named future_builtins.ascii - imported by future_builtins, future.builtins.misc
+missing module named future_builtins.hex - imported by future_builtins, future.builtins.misc
+missing module named future_builtins.map - imported by future_builtins, numpy.lib.npyio
 missing module named future.builtins.next - imported by future.builtins, future.backports.email.charset
 missing module named future.builtins.chr - imported by future.builtins, future.backports.urllib.parse, future.backports.email.quoprimime, future.backports.email._encoded_words
 missing module named future.builtins.round - imported by future.builtins, future.backports.datetime
@@ -514,6 +567,98 @@ missing module named future.builtins.filter - imported by future.builtins, futur
 missing module named future.builtins.bytes - imported by future.builtins, future.backports.urllib.request, future.backports.email.utils, future.backports.datetime, future.backports.urllib.parse, future.backports.email.header, future.backports.email.base64mime, future.backports.email.quoprimime, future.backports.email._encoded_words, future.backports.http.client
 missing module named future.builtins.int - imported by future.builtins, future.backports.urllib.request, future.backports.email.utils, future.backports.datetime, future.backports.urllib.parse, future.backports.email._parseaddr, future.backports.email.quoprimime, future.backports.email._encoded_words, future.backports.http.client, future.backports.http.cookiejar
 missing module named future.builtins.map - imported by future.builtins, future.backports.urllib.request, future.backports.datetime, future.backports.http.cookiejar
+missing module named numpy.compat.long - imported by numpy.compat, numpy.core.numerictypes, numpy.core.defchararray, numpy.core.records, numpy.core.memmap, numpy.numarray.numerictypes, numpy.numarray.functions, numpy.lib.function_base, numpy.lib.format, numpy.lib._iotools, numpy.ma.core, numpy.lib.arrayterator, numpy.lib.arraypad, numpy
+missing module named numpy.compat.bytes - imported by numpy.compat, numpy.core._internal, numpy.core.numerictypes, numpy.core.records, numpy.lib._iotools, numpy.lib.npyio
+missing module named numpy.core.multiarray.empty - imported by numpy.core.multiarray, numpy.core._internal, numpy.core.numerictypes
+missing module named numpy.core.multiarray.array - imported by numpy.core.multiarray, numpy.core._internal, numpy.core.numerictypes
+missing module named numpy.core.multiarray.ndarray - imported by numpy.core.multiarray, numpy.core._internal, numpy.core.numerictypes
+missing module named numpy.core.multiarray.busday_offset - imported by numpy.core.multiarray, numpy.core.numerictypes
+missing module named numpy.core.multiarray.busday_count - imported by numpy.core.multiarray, numpy.core.numerictypes
+missing module named numpy.core.multiarray.dtype - imported by numpy.core.multiarray, numpy.core._internal, numpy.core.numerictypes
+missing module named numpy.core.multiarray.busdaycalendar - imported by numpy.core.multiarray, numpy.core.numerictypes
+missing module named numpy.core.multiarray.typeinfo - imported by numpy.core.multiarray, numpy.core.numerictypes
+missing module named numpy.core.multiarray.is_busday - imported by numpy.core.multiarray, numpy.core.numerictypes
+missing module named numpy.core.isscalar - imported by numpy.core, numpy.lib.polynomial
+missing module named numpy.core.hstack - imported by numpy.core, numpy.lib.shape_base, numpy.lib.polynomial
+missing module named numpy.core.atleast_3d - imported by numpy.core, numpy.lib.shape_base
+missing module named numpy.core.vstack - imported by numpy.core, numpy.lib.shape_base
+missing module named numpy.core.dot - imported by numpy.core, numpy.linalg.linalg, numpy.lib.polynomial
+missing module named numpy.core.finfo - imported by numpy.core, numpy.linalg.linalg, numpy.lib.polynomial
+missing module named numpy.core.Inf - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.geterrobj - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.newaxis - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.maximum - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.double - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.amin - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.amax - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.complexfloating - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.multiply - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.broadcast - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.inexact - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.transpose - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.empty_like - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.empty - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.ravel - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.rollaxis - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.zeros - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.add - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.errstate - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.sqrt - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.cdouble - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.sum - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.size - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.array - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.single - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.fastCopyAndTranspose - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.longdouble - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.csingle - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.intc - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.all - imported by numpy.core, numpy.linalg.linalg
+missing module named numpy.core.ndarray - imported by numpy.core, numpy.lib.utils
+missing module named numpy.core.ufunc - imported by numpy.core, numpy.lib.utils
+missing module named numpy.core.product - imported by numpy.core, numpy.lib.utils, numpy.linalg.linalg
+missing module named numpy.core.asarray - imported by numpy.core, numpy.lib.utils, numpy.linalg.linalg
+missing module named numpy.core.atleast_2d - imported by numpy.core, numpy.lib.function_base
+missing module named numpy.core.atleast_1d - imported by numpy.core, numpy.lib.function_base, numpy.lib.polynomial
+missing module named numpy.core.linspace - imported by numpy.core, numpy.lib.function_base
+missing module named numpy.core.number - imported by numpy.core, numpy.testing.utils
+missing module named numpy.core.float_ - imported by numpy.core, numpy.testing.utils
+missing module named numpy.core.signbit - imported by numpy.core, numpy.testing.utils
+missing module named numpy.core.float64 - imported by numpy.core, numpy.testing.utils
+missing module named numpy.core.isinf - imported by numpy.core, numpy.testing.utils
+missing module named numpy.core.isfinite - imported by numpy.core, numpy.testing.utils, numpy.linalg.linalg
+missing module named numpy.core.isnan - imported by numpy.core, numpy.testing.utils
+missing module named numpy.core.float32 - imported by numpy.core, numpy.testing.utils
+missing module named numpy.core.integer - imported by numpy.core, numpy.fft.helper
+missing module named numpy.core.conjugate - imported by numpy.core, numpy.fft.fftpack
+missing module named numpy.compat.isfileobj - imported by numpy.compat, numpy.core.records, numpy.lib.format
+missing module named numpy.compat.asbytes - imported by numpy.compat, numpy.core._internal, numpy.core.defchararray, numpy.linalg.linalg, numpy.lib.format, numpy.lib._iotools, numpy.lib.npyio
+missing module named numpy.core.multiarray._vec_string - imported by numpy.core.multiarray, numpy.core.defchararray
+missing module named numpy.core.umath.mod - imported by numpy.core.umath, numpy.lib.function_base
+missing module named numpy.core.umath.less_equal - imported by numpy.core.umath, numpy.lib.function_base
+missing module named numpy.core.umath.log10 - imported by numpy.core.umath, numpy.lib.function_base
+missing module named numpy.core.umath.pi - imported by numpy.core.umath, numpy.lib.function_base
+missing module named numpy.core.umath.multiply - imported by numpy.core.umath, numpy.lib.function_base
+missing module named numpy.core.umath.exp - imported by numpy.core.umath, numpy.lib.function_base
+missing module named numpy.core.umath.sqrt - imported by numpy.core.umath, numpy.lib.function_base
+missing module named numpy.core.umath.add - imported by numpy.core.umath, numpy.lib.function_base
+missing module named numpy.core.umath.frompyfunc - imported by numpy.core.umath, numpy.lib.function_base
+missing module named numpy.core.umath.sin - imported by numpy.core.umath, numpy.lib.function_base
+missing module named numpy.core.umath.arctan2 - imported by numpy.core.umath, numpy.lib.function_base
+missing module named numpy.core.umath.cos - imported by numpy.core.umath, numpy.lib.function_base
+missing module named numpy.core.multiarray._flagdict - imported by numpy.core.multiarray, numpy.ctypeslib
+missing module named numpy.core.multiarray.flagsobj - imported by numpy.core.multiarray, numpy.ctypeslib
+missing module named numpy.__version__ - imported by numpy, scipy, numpy.f2py.f2py2e
+missing module named numpy.show_config - imported by numpy, scipy
+missing module named numpy.ModuleDeprecationWarning - imported by numpy, numpy.testing.nosetester, numpy.numarray
+missing module named numpy.compat.basestring - imported by numpy.compat, numpy.core.memmap, numpy.testing.nosetester, numpy.lib.format, numpy.lib._iotools, numpy.lib.npyio, numpy.ma.core, numpy.ma.mrecords
+missing module named numpy.compat.open_latin1 - imported by numpy.compat, numpy.distutils.fcompiler, numpy.distutils.exec_command
+missing module named numpy.compat.unicode - imported by numpy.compat, numpy.lib.npyio
+missing module named numpy.compat.asstr - imported by numpy.compat, numpy.lib.npyio
+missing module named numpy.compat.asbytes_nested - imported by numpy.compat, numpy.lib._iotools, numpy.lib.npyio
+missing module named numpy.compat.integer_types - imported by numpy.compat, numpy.fft.helper
+missing module named numpy.ma.MaskedArray - imported by numpy.ma, numpy.lib.npyio, numpy.ma.mrecords
+missing module named numpy.ma.make_mask_descr - imported by numpy.ma, numpy.lib.npyio
 missing module named numpy.lib._compiled_base.packbits - imported by numpy.lib._compiled_base, numpy.lib.npyio
 missing module named numpy.lib._compiled_base.unpackbits - imported by numpy.lib._compiled_base, numpy.lib.npyio
 missing module named numpy.lib._compiled_base.unravel_index - imported by numpy.lib._compiled_base, numpy.lib.index_tricks
@@ -552,155 +697,48 @@ missing module named compiler.parse - imported by compiler, compiler.pycodegen
 missing module named _ast.__version__ - imported by _ast, ast
 missing module named numpy.numarray.get_numarray_include_dirs - imported by numpy.numarray, numpy.lib.utils
 missing module named numpy.newaxis - imported by numpy, numpy.numarray.compat
+missing module named numpy.ndarray - imported by numpy, numpy.numarray.compat, numpy.ma.core, numpy.ma.extras, numpy.ma.mrecords, numpy.ctypeslib
 missing module named numpy.sum - imported by numpy, numpy.numarray.ufuncs
-missing module named numpy.arccosh - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.logical_and - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.less_equal - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.arccos - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.exp - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.minimum - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.greater - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.equal - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.left_shift - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.tanh - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.logical_or - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.greater_equal - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.logical_not - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.not_equal - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.cos - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.remainder - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.sign - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.ufuncs
-missing module named numpy.multiply - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.sinh - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.negative - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.arctanh - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.ceil - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.arcsin - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.power - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.fmod - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
 missing module named numpy.product - imported by numpy, numpy.numarray.ufuncs
-missing module named numpy.logical_xor - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.sin - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.log10 - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.absolute - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.floor_divide - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.right_shift - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.add - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.arctan - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.sqrt - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.maximum - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.invert - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.subtract - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.floor - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.fabs - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.log - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
 missing module named numpy.isnan - imported by numpy, numpy.numarray.ufuncs
-missing module named numpy.bitwise_xor - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.arcsinh - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.tan - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.conjugate - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.bitwise_and - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.hypot - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.bitwise_or - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.cosh - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.arctan2 - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.less - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.divide - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.true_divide - imported by numpy, numpy.oldnumeric.ufuncs, numpy.numarray.ufuncs
-missing module named numpy.dot - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
-missing module named numpy.argsort - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
 missing module named numpy.array_equiv - imported by numpy, numpy.numarray.functions
 missing module named numpy.array_equal - imported by numpy, numpy.numarray.functions
-missing module named numpy.e - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
-missing module named numpy.resize - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
-missing module named numpy.searchsorted - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
-missing module named numpy.diagonal - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
-missing module named numpy.transpose - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
 missing module named numpy.lexsort - imported by numpy, numpy.numarray.functions
-missing module named numpy.vdot - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
 missing module named numpy.trace - imported by numpy, numpy.numarray.functions
-missing module named numpy.concatenate - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
 missing module named numpy.ravel - imported by numpy, numpy.numarray.functions
-missing module named numpy.pi - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
-missing module named numpy.array_str - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
-missing module named numpy.swapaxes - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
-missing module named numpy.inner - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
-missing module named numpy.putmask - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
-missing module named numpy.array_repr - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
-missing module named numpy.clip - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
-missing module named numpy.outer - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
 missing module named numpy.nonzero - imported by numpy, numpy.numarray.functions
-missing module named numpy.size - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
 missing module named numpy.any - imported by numpy, numpy.numarray.functions
-missing module named numpy.allclose - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
 missing module named numpy.WRAP - imported by numpy, numpy.numarray.functions
-missing module named numpy.shape - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
-missing module named numpy.rank - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
 missing module named numpy.kron - imported by numpy, numpy.numarray.functions
 missing module named numpy.RAISE - imported by numpy, numpy.numarray.functions
 missing module named numpy.all - imported by numpy, numpy.numarray.functions
-missing module named numpy.sort - imported by numpy, numpy.oldnumeric.misc, numpy.numarray.functions
+missing module named numpy.linalg.inv - imported by numpy.linalg, numpy.matrixlib.defmatrix, numpy.lib.polynomial, matplotlib.transforms
 missing module named numpy.linalg.lstsq - imported by numpy.linalg, numpy.lib.polynomial, numpy.ma.extras
 missing module named numpy.linalg.eigvals - imported by numpy.linalg, numpy.lib.polynomial
+missing module named numpy.lib.type_check.isreal - imported by numpy.lib.type_check, numpy.lib.scimath
 missing module named numpy.histogramdd - imported by numpy, numpy.lib.twodim_base
-missing module named numpy.core.numeric.subtract - imported by numpy.core.numeric, numpy.lib.twodim_base
-missing module named numpy.core.numeric.multiply - imported by numpy.core.numeric, numpy.lib.twodim_base
-missing module named numpy.core.numeric.alltrue - imported by numpy.core.numeric, numpy.lib.index_tricks, numpy.lib.twodim_base
-missing module named numpy.core.numeric.diagonal - imported by numpy.core.numeric, numpy.lib.twodim_base
-missing module named numpy.core.numeric.equal - imported by numpy.core.numeric, numpy.lib.twodim_base
-missing module named numpy.core.numeric.greater_equal - imported by numpy.core.numeric, numpy.lib.twodim_base
-missing module named numpy.dual.pinv - imported by numpy.dual, numpy.matrixlib.defmatrix
-missing module named numpy.dual.inv - imported by numpy.dual, numpy.matrixlib.defmatrix
-missing module named numpy.core.numeric.ScalarType - imported by numpy.core.numeric, numpy.lib.index_tricks, numpy.lib.function_base
-missing module named numpy.core.numeric.cumprod - imported by numpy.core.numeric, numpy.lib.index_tricks
-missing module named numpy.core.numerictypes.number - imported by numpy.core.numerictypes, numpy.lib.function_base
-missing module named numpy.core.numeric.integer - imported by numpy.core.numeric, numpy.lib.function_base
-missing module named numpy.core.numeric.intp - imported by numpy.core.numeric, numpy.lib.function_base
-missing module named numpy.core.numeric.around - imported by numpy.core.numeric, numpy.lib.function_base
-missing module named numpy.lib.i0 - imported by numpy.lib, numpy.dual
 missing module named numpy.lib.triu - imported by numpy.lib, numpy.linalg.linalg
 missing module named numpy.lib.iscomplexobj - imported by numpy.lib, numpy.testing.utils
 missing module named numpy.lib.imag - imported by numpy.lib, numpy.testing.utils
 missing module named numpy.lib.real - imported by numpy.lib, numpy.testing.utils
-missing module named numpy.lib.type_check.isreal - imported by numpy.lib.type_check, numpy.lib.scimath
-missing module named numpy.core.numeric.obj2sctype - imported by numpy.core.numeric, numpy.lib.type_check
-missing module named numpy.core.numeric.isnan - imported by numpy.core.numeric, numpy.lib.type_check
-missing module named numpy.core.numeric.any - imported by numpy.core.numeric, numpy.lib.scimath
-missing module named numpy.core.numeric.asarray - imported by numpy.core.numeric, numpy.core.fromnumeric, numpy.lib.scimath, numpy.lib.type_check, numpy.lib.index_tricks, numpy.lib.function_base, numpy.lib.twodim_base, numpy.lib.shape_base
-missing module named numpy.eye - imported by numpy, numpy.core.numeric
-missing module named _dotblas.vdot - imported by _dotblas, numpy.core.numeric
-missing module named _dotblas.dot - imported by _dotblas, numpy.core.numeric
-missing module named _dotblas.inner - imported by _dotblas, numpy.core.numeric
-missing module named _dotblas.restoredot - imported by _dotblas, numpy.core.numeric
-missing module named _dotblas.alterdot - imported by _dotblas, numpy.core.numeric
-missing module named _dotblas - imported by numpy.core.numeric
-missing module named numpy.fft.ifft - imported by numpy.fft, scipy
-missing module named numpy.fft.fft - imported by numpy.fft, scipy
-missing module named numpy.array2string - imported by numpy, numpy.oldnumeric.array_printer
-missing module named numpy.place - imported by numpy, numpy.oldnumeric.misc
-missing module named numpy.convolve - imported by numpy, numpy.oldnumeric.misc
-missing module named numpy.correlate - imported by numpy, numpy.oldnumeric.misc
-missing module named numpy.put - imported by numpy, numpy.oldnumeric.misc
-missing module named numpy.around - imported by numpy, numpy.oldnumeric.misc
-missing module named numpy.choose - imported by numpy, numpy.oldnumeric.misc
-missing module named numpy.deprecate - imported by numpy, numpy.oldnumeric.compat, numpy.ctypeslib
-missing module named numpy.__version__ - imported by numpy, scipy, numpy.f2py.f2py2e
-missing module named numpy.show_config - imported by numpy, scipy
-missing module named nose - imported by numpy.testing.decorators, numpy.testing.noseclasses, numpy.testing.nosetester, matplotlib
-missing module named numpy.ModuleDeprecationWarning - imported by numpy, numpy.testing.nosetester, numpy.numarray
-missing module named numpy.compat.basestring - imported by numpy.compat, numpy.core.memmap, numpy.testing.nosetester, numpy.lib.format, numpy.lib._iotools, numpy.lib.npyio, numpy.ma.core, numpy.ma.mrecords
-missing module named numpy.compat.open_latin1 - imported by numpy.compat, numpy.distutils.fcompiler, numpy.distutils.exec_command
-missing module named numpy.compat.integer_types - imported by numpy.compat, numpy.fft.helper
-missing module named matplotlib._delaunay.nn_interpolate_unstructured - imported by matplotlib._delaunay, matplotlib.delaunay.interpolate
-missing module named matplotlib._delaunay.nn_interpolate_grid - imported by matplotlib._delaunay, matplotlib.delaunay.interpolate
-missing module named matplotlib._delaunay.linear_interpolate_grid - imported by matplotlib._delaunay, matplotlib.delaunay.interpolate
-missing module named matplotlib._delaunay.compute_planes - imported by matplotlib._delaunay, matplotlib.delaunay.interpolate
+missing module named numpy.dual.pinv - imported by numpy.dual, numpy.matrixlib.defmatrix
+missing module named numpy.dual.inv - imported by numpy.dual, numpy.matrixlib.defmatrix
 missing module named matplotlib._delaunay.delaunay - imported by matplotlib._delaunay, matplotlib.delaunay, matplotlib.delaunay.triangulate
 missing module named 'mpl_toolkits.natgrid'._natgrid - imported by 'mpl_toolkits.natgrid', matplotlib.mlab
 missing module named 'mpl_toolkits.natgrid'.__version__ - imported by 'mpl_toolkits.natgrid', matplotlib.mlab
 missing module named 'mpl_toolkits.natgrid' - imported by matplotlib.mlab
+missing module named numpy.ma.nomask - imported by numpy.ma, numpy.ma.mrecords
+missing module named numpy.ma.filled - imported by numpy.ma, numpy.ma.mrecords
+missing module named numpy.ma.masked_array - imported by numpy.ma, numpy.ma.mrecords
+missing module named numpy.ma.getdata - imported by numpy.ma, numpy.ma.mrecords
+missing module named numpy.ma.getmaskarray - imported by numpy.ma, numpy.ma.mrecords
+missing module named numpy.ma.masked - imported by numpy.ma, numpy.ma.mrecords
+missing module named numpy.ma.MAError - imported by numpy.ma, numpy.ma.mrecords
+missing module named numpy.recarray - imported by numpy, numpy.ma.mrecords
+missing module named numpy.array - imported by numpy, numpy.ma.core, numpy.ma.extras, numpy.ma.mrecords, numpy.ctypeslib
+missing module named numpy.bool_ - imported by numpy, numpy.ma.core, numpy.ma.mrecords
+missing module named numpy.dtype - imported by numpy, numpy.ma.mrecords, numpy.ctypeslib
 missing module named dateutil.tz.tzfile - imported by dateutil.tz, dateutil.zoneinfo
-missing module named matplotlib.verbose - imported by matplotlib, matplotlib.finance, matplotlib.mlab, matplotlib.lines, matplotlib.backends.backend_agg, matplotlib.blocking_input, matplotlib.backends.backend_svg, matplotlib.backends.backend_ps, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gtk, matplotlib.backends.backend_qt4, matplotlib.backends.qt4_compat, matplotlib.backends.backend_wx
 missing module named _csv.Dialect - imported by _csv, csv
 missing module named _csv.__doc__ - imported by _csv, csv
 missing module named _csv.field_size_limit - imported by _csv, csv
@@ -716,95 +754,35 @@ missing module named _csv.QUOTE_NONNUMERIC - imported by _csv, csv
 missing module named _csv.writer - imported by _csv, csv
 missing module named _csv.QUOTE_MINIMAL - imported by _csv, csv
 missing module named _csv.get_dialect - imported by _csv, csv
-missing module named pytz - imported by matplotlib.dates, matplotlib.axis
-missing module named matplotlib.artist.allow_rasterization - imported by matplotlib.artist, matplotlib.patches, matplotlib.collections, matplotlib.lines, matplotlib.text, matplotlib.figure, matplotlib.image, matplotlib.axes, matplotlib.axis, matplotlib.legend, matplotlib.spines, matplotlib.quiver, matplotlib.table
-missing module named matplotlib.lines.Line2D - imported by matplotlib.lines, matplotlib.text, matplotlib.legend, matplotlib.legend_handler, matplotlib.pyplot, matplotlib.widgets, matplotlib.finance
-missing module named matplotlib.ft2font.LOAD_DEFAULT - imported by matplotlib.ft2font, matplotlib.backends.backend_agg
-missing module named matplotlib.ft2font.LOAD_NO_AUTOHINT - imported by matplotlib.ft2font, matplotlib.backends.backend_agg
-missing module named matplotlib.ft2font.ITALIC - imported by matplotlib.ft2font, matplotlib.backends.backend_pdf
-missing module named matplotlib.ft2font.KERNING_UNFITTED - imported by matplotlib.ft2font, matplotlib.backends.backend_pdf
-missing module named matplotlib.ft2font.LOAD_NO_SCALE - imported by matplotlib.ft2font, matplotlib.backends.backend_pdf
-missing module named matplotlib.ft2font.FIXED_WIDTH - imported by matplotlib.ft2font, matplotlib.backends.backend_pdf
-missing module named matplotlib.ft2font.FT2Image - imported by matplotlib.ft2font, matplotlib.mathtext
-missing module named matplotlib.ft2font.LOAD_FORCE_AUTOHINT - imported by matplotlib.ft2font, matplotlib.mathtext, matplotlib.backends.backend_agg
-missing module named matplotlib.ft2font.LOAD_TARGET_LIGHT - imported by matplotlib.ft2font, matplotlib.textpath
-missing module named matplotlib.ft2font.LOAD_NO_HINTING - imported by matplotlib.ft2font, matplotlib.textpath, matplotlib.mathtext, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_agg, matplotlib.backends.backend_ps
-missing module named matplotlib.ft2font.KERNING_DEFAULT - imported by matplotlib.ft2font, matplotlib.textpath, matplotlib.mathtext, matplotlib.backends.backend_svg, matplotlib.backends.backend_ps
-missing module named matplotlib.ft2font.FT2Font - imported by matplotlib.ft2font, matplotlib.textpath, matplotlib.mathtext, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_agg, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf
-missing module named matplotlib.image.BboxImage - imported by matplotlib.image, matplotlib.offsetbox
+missing module named matplotlib.collections.QuadMesh - imported by matplotlib.collections, matplotlib.backend_bases
+missing module named matplotlib.collections.TriMesh - imported by matplotlib.collections, matplotlib.tri.tripcolor
+missing module named matplotlib.collections.PolyCollection - imported by matplotlib.collections, matplotlib.tri.tripcolor, matplotlib.finance
+missing module named matplotlib.cbook.safezip - imported by matplotlib.cbook, matplotlib.legend
+missing module named matplotlib.cbook.silent_list - imported by matplotlib.cbook, matplotlib.pylab, matplotlib.legend, matplotlib.pyplot
+missing module named matplotlib.cbook.is_sequence_of_strings - imported by matplotlib.cbook, matplotlib.blocking_input
+missing module named matplotlib.axes.Axes - imported by matplotlib.axes, matplotlib.legend, matplotlib.projections.geo, matplotlib.projections.polar, matplotlib.pyplot, matplotlib.figure
+missing module named matplotlib.gridspec.SubplotSpec - imported by matplotlib.gridspec, matplotlib.axes
+missing module named matplotlib.gridspec.GridSpec - imported by matplotlib.gridspec, matplotlib.axes, matplotlib.pyplot
+missing module named matplotlib.tri.Triangulation - imported by matplotlib.tri, matplotlib.tri.trifinder, matplotlib.tri.tritools, matplotlib.tri.triinterpolate
+missing module named matplotlib.cbook.delete_masked_points - imported by matplotlib.cbook, matplotlib.quiver
 missing module named matplotlib.image.imsave - imported by matplotlib.image, matplotlib.pyplot
 missing module named matplotlib.image.imread - imported by matplotlib.image, matplotlib.pyplot
 missing module named ICCProfile - imported by PIL.PngImagePlugin
 missing module named _imaging_gif - imported by PIL.GifImagePlugin
-missing module named matplotlib._png.read_png - imported by matplotlib._png, matplotlib.texmanager
-missing module named matplotlib._image.fromarray - imported by matplotlib._image, matplotlib.backends.backend_agg
-missing module named matplotlib._image.frombuffer - imported by matplotlib._image, matplotlib.backends.backend_mixed
-missing module named matplotlib.gridspec.SubplotSpec - imported by matplotlib.gridspec, matplotlib.axes
-missing module named matplotlib.gridspec.GridSpec - imported by matplotlib.gridspec, matplotlib.axes, matplotlib.pyplot
+missing module named matplotlib.figure.figaspect - imported by matplotlib.figure, matplotlib.pyplot
 missing module named matplotlib.figure.SubplotParams - imported by matplotlib.figure, matplotlib.gridspec
-missing module named matplotlib.collections.TriMesh - imported by matplotlib.collections, matplotlib.tri.tripcolor
-missing module named matplotlib.tri.Triangulation - imported by matplotlib.tri, matplotlib.tri.trifinder, matplotlib.tri.tritools, matplotlib.tri.triinterpolate
-missing module named matplotlib.collections.PathCollection - imported by matplotlib.collections, matplotlib.legend
-missing module named matplotlib.collections.RegularPolyCollection - imported by matplotlib.collections, matplotlib.legend
-missing module named matplotlib.collections.CircleCollection - imported by matplotlib.collections, matplotlib.legend
-missing module named matplotlib.axes.Axes - imported by matplotlib.axes, matplotlib.legend, matplotlib.projections.geo, matplotlib.projections.polar, matplotlib.pyplot, matplotlib.figure
-missing module named matplotlib.mathtext.MathTextParser - imported by matplotlib.mathtext, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_agg, matplotlib.textpath, matplotlib.backends.backend_ps, matplotlib.backends.backend_gdk, matplotlib.backends.backend_cairo, matplotlib.backends.backend_qt4
-missing module named matplotlib.get_data_path - imported by matplotlib, matplotlib.mathtext, matplotlib.backends.backend_pdf
-missing module named numpy.isinf - imported by numpy, matplotlib.mathtext
-missing module named numpy.inf - imported by numpy, matplotlib.mathtext
-missing module named matplotlib.backends.backend_agg.RendererAgg - imported by matplotlib.backends.backend_agg, matplotlib.backends.backend_mixed
-missing module named matplotlib.text._process_text_args - imported by matplotlib.text, matplotlib.figure, matplotlib.backends.backend_wx
-missing module named matplotlib.text.Annotation - imported by matplotlib.text, matplotlib.pyplot
-missing module named matplotlib.text.Text - imported by matplotlib.text, matplotlib.table, matplotlib.pyplot, matplotlib.figure, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_wx
-missing module named matplotlib.text._AnnotationBase - imported by matplotlib.text, matplotlib.offsetbox
-missing module named matplotlib.collections.PolyCollection - imported by matplotlib.collections, matplotlib.tri.tripcolor, matplotlib.finance
-missing module named matplotlib.collections.LineCollection - imported by matplotlib.collections, matplotlib.legend, matplotlib.finance
-missing module named matplotlib.collections.QuadMesh - imported by matplotlib.collections, matplotlib.backend_bases
-missing module named matplotlib.get_cachedir - imported by matplotlib, matplotlib.finance, matplotlib.font_manager
-missing module named matplotlib.cbook.reverse_dict - imported by matplotlib.cbook, matplotlib.backends.backend_pdf
-missing module named matplotlib.cbook.is_writable_file_like - imported by matplotlib.cbook, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gtk, matplotlib.backends.backend_wx
-missing module named matplotlib.cbook.delete_masked_points - imported by matplotlib.cbook, matplotlib.quiver
-missing module named matplotlib.cbook._InstanceMethodPickler - imported by matplotlib.cbook, matplotlib.offsetbox
-missing module named matplotlib.cbook.safezip - imported by matplotlib.cbook, matplotlib.legend
-missing module named matplotlib.cbook.is_sequence_of_strings - imported by matplotlib.cbook, matplotlib.blocking_input
-missing module named matplotlib.cbook.Stack - imported by matplotlib.cbook, matplotlib.figure
-missing module named matplotlib.cbook.Bunch - imported by matplotlib.cbook, matplotlib.mathtext, matplotlib.backends.backend_pdf
-missing module named matplotlib.cbook.get_realpath_and_stat - imported by matplotlib.cbook, matplotlib.mathtext, matplotlib.backends.backend_pdf, matplotlib.backends.backend_ps
-missing module named matplotlib.cbook.is_math_text - imported by matplotlib.cbook, matplotlib.markers
-missing module named matplotlib.cbook.ls_mapper - imported by matplotlib.cbook, matplotlib.lines, matplotlib.tri.triplot
-missing module named matplotlib.cbook.mplDeprecation - imported by matplotlib.cbook, matplotlib.patches, matplotlib.backend_bases, matplotlib.backends.backend_wx
-missing module named matplotlib.cbook.mkdirs - imported by matplotlib.cbook, matplotlib.finance, matplotlib.texmanager, matplotlib
-missing module named matplotlib.cbook.is_numlike - imported by matplotlib.cbook, matplotlib.units, matplotlib.lines, matplotlib.markers, matplotlib.pyplot
-missing module named matplotlib.cbook.exception_to_str - imported by matplotlib.cbook, matplotlib.pylab, matplotlib.backends.backend_wx
 missing module named matplotlib.cbook.iterable - imported by matplotlib.cbook, matplotlib.pylab, matplotlib.units, matplotlib.finance, matplotlib.lines, matplotlib.markers, matplotlib.figure, matplotlib.legend
-missing module named matplotlib.cbook.is_string_like - imported by matplotlib.cbook, matplotlib.pylab, matplotlib.lines, matplotlib.markers, matplotlib.text, matplotlib.font_manager, matplotlib.mathtext, matplotlib.backends.backend_agg, matplotlib.legend, matplotlib.table, matplotlib.pyplot, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gdk, matplotlib.backends.backend_gtk, matplotlib.backends.backend_cairo, matplotlib.backends.backend_qt4, matplotlib.backends.backend_tkagg, matplotlib.backends.backend_wx
-missing module named matplotlib.cbook.flatten - imported by matplotlib.cbook, matplotlib.pylab
-missing module named matplotlib.cbook.silent_list - imported by matplotlib.cbook, matplotlib.pylab, matplotlib.legend, matplotlib.pyplot
-missing module named matplotlib.cbook.dedent - imported by matplotlib.cbook, matplotlib.pylab, matplotlib.scale, matplotlib.pyplot
-missing module named matplotlib.transforms.Affine2D - imported by matplotlib.transforms, matplotlib.path, matplotlib.markers, matplotlib.text, matplotlib.projections.geo, matplotlib.projections.polar, matplotlib.tight_bbox, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.figure, matplotlib.textpath, matplotlib.backend_bases, matplotlib.backends.backend_ps, matplotlib.finance, matplotlib.backends.backend_gdk, matplotlib.backends.backend_cairo, matplotlib.backends.backend_wx
-missing module named matplotlib.transforms.BboxTransformTo - imported by matplotlib.transforms, matplotlib.path, matplotlib.text, matplotlib.legend, matplotlib.projections.geo, matplotlib.projections.polar, matplotlib.figure
-missing module named numpy.linalg.inv - imported by numpy.linalg, numpy.matrixlib.defmatrix, numpy.lib.polynomial, matplotlib.transforms
-missing module named matplotlib._path.update_path_extents - imported by matplotlib._path, matplotlib.transforms
-missing module named matplotlib._path.affine_transform - imported by matplotlib._path, matplotlib.transforms
-missing module named matplotlib._path.count_bboxes_overlapping_bbox - imported by matplotlib._path, matplotlib.transforms
-missing module named numpy.expand_dims - imported by numpy, numpy.ma.core
-missing module named numpy.iscomplexobj - imported by numpy, numpy.ma.core
-missing module named numpy.amax - imported by numpy, numpy.ma.core
-missing module named numpy.amin - imported by numpy, numpy.ma.core
+missing module named matplotlib.cbook.Stack - imported by matplotlib.cbook, matplotlib.figure
+missing module named matplotlib.artist.allow_rasterization - imported by matplotlib.artist, matplotlib.patches, matplotlib.collections, matplotlib.lines, matplotlib.text, matplotlib.figure, matplotlib.image, matplotlib.axes, matplotlib.axis, matplotlib.legend, matplotlib.spines, matplotlib.quiver, matplotlib.table
 missing module named matplotlib.backend_bases.FigureManagerBase - imported by matplotlib.backend_bases, matplotlib.backends.backend_agg, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gtk, matplotlib.backends.backend_gdk, matplotlib.backends.backend_cairo, matplotlib.backends.backend_qt4, matplotlib.backends.backend_tkagg, matplotlib.backends.backend_wx, matplotlib.backends.backend_template
 missing module named matplotlib.backend_bases.FigureCanvasBase - imported by matplotlib.backend_bases, matplotlib.backends.backend_agg, matplotlib.pyplot, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gtk, matplotlib.backends.backend_gdk, matplotlib.backends.backend_cairo, matplotlib.backends.backend_qt4, matplotlib.backends.backend_tkagg, matplotlib.backends.backend_wx, matplotlib.backends.backend_template
-missing module named matplotlib.backend_bases.RendererBase - imported by matplotlib.backend_bases, matplotlib.text, matplotlib.backends.backend_agg, matplotlib.patheffects, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gtk, matplotlib.backends.backend_gdk, matplotlib.backends.backend_cairo, matplotlib.backends.backend_qt4, matplotlib.backends.backend_tkagg, matplotlib.backends.backend_wx, matplotlib.backends.backend_template
 missing module named matplotlib.backend_bases.GraphicsContextBase - imported by matplotlib.backend_bases, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gtk, matplotlib.backends.backend_gdk, matplotlib.backends.backend_cairo, matplotlib.backends.backend_qt4, matplotlib.backends.backend_tkagg, matplotlib.backends.backend_wx, matplotlib.backends.backend_template
-missing module named matplotlib.get_backend - imported by matplotlib, matplotlib.pyplot, matplotlib.backend_bases
-missing module named matplotlib.is_interactive - imported by matplotlib, matplotlib.backend_bases
-missing module named matplotlib.widgets.SubplotTool - imported by matplotlib.widgets, matplotlib.pyplot, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gtk, matplotlib.backends.backend_qt4, matplotlib.backends.backend_tkagg, matplotlib.backends.backend_wx
-missing module named matplotlib.widgets.Widget - imported by matplotlib.widgets, matplotlib.pyplot
-missing module named matplotlib.widgets.Button - imported by matplotlib.widgets, matplotlib.pyplot
-missing module named matplotlib.widgets.Slider - imported by matplotlib.widgets, matplotlib.pyplot
-missing module named matplotlib.backend_bases.NonGuiException - imported by matplotlib.backend_bases, matplotlib.figure
-missing module named matplotlib.__version__ - imported by matplotlib, matplotlib.figure, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_ps
-missing module named matplotlib.ttconv.convert_ttf_to_ps - imported by matplotlib.ttconv, matplotlib.backends.backend_ps
-missing module named matplotlib.checkdep_ghostscript - imported by matplotlib, matplotlib.backends.backend_ps
+missing module named matplotlib.cbook.is_writable_file_like - imported by matplotlib.cbook, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gtk, matplotlib.backends.backend_wx
+missing module named matplotlib.ft2font.ITALIC - imported by matplotlib.ft2font, matplotlib.backends.backend_pdf
+missing module named matplotlib.ft2font.KERNING_UNFITTED - imported by matplotlib.ft2font, matplotlib.backends.backend_pdf
+missing module named matplotlib.ft2font.LOAD_NO_SCALE - imported by matplotlib.ft2font, matplotlib.backends.backend_pdf
+missing module named matplotlib.ft2font.FIXED_WIDTH - imported by matplotlib.ft2font, matplotlib.backends.backend_pdf
+missing module named matplotlib.cbook.reverse_dict - imported by matplotlib.cbook, matplotlib.backends.backend_pdf
 missing module named matplotlib.backends._backend_gdk.pixbuf_get_pixels_array - imported by matplotlib.backends._backend_gdk, matplotlib.backends.backend_gdk
 missing module named glib.SPAWN_STDERR_TO_DEV_NULL - imported by glib, gobject
 missing module named glib.OPTION_REMAINING - imported by glib, gobject
@@ -879,17 +857,39 @@ missing module named glib.Source - imported by glib, gobject
 missing module named glib.GError - imported by glib, gobject
 missing module named glib.timeout_add_seconds - imported by glib, gobject
 missing module named glib.uri_list_extract_uris - imported by glib, gobject
+missing module named matplotlib.widgets.SubplotTool - imported by matplotlib.widgets, matplotlib.pyplot, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gtk, matplotlib.backends.backend_qt4, matplotlib.backends.backend_tkagg, matplotlib.backends.backend_wx
+missing module named matplotlib.widgets.Widget - imported by matplotlib.widgets, matplotlib.pyplot
+missing module named matplotlib.widgets.Button - imported by matplotlib.widgets, matplotlib.pyplot
+missing module named matplotlib.widgets.Slider - imported by matplotlib.widgets, matplotlib.pyplot
+missing module named matplotlib.cbook.exception_to_str - imported by matplotlib.cbook, matplotlib.pylab, matplotlib.backends.backend_wx
 missing module named matplotlib._windowing.GetForegroundWindow - imported by matplotlib._windowing, matplotlib.backends.windowing
 missing module named matplotlib._windowing.SetForegroundWindow - imported by matplotlib._windowing, matplotlib.backends.windowing
 missing module named 'cairo.gtk' - imported by matplotlib.backends.backend_gtkcairo
-missing module named matplotlib.backends._gtkagg.agg_to_gtk_drawable - imported by matplotlib.backends._gtkagg, matplotlib.backends.backend_gtkagg
-missing module named matplotlib.backends.backend_agg.FigureCanvasAgg - imported by matplotlib.backends.backend_agg, matplotlib.image, matplotlib.tight_layout, matplotlib.backend_bases, matplotlib.backends.backend_gtkagg, matplotlib.backends.backend_qt4agg, matplotlib.backends.backend_tkagg, matplotlib.backends.backend_wxagg
+missing module named matplotlib.backends.backend_agg.RendererAgg - imported by matplotlib.backends.backend_agg, matplotlib.backends.backend_mixed
+missing module named matplotlib._image.fromarray - imported by matplotlib._image, matplotlib.backends.backend_agg
 missing module named matplotlib.backends._backend_agg.RendererAgg - imported by matplotlib.backends._backend_agg, matplotlib.backends.backend_agg
-missing module named matplotlib.figure.Figure - imported by matplotlib.figure, matplotlib.image, matplotlib.legend, matplotlib.pyplot, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_agg, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gtk3agg, matplotlib.backends.backend_gtkagg, matplotlib.backends.backend_gdk, matplotlib.backends.backend_gtk, matplotlib.backends.backend_cairo, matplotlib.backends.backend_qt4agg, matplotlib.backends.backend_qt4, matplotlib.backends.backend_tkagg, matplotlib.backends.backend_wx, matplotlib.backends.backend_wxagg, matplotlib.backends.backend_template
-missing module named matplotlib.figure.figaspect - imported by matplotlib.figure, matplotlib.pyplot
+missing module named matplotlib.ft2font.LOAD_DEFAULT - imported by matplotlib.ft2font, matplotlib.backends.backend_agg
+missing module named matplotlib.ft2font.LOAD_NO_AUTOHINT - imported by matplotlib.ft2font, matplotlib.backends.backend_agg
+missing module named matplotlib._image.frombuffer - imported by matplotlib._image, matplotlib.backends.backend_mixed
+missing module named matplotlib.backend_bases.RendererBase - imported by matplotlib.backend_bases, matplotlib.text, matplotlib.backends.backend_agg, matplotlib.patheffects, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gtk, matplotlib.backends.backend_gdk, matplotlib.backends.backend_cairo, matplotlib.backends.backend_qt4, matplotlib.backends.backend_tkagg, matplotlib.backends.backend_wx, matplotlib.backends.backend_template
 missing module named matplotlib.rc_context - imported by matplotlib, matplotlib.pyplot
 missing module named matplotlib.rcParamsDefault - imported by matplotlib, matplotlib.pyplot
+missing module named matplotlib.get_backend - imported by matplotlib, matplotlib.pyplot, matplotlib.backend_bases
 missing module named matplotlib.interactive - imported by matplotlib, matplotlib.pyplot
+missing module named matplotlib.__version__ - imported by matplotlib, matplotlib.figure, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_ps
+missing module named matplotlib.get_data_path - imported by matplotlib, matplotlib.mathtext, matplotlib.backends.backend_pdf
+missing module named matplotlib.rcParams - imported by matplotlib, matplotlib.ticker, matplotlib.path, matplotlib.artist, matplotlib.lines, matplotlib.markers, matplotlib.text, matplotlib.font_manager, matplotlib.textpath, matplotlib.mathtext, matplotlib.backends.backend_agg, matplotlib.figure, matplotlib.image, matplotlib.texmanager, matplotlib.dviread, matplotlib.axis, matplotlib.legend, matplotlib.offsetbox, matplotlib.pyplot, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backend_bases, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gdk, matplotlib.backends.backend_gtk, matplotlib.backends.qt4_compat, matplotlib.backends.windowing, matplotlib.backends.backend_wx
+missing module named matplotlib.verbose - imported by matplotlib, matplotlib.finance, matplotlib.mlab, matplotlib.lines, matplotlib.backends.backend_agg, matplotlib.blocking_input, matplotlib.backends.backend_svg, matplotlib.backends.backend_ps, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gtk, matplotlib.backends.backend_qt4, matplotlib.backends.qt4_compat, matplotlib.backends.backend_wx
+missing module named matplotlib.get_cachedir - imported by matplotlib, matplotlib.finance, matplotlib.font_manager
+missing module named matplotlib.pylab.figure - imported by matplotlib.pylab, matplotlib.cbook
+missing module named matplotlib.cbook.flatten - imported by matplotlib.cbook, matplotlib.pylab
+missing module named numpy.expand_dims - imported by numpy, numpy.ma.core
+missing module named numpy.iscomplexobj - imported by numpy, numpy.ma.core
+missing module named numpy.amax - imported by numpy, numpy.ma.core
+missing module named numpy.amin - imported by numpy, numpy.ma.core
+missing module named codecs.mbcs_encode - imported by codecs, encodings.mbcs
+missing module named codecs.mbcs_decode - imported by codecs, encodings.mbcs
+missing module named matplotlib.backends._gtkagg.agg_to_gtk_drawable - imported by matplotlib.backends._gtkagg, matplotlib.backends.backend_gtkagg
 missing module named unix - imported by gio
 missing module named gio._gio._app_info_init - imported by gio._gio, gio
 missing module named gio._gio._install_app_info_meta - imported by gio._gio, gio

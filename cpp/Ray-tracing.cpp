@@ -260,8 +260,6 @@ int RayTracing(int argc, char* argv) {
 			if (rayByIter > (p->rayCount * currentWaveLenght.intensity - generatedRay))
 				rayByIter = p->rayCount * currentWaveLenght.intensity - generatedRay;
 
-			cout << rayByIter <<"\t"<< generatedRay <<endl;
-
 			tRay *ray = light->GenerateRays(currentWaveLenght.waveLenght,
 					currentWaveLenght.dwaveLenght, rayByIter);
 
