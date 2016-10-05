@@ -7,7 +7,7 @@ Ti He refR2 2.55 .5
 Ti He refB1 2.20 .5
 Ti He refB2 2.195 .5
 
-Si He SiLyb 5.218 2.
+Si He SiLyb 5.218 2. 4.112
 Si He SiLyg 4.947 1.
 Si He SiLy6 4.770 1.
 Si He SiHeb 5.681 2.
@@ -726,7 +726,9 @@ Mg He 2j-1s 9.3206 1.0
 Mg He Ref4 9.35  0.5
 Mg He 3j-1s 8.035 0.5
 Mg He Refj 8.03 1.0
-Mg He 3p-1s 7.8500 2.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          MMg He 4r 7.4729 1.5
+Mg He 3p-1s 7.8500 2.
+
+MMg He 4r 7.4729 1.5
 Mg He 5p-1s 7.3102 1.2
 Mg He 6p-1s 7.2246 1.
 Mg He 7p-1s 7.1740 0.9
@@ -980,7 +982,7 @@ Fe Ne 3A 13.823 1.8
 Fe Ne Ref1 13.5 2.
 Fe Ne Ref2 13.0 2.5
 Fe Ne ref3 12.5 2.
-Fe Ne ref4 12.0 1.5.
+Fe Ne ref4 12.0 1.5
 Kr Ne 5C 4.8091 5.2 2.
 Kr Ne 5D 4.9108 3.
 Kr Ne 5G 4.9702 1.
@@ -1019,7 +1021,9 @@ Ta Cu 5f 15.249 4.
 Ta Cu 1s 16.759 1.      
 Ta Cu 2s 16.761 2.                             
 Ta Cu 3s 16.776 3.      
-Ta Cu 4s 17.880 4.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              Xe Ni R1 18.3255 1.
+Ta Cu 4s 17.880 4.
+
+Xe Ni R1 18.3255 1.
 Xe Ni R2 18.6702 2.0
 Xe Ni R3 18.8295 1.5
 Xe Ni Ref1 18.5 3.
@@ -1096,7 +1100,7 @@ Ca He Heash3 9.6 3.
 Ca He AlKa 8.39 1.
 Ca H  SiKa1 3.563 1.
 Ca H  SiKa-Li1 3.35 1.
-Ca H  Hea 3.1770 1.5.
+Ca H  Hea 3.1770 1.5
 Ca H  Hea10 3.3066 2.
 Ca H  Lya10 3.1416 2.
 Ca H  Li2-1-10 3.356 2.

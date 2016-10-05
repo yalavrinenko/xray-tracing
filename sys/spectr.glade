@@ -137,6 +137,10 @@
       <column type="gchararray"/>
       <!-- column-name listWavelength -->
       <column type="gfloat"/>
+      <!-- column-name gfloat1 -->
+      <column type="gfloat"/>
+      <!-- column-name gfloat2 -->
+      <column type="gfloat"/>
     </columns>
   </object>
   <object class="GtkListStore" id="liststore2">
@@ -192,7 +196,7 @@
         <property name="spacing">6</property>
         <child>
           <object class="GtkVBox" id="vbox5">
-            <property name="width_request">350</property>
+            <property name="width_request">400</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
@@ -200,42 +204,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="n_columns">2</property>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
                 <child>
                   <placeholder/>
                 </child>
@@ -325,7 +293,7 @@
                     <child>
                       <object class="GtkTreeViewColumn" id="colWaveLength">
                         <property name="resizable">True</property>
-                        <property name="sizing">fixed</property>
+                        <property name="sizing">autosize</property>
                         <property name="title" translatable="yes">λ [A]</property>
                         <child>
                           <object class="GtkCellRendererText" id="cellrenderertext2">
@@ -334,6 +302,28 @@
                           </object>
                           <attributes>
                             <attribute name="text">1</attribute>
+                          </attributes>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkTreeViewColumn" id="treeviewcolumn7">
+                        <property name="title" translatable="yes">dλ [mA]</property>
+                        <child>
+                          <object class="GtkCellRendererText" id="cellrenderertext15"/>
+                          <attributes>
+                            <attribute name="text">2</attribute>
+                          </attributes>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkTreeViewColumn" id="treeviewcolumn8">
+                        <property name="title" translatable="yes">Intensity</property>
+                        <child>
+                          <object class="GtkCellRendererText" id="cellrenderertext16"/>
+                          <attributes>
+                            <attribute name="text">3</attribute>
                           </attributes>
                         </child>
                       </object>
@@ -400,7 +390,7 @@
         </child>
         <child>
           <object class="GtkVBox" id="vbox1">
-            <property name="width_request">500</property>
+            <property name="width_request">250</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
@@ -860,7 +850,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="invisible_char">●</property>
-                    <property name="text" translatable="yes">0.01</property>
+                    <property name="text" translatable="yes">0.1</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
