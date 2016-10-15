@@ -256,6 +256,7 @@ tDumpPlane::~tDumpPlane() {
 				tmpVector[i].point.x, tmpVector[i].point.y,
 				tmpVector[i].point.z, tmpVector[i].lambda, tmpVector[i].I);
 	fflush(out);
+	fclose(out);
 }
 
 tRay tDumpPlane::crossAndGen(tRay ray, double &t) {
