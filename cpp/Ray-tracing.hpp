@@ -3,6 +3,7 @@
 
 extern "C"{
 	int RayTracing(int argc, char* argv);
+	void terminate();
 };
 
 #endif 

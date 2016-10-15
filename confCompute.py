@@ -25,7 +25,7 @@ def mstr(val):
         return val
     if (type(val) == int):
         return "%d" % val
-    return "%0.6g" % val
+    return "%0.7g" % val
 
 
 def genSetOfWave(wMin, wMax, depth, maxDepth, depthLimit):
@@ -154,7 +154,7 @@ class systemConfig:
             r2 = CR - CrossR
             cosT = np.dot(r1, r2) / (np.dot(r1, r1) ** 0.5 * np.dot(r2, r2) ** 0.5)
             Theta = np.pi / 2.0 - np.arccos(cosT)
-            P = self.crystal2d[order - 1] * np.sin(Theta)
+            P = (self.crystal2d[order - 1] / self.mainOrder) * np.sin(Theta)
             waves += [P]
 
             Theta = np.pi / 2 - Theta
@@ -210,7 +210,7 @@ class systemConfig:
             outFile.write("$RSize = " + mstr(self.DistrSize[idx]) + "\n")
             outFile.write("$RStep = " + mstr(self.DistrStep[idx]) + "\n") 
             outFile.write("$SrcDist = " + mstr(self.SrcDist) + "\n")
-            outFile.write("$SrcCone = " + mstr(self.SrcCone) + "\n")
+            outFile.write("$SrcCone = " + mstr(self.SrcCone*0.5) + "\n")
             outFile.write("$DDist  = " + mstr(self.DstDist) + "\n")
             outFile.write("$FilmA  = " + mstr(self.FilmAngle) + "\n")
             outFile.write("$FildDir = " + mstr(self.ToFilmDirection) + "\n")
@@ -249,6 +249,7 @@ class systemConfig:
 
     def __init__(self, logWindow):
         self.outText = logWindow
+        self.isCanceled = False
         if sys.platform.startswith('linux'):
             self.rayTraceLib = CDLL("./cpp/build/libRaytrace.so")
             print ('OS Linux')
@@ -335,10 +336,15 @@ class systemConfig:
 
         return data
 
+    def TerminateCalculation(self):
+        self.isCanceled = True
+        self.rayTraceLib.terminate()
+
     def progressLogger(self, ew, es):
         self.progressInfoOut.set_fraction(0.0)
+        self.isCanceled = False
 
-        while (not self.exitMainCompThread):
+        while not self.exitMainCompThread and not self.isCanceled:
             ptr = c_char_p.in_dll(self.rayTraceLib, "plinkedLibraryOutput")
             if ptr.value != None:
                 progress = ptr.value.split(":")[0]
@@ -392,11 +398,11 @@ class systemConfig:
                 os.system("rm results/" + pFileName + ".log")
 
                 self.exitMainCompThread = False
-                t1 = threading.Thread(target=self.execThread, args=(par, 0, 0))
-                t1.start()
+                self.t1 = threading.Thread(target=self.execThread, args=(par, 0, 0))
+                self.t1.start()
 
                 self.progressLogger(0, 0)
-                t1.join()
+                self.t1.join()
 
                 Result[int(pFileName.split('_')[1])] = self.resPlot.plotReflResults("results/" + pFileName + ".log")
 
@@ -415,11 +421,11 @@ class systemConfig:
                 par.replace('/', '\\')
 
                 self.exitMainCompThread = False
-                t1 = threading.Thread(target=self.execThread, args=(par, 0, 0))
-                t1.start()
+                self.t1 = threading.Thread(target=self.execThread, args=(par, 0, 0))
+                self.t1.start()
 
                 self.progressLogger(0, 0)
-                t1.join()
+                self.t1.join()
 
                 par.replace('\\', '/')
 
@@ -485,10 +491,12 @@ class systemConfig:
             self.crystal2d[0] / self.crystal2d[self.mainOrder - 1])
         '''
 
-        sTheta = centralWave / self.crystal2d[self.mainOrder -1]
+        sTheta = centralWave / (self.crystal2d[self.mainOrder - 1] / self.mainOrder)
         if (sTheta > 1.0):
             self.dispError(
-                "Bad central wave for selected order. Use wavelength less than " + mstr(self.crystal2d[self.mainOrder -1]) + " [A]")
+                "Bad central wave for selected order. Use wavelength less than " + mstr(
+                    (self.crystal2d[self.mainOrder - 1] / self.mainOrder)
+                ) + " [A]")
             return
 
         self.BraggA = math.asin(sTheta) * 180.0 / math.pi
@@ -506,7 +514,7 @@ class systemConfig:
         sGamma = self.SrcDist * math.sin(2 * phi) / L
         Gamma = math.asin(1.0 if math.fabs(sGamma) > 1 else sGamma)
         Gamma2 = math.asin(self.crystalR * math.sin(phi) / (2 * self.FilmDistFromCenter))
-        self.FilmAngle = (Gamma - Gamma2) * 180.0 / math.pi;
+        self.FilmAngle = (Gamma - Gamma2) * 180.0 / math.pi
 
         theta = self.BraggA * math.pi / 180.0
         H = self.crystalR - math.sqrt(self.crystalR ** 2 - self.crystalW ** 2 / 4.0)
@@ -603,10 +611,10 @@ class systemConfig:
             self.crystal2d[0] / self.crystal2d[self.mainOrder - 1])
             '''
 
-        sTheta = centralWave / self.crystal2d[self.mainOrder - 1]
+        sTheta = centralWave / (self.crystal2d[self.mainOrder - 1] / self.mainOrder)
         if (sTheta > 1.0):
             self.dispError("Bad central wave for selected order. Use wavelength less than " + mstr(
-                self.crystal2d[self.mainOrder - 1]) + " [A]")
+                (self.crystal2d[self.mainOrder - 1] / self.mainOrder) ) + " [A]")
             return
 
         self.BraggA = math.asin(sTheta) * 180.0 / math.pi

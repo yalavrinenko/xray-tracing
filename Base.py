@@ -38,7 +38,7 @@ def mstr(val):
         return val
     if (type(val) == int):
         return "%d" % val
-    return "%0.6g" % val
+    return "%0.7g" % val
 
 
 class spGeneral:
@@ -275,31 +275,42 @@ class spGeneral:
         additional_order_line = []
         Orders = [int(a) for a in self.entry_Orders.get_text().split()]
         MainOrder = int(self.entry_zeroOrder.get_text())
-        CurrentLinesNames = []
+        current_lines_names = []
         CurrentLines = []
         for line in self.wlSelStore:
-            if (not "_order_" in line[0]):
+            if "_order_" not in line[0]:
                 CurrentLines.append(line)
-            CurrentLinesNames.append(line[0])
+            current_lines_names.append(line[0])
 
         for current_line in CurrentLines:
             for order in Orders:
-                if (order != 1):
-                    new_line = list(current_line)
-                    new_line[1] = current_line[1] * order / MainOrder * (
-                        self.sys.crystal2d[MainOrder - 1] / self.sys.crystal2d[order - 1])
+                new_line = list(current_line)
+                current_order = new_line[8]
+                if current_order != order:
+                    new_line[1] = current_line[1] * order / current_order * (
+                        self.sys.crystal2d[order - 1] / self.sys.crystal2d[current_order - 1])
                     new_line[10] = new_line[1]
                     new_line[0] = current_line[0] + "_order_" + str(order)
 
                     new_line = [new_line[0], new_line[1], 0, 0, 0, 0, 0, 0, order, 0, new_line[10],
-                                current_line[11] * float(MainOrder) / float(order)]
-                    if (not new_line[0] in CurrentLinesNames):
+                                current_line[11] * float(current_order) / float(order)]
+                    if not new_line[0] in current_lines_names:
                         additional_order_line.append(new_line)
 
         for new_line in additional_order_line:
             self.wlSelStore.append(new_line)
 
         self.updWaveLength()
+
+    def on_button15_clicked(self, obj):
+
+        for line in self.wlSelStore:
+            if "_order_" in line[0]:
+                self.wlSelStore.remove(line.iter)
+
+    def on_button16_clicked(self, obj):
+        self.winProgress.hide()
+        self.sys.TerminateCalculation()
 
     def on_treeview1_row_activated(self, obj1, obj2, obj3):
 
@@ -401,6 +412,7 @@ class spGeneral:
 
             if (not len(list) == 0):
                 zero_wave_index = self.sys.WaveLengths.index(self.sys.zeroWave)
+
                 dzero_wave =self.sys.dWaveLength[zero_wave_index]
                 self.sys.resPlot.plotFilm(list, self.sys.zeroWave, self.sys.crystal2d, Orders,
                                           order, dzero_wave)
@@ -602,7 +614,7 @@ class spGeneral:
             self.sys.mainOrder = int(self.entry_zeroOrder.get_text())
         except ValueError:
             pass
-
+        self.updWaveLength()
         if (isfloat(obj.get_text()) and self.sys.isCompute):
             if (not self.sys.isCompute == 0):
                 order = self.entry_zeroOrder.get_text()

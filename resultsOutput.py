@@ -23,7 +23,7 @@ def mstr(val):
         return val
     if (type(val) == int):
         return "%d" % val
-    return "%0.6g" % val
+    return "%0.7g" % val
 
 
 def readFile(file, x, y, z, colors):
@@ -70,24 +70,24 @@ def readFile(file, x, y, z, colors):
 
         lines = f.readlines()
         for i in lines:
-	        words = i.split()
-	        wx = float(words[0]) - cx
-	        wy = float(words[1]) - cy
-	        wz = float(words[2]) - cz
-	        c = float(words[3])
+            words = i.split()
+            wx = float(words[0]) - cx
+            wy = float(words[1]) - cy
+            wz = float(words[2]) - cz
+            c = float(words[3])
 
-	        dwx = wx * math.cos(phi) - wy * math.sin(phi)
-	        dwy = wx * math.sin(phi) + wy * math.cos(phi)
+            dwx = wx * math.cos(phi) - wy * math.sin(phi)
+            dwy = wx * math.sin(phi) + wy * math.cos(phi)
 
-	        wx = dwx
-	        wy = dwy
+            wx = dwx
+            wy = dwy
 
-	        x.append(wx)
-	        y.append(wy)
-	        z.append(wz)
-	        colors.append(c)
+            x.append(wx)
+            y.append(wy)
+            z.append(wz)
+            colors.append(c)
 
-    	print (file, len(x))
+        print (file, len(x))
 
 
 class resPlot():
@@ -372,10 +372,20 @@ class resPlot():
 
             colors = self.normalizeWl(mainOrder, targetOrder, colors, cr2d)
             try:
-                max_nbins_x = abs(abs(max(x)) - abs(min(x))) / self.pixel_size + 1
-                max_nbins_z = abs(abs(max(z)) - abs(min(z))) / self.pixel_size + 1
+                x_dist = abs(max(x) - min(x))
+                z_dist = abs(max(z) - min(z))
+
+                max_nbins_x = int(x_dist / self.pixel_size)
+                max_nbins_z = int(z_dist / self.pixel_size)
+
+                if max_nbins_x <= 0:
+                    max_nbins_x = 1
+                if max_nbins_z <= 0:
+                    max_nbins_z = 1
+
             except ValueError:
                 max_nbins_x = 100
+                max_nbins_z = 100
                 print ("Max value error. NBINS is incorrect\n")
 
             H, xe, ze = numpy.histogram2d(x, z, bins=(max_nbins_x, max_nbins_z))

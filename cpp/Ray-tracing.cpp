@@ -27,6 +27,11 @@ using namespace std;
 
 string linkedLibraryOutput;
 const char* plinkedLibraryOutput;
+bool isTerminated;
+
+void terminate(){
+	isTerminated = true;
+}
 
 template <class mirrorClass>
 tMirror *initScene(vector<tObject> &obj, SphereLight **slight, tParameters *p) {
@@ -162,6 +167,8 @@ int RayTracing(int argc, char* argv) {
 	#ifdef WIN32
 		std::setlocale(LC_ALL, "C");
 	#endif
+
+	isTerminated = false;
 	
 	vector<tObject> obj;
 	SphereLight *light;
@@ -229,7 +236,7 @@ int RayTracing(int argc, char* argv) {
 
 	//
 
-	for (int w = 0; w < p->waveLenghtCount; w++) {
+	for (int w = 0; w < p->waveLenghtCount && !isTerminated; w++) {
 
 		waveInput currentWaveLenght = p->waveLenghts[w];
 		if (currentWaveLenght.waveLenght <= 0)
@@ -255,19 +262,23 @@ int RayTracing(int argc, char* argv) {
 
 		int rayByIter = p->rayByIter;
 
-		while (generatedRay < p->rayCount * currentWaveLenght.intensity && rayByIter > 0) {
+		while (generatedRay < p->rayCount * currentWaveLenght.intensity && rayByIter > 0 && !isTerminated) {
 
 			if (rayByIter > (p->rayCount * currentWaveLenght.intensity - generatedRay))
 				rayByIter = p->rayCount * currentWaveLenght.intensity - generatedRay;
 
 			tRay *ray = light->GenerateRays(currentWaveLenght.waveLenght,
 					currentWaveLenght.dwaveLenght, rayByIter);
+			
+			if (isTerminated){
+				delete[] ray;
+				break;
+			}
 
 			rayTrace(ray, rayByIter, obj, obj.size());
 
 			delete[] ray;
 			generatedRay += rayByIter;
-
 		}
 
 		double rCast = generatedRay;
@@ -287,7 +298,7 @@ int RayTracing(int argc, char* argv) {
 		linkedLibraryOutput = "["+to_string(w+1)+"/"+to_string(p->waveLenghtCount)+"]:\t" + linkedLibraryOutput;
 
 		plinkedLibraryOutput = linkedLibraryOutput.c_str();
-
+		
 		cout << endl;
 	}
 	//
