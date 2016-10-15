@@ -46,15 +46,16 @@ double rdrand(int a){
 }
 
 double ngrand(int a){
-	double r=(double)(rand()%a)/a;
-	return 1 - 2*r;
+	double r=(double)(rand()%a)/(double)a;
+	double rvalue = 1.0 - 2.0*r;
+	return rvalue;
 }
 
 double normal(double mean, double stddev){
 	double S=0;
 	double NRAND=20;
 	for (int i=0; i<NRAND; i++)
-		S+=ngrand(100000);
+		S+=ngrand(RAND_MAX);
 
 	double normalStdDiv=2.0/sqrt(12.0);
 	double value=S/(normalStdDiv*sqrt(NRAND));
