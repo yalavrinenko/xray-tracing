@@ -175,13 +175,13 @@ class systemConfig:
         return [np.max(waves), np.min(waves), position[1], position[0]]
 
     def dumpPatter(self, oFile):
-        iFile = open("sys/pattern.par", "r")
-        lines = iFile.readlines();
-        oFile.writelines(lines)
+        with open("sys/pattern.par", "r") as iFile:
+            lines = iFile.readlines();
+            oFile.writelines(lines)
 
     def prepareComputation(self):
         parFiles = []
-        for idx in self.Orders:
+        for idx in [self.mainOrder]:
             [w1, w2, p1, p2] = self.calcLimWaveLength(idx)
 
             self.WaveLengths += [w2]
@@ -204,11 +204,11 @@ class systemConfig:
             outFile.write("$wA = " + mstr(self.crystalW) + "\n")
             outFile.write("$hA = " + mstr(self.crystalH) + "\n")
             outFile.write("$ScattAngle = " + mstr(self.BraggA) + "\n")
-            outFile.write("$Cr2D = " + mstr(self.crystal2d[idx]) + "\n")
+            outFile.write("$Cr2D = " + mstr(self.crystal2d[idx] / self.mainOrder) + "\n")
             outFile.write("$DistrWidth = " + mstr(self.DistrHW[idx]) + "\n")
             outFile.write("$RFile = " + self.DistrFileName[idx] + "\n")
             outFile.write("$RSize = " + mstr(self.DistrSize[idx]) + "\n")
-            outFile.write("$RStep = " + mstr(self.DistrStep[idx]) + "\n")
+            outFile.write("$RStep = " + mstr(self.DistrStep[idx]) + "\n") 
             outFile.write("$SrcDist = " + mstr(self.SrcDist) + "\n")
             outFile.write("$SrcCone = " + mstr(self.SrcCone) + "\n")
             outFile.write("$DDist  = " + mstr(self.DstDist) + "\n")
@@ -315,7 +315,7 @@ class systemConfig:
 
         data += "\n\n[INPUT]\n"
         data += "Crystal type = " + self.CrystType + "\n"
-        data += "Crystal 2d = " + mstr(self.crystal2d[0]) + " [A]\n"
+        data += "Crystal 2d = " + mstr(self.crystal2d[self.mainOrder -1]) + " [A]\n"
         data += "Crystal W x H = " + mstr(self.crystalW) + " X " + mstr(self.crystalH) + " [mm]\n"
         data += "Source size W x H= " + mstr(self.SrcSizeW) + " X " + mstr(self.SrcSizeH) + " [mm]\n"
         data += "Detector size W x H= " + mstr(self.FilmSizeW) + " X " + mstr(self.FilmSizeH) + " [mm]\n"
@@ -408,9 +408,9 @@ class systemConfig:
                 print ('OS Windows')
                 pFileName = par.split("/")[1].split(".")[0]
 
-                os.system("del /Q results\\" + pFileName)
-                os.system("del /Q results\\" + pFileName + ".dump")
-                os.system("del /Q results\\" + pFileName + ".log")
+                os.system("del /Q /f results\\" + pFileName)
+                os.system("del /Q /f results\\" + pFileName + ".dump")
+                os.system("del /Q /f results\\" + pFileName + ".log")
 
                 par.replace('/', '\\')
 
@@ -462,8 +462,8 @@ class systemConfig:
         self.outText.set_text(text)
 
     def setDistrFile(self, fileName, distrOrder):
-        f = open(fileName, 'r')
-        lines = f.readlines()
+        with open(fileName, 'r') as f:
+            lines = f.readlines()
         x = []
         y = []
         for line in lines:
@@ -480,13 +480,15 @@ class systemConfig:
 
     def updateConfigNCW(self):
 
-        centralWave = self.centralWave * self.mainOrder / (
+        centralWave = self.centralWave 
+        '''* self.mainOrder / (
             self.crystal2d[0] / self.crystal2d[self.mainOrder - 1])
+        '''
 
-        sTheta = centralWave / self.crystal2d[0]
+        sTheta = centralWave / self.crystal2d[self.mainOrder -1]
         if (sTheta > 1.0):
             self.dispError(
-                "Bad central wave for selected order. Use wavelength less than " + mstr(self.crystal2d[0]) + " [A]")
+                "Bad central wave for selected order. Use wavelength less than " + mstr(self.crystal2d[self.mainOrder -1]) + " [A]")
             return
 
         self.BraggA = math.asin(sTheta) * 180.0 / math.pi
@@ -550,13 +552,13 @@ class systemConfig:
         self.dispData()
 
     def findWaveLength(self, elems):
-        f = open("sys/trans-db.txt", "r")
         Name = []
         Wls = []
         dWls = []
         Intens = []
         self.WaveLengths = []
-        linesData = f.readlines()
+        with open("sys/trans-db.txt", "r") as f:
+            linesData = f.readlines()
         for elem in elems:
             for l in linesData:
                 lsp = l.split()
@@ -595,8 +597,11 @@ class systemConfig:
             self.resPlot.plotWaveLength(self.WaveLengths, self.WaveIntensity, self.WaveOrders, self.WaveLimits)
 
     def computFSSR1(self):
-        centralWave = self.centralWave * self.mainOrder / (
+        centralWave = self.centralWave
+        '''
+         * self.mainOrder / (
             self.crystal2d[0] / self.crystal2d[self.mainOrder - 1])
+            '''
 
         sTheta = centralWave / self.crystal2d[self.mainOrder - 1]
         if (sTheta > 1.0):

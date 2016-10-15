@@ -27,69 +27,67 @@ def mstr(val):
 
 
 def readFile(file, x, y, z, colors):
-    f = open(file, 'r')
+    with open(file, 'r') as f:
+        f.readline()
 
-    f.readline()
+        phiLine = f.readline()
+        phils = phiLine.split()
 
-    phiLine = f.readline()
-    phils = phiLine.split()
+        phi = float(phils[2])
 
-    phi = float(phils[2])
+        l = f.readline()
 
-    l = f.readline()
+        coords = l.split()
 
-    coords = l.split()
+        ctmpx = coords[2][1:-1]
+        ctmpy = coords[3][:-1]
+        ctmpz = coords[4][:-2]
 
-    ctmpx = coords[2][1:-1]
-    ctmpy = coords[3][:-1]
-    ctmpz = coords[4][:-2]
+        cx = float(ctmpx)
+        cy = float(ctmpy)
+        cz = float(ctmpz)
 
-    cx = float(ctmpx)
-    cy = float(ctmpy)
-    cz = float(ctmpz)
+        f.readline()
 
-    f.readline()
+        coords = l.split()
 
-    coords = l.split()
+        ctmpx = coords[2][1:-1]
+        ctmpy = coords[3][:-1]
+        ctmpz = coords[4][:-2]
 
-    ctmpx = coords[2][1:-1]
-    ctmpy = coords[3][:-1]
-    ctmpz = coords[4][:-2]
+        ncx = float(ctmpx)
+        ncy = float(ctmpy)
+        ncz = float(ctmpz)
 
-    ncx = float(ctmpx)
-    ncy = float(ctmpy)
-    ncz = float(ctmpz)
+        phi *= math.pi / 180.0
+        phi = (math.pi / 2.0 - phi)
 
-    phi *= math.pi / 180.0
-    phi = (math.pi / 2.0 - phi)
+        if ncx > 0:
+            phi = -phi
 
-    if ncx > 0:
-        phi = -phi
+        f.readline()
+        f.readline()
 
-    f.readline()
-    f.readline()
+        lines = f.readlines()
+        for i in lines:
+	        words = i.split()
+	        wx = float(words[0]) - cx
+	        wy = float(words[1]) - cy
+	        wz = float(words[2]) - cz
+	        c = float(words[3])
 
-    lines = f.readlines()
-    for i in lines:
-        words = i.split()
-        wx = float(words[0]) - cx
-        wy = float(words[1]) - cy
-        wz = float(words[2]) - cz
-        c = float(words[3])
+	        dwx = wx * math.cos(phi) - wy * math.sin(phi)
+	        dwy = wx * math.sin(phi) + wy * math.cos(phi)
 
-        dwx = wx * math.cos(phi) - wy * math.sin(phi)
-        dwy = wx * math.sin(phi) + wy * math.cos(phi)
+	        wx = dwx
+	        wy = dwy
 
-        wx = dwx
-        wy = dwy
+	        x.append(wx)
+	        y.append(wy)
+	        z.append(wz)
+	        colors.append(c)
 
-        x.append(wx)
-        y.append(wy)
-        z.append(wz)
-        colors.append(c)
-
-    f.close()
-    print (file, len(x))
+    	print (file, len(x))
 
 
 class resPlot():
@@ -256,22 +254,22 @@ class resPlot():
     def plotReflResults(self, fileName):
         pattern = "[lambda gen catch relf I]="
         ToRet = []
-        f = open(fileName, "r")
+        with open(fileName, "r") as f: 
 
-        self.wList[fileName] = []
-        self.reflList[fileName] = []
+	        self.wList[fileName] = []
+	        self.reflList[fileName] = []
 
-        for l in f:
-            if (pattern in l):
-                s = l[len(pattern) + 1:-1].split()
-                self.wList[fileName] += [float(s[0])]
-                if (float(s[2]) == 0):
-                    s[2] = "1.0"
-                self.reflList[fileName] += [float(s[3]) / float(s[2]) * 100.0]
-                ToRet += [[float(s[0]), float(s[2]), float(s[3]), float(s[3]) / float(s[2])]]
+	        for l in f:
+	            if (pattern in l):
+	                s = l[len(pattern) + 1:-1].split()
+	                self.wList[fileName] += [float(s[0])]
+	                if (float(s[2]) == 0):
+	                    s[2] = "1.0"
+	                self.reflList[fileName] += [float(s[3]) / float(s[2]) * 100.0]
+	                ToRet += [[float(s[0]), float(s[2]), float(s[3]), float(s[3]) / float(s[2])]]
 
-        self.reflAxix.plot(self.wList[fileName], self.reflList[fileName], u'o')
-        self.reflFig.canvas.draw()
+	        self.reflAxix.plot(self.wList[fileName], self.reflList[fileName], u'o')
+	        self.reflFig.canvas.draw()
 
         return ToRet
 
@@ -375,11 +373,12 @@ class resPlot():
             colors = self.normalizeWl(mainOrder, targetOrder, colors, cr2d)
             try:
                 max_nbins_x = abs(abs(max(x)) - abs(min(x))) / self.pixel_size + 1
+                max_nbins_z = abs(abs(max(z)) - abs(min(z))) / self.pixel_size + 1
             except ValueError:
                 max_nbins_x = 100
                 print ("Max value error. NBINS is incorrect\n")
 
-            H, xe, ze = numpy.histogram2d(x, z, bins=(max_nbins_x, max_nbins_x))
+            H, xe, ze = numpy.histogram2d(x, z, bins=(max_nbins_x, max_nbins_z))
             xv, zv = numpy.meshgrid(xe, ze)
 
             self.filmAxix.pcolormesh(xv, zv, numpy.transpose(H), cmap='Greys')
@@ -411,16 +410,16 @@ class resPlot():
             self.xResFig.canvas.draw()
 
     def plotMirror(self, fileName, W, H):
-        f = open(fileName, 'r')
+        with open(fileName, 'r') as f:
+	        f.readline()
+	        f.readline()
+	        f.readline()
+	        f.readline()
+	        f.readline()
+	        f.readline()
 
-        f.readline()
-        f.readline()
-        f.readline()
-        f.readline()
-        f.readline()
-        f.readline()
+	        lines = f.readlines()
 
-        lines = f.readlines()
         x = []
         y = []
         z = []
