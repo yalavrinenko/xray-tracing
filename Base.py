@@ -851,6 +851,9 @@ class spGeneral:
 
         self.sys.resPlot = self.resOut
 
+        if not sys.platform.startswith("linux"):
+        	Gtk.rc_reset_styles(Gtk.settings_get_for_screen(self.win.get_screen()))
+
         self.win.show_all()
 
         Gtk.main()

@@ -3,19 +3,20 @@ missing module named pyimod03_importers - imported by c:\cygwin64\home\overlord\
 missing module named __main__.__requires__ - imported by __main__, pkg_resources
 missing module named thread._local - imported by thread, threading
 missing module named thread.stack_size - imported by thread, threading
-missing module named thread.get_ident - imported by thread, collections, future.backports.misc
+missing module named thread.get_ident - imported by thread, collections, future.backports.misc, singledispatch_helpers
 missing module named thread.allocate_lock - imported by thread, _strptime
-missing module named fcntl - imported by tempfile, subprocess
+missing module named fcntl - imported by tempfile, subprocess, tornado.platform.posix
 missing module named hashlib.md5 - imported by hashlib, setuptools.package_index, md5, matplotlib.finance, matplotlib.texmanager, matplotlib.backends.backend_svg, matplotlib.backends.backend_ps
-missing module named threading.RLock - imported by threading, _threading_local
+missing module named threading.RLock - imported by threading, _threading_local, multiprocessing.dummy
 missing module named threading.current_thread - imported by threading, _threading_local
-missing module named time.time - imported by time, threading
-missing module named time.sleep - imported by time, threading, bsddb.dbutils
-missing module named collections.deque - imported by collections, shlex, threading, pydoc, ast
+missing module named time.time - imported by time, threading, Cookie, Queue, xmllib, multiprocessing.synchronize
+missing module named time.sleep - imported by time, threading, bsddb.dbutils, multiprocessing.synchronize
+missing module named collections.deque - imported by collections, shlex, threading, pydoc, ast, Queue
+missing module named collections.UserDict - imported by collections, singledispatch_helpers
 missing module named collections.ChainMap - imported by collections, future.backports.misc
 missing module named collections._count_elements - imported by collections, future.backports.misc
 missing module named collections.Mapping - imported by collections, future.backports.misc
-missing module named collections.MutableMapping - imported by collections, future.backports.misc
+missing module named collections.MutableMapping - imported by collections, future.backports.misc, singledispatch_helpers
 missing module named collections.Sequence - imported by collections, future.types.newrange
 missing module named collections.Iterator - imported by collections, future.types.newrange
 missing module named collections.Iterable - imported by collections, future.types.newbytes, future.types.newstr
@@ -81,6 +82,7 @@ missing module named errno.ENOENT - imported by errno, gettext
 missing module named org.PyStringMap - imported by org, copy
 missing module named org - imported by copy
 missing module named copy.deepcopy - imported by copy, weakref, sets, numpy.ma.core, matplotlib.backends.qt4_editor.formlayout
+missing module named functools.singledispatch - imported by functools, tornado.gen
 missing module named _functools.partial - imported by _functools, functools
 missing module named _functools.reduce - imported by _functools, functools
 missing module named binascii.b2a_qp - imported by binascii, quopri
@@ -122,6 +124,10 @@ missing module named strop.whitespace - imported by strop, string
 missing module named strop.maketrans - imported by strop, string
 missing module named strop.lowercase - imported by strop, string
 missing module named strop.uppercase - imported by strop, string
+missing module named httplib._is_illegal_header_value - imported by httplib, http.client
+missing module named httplib._METHODS_EXPECTING_BODY - imported by httplib, http.client
+missing module named httplib._MAXHEADERS - imported by httplib, http.client
+missing module named httplib._is_legal_header_name - imported by httplib, http.client
 missing module named sys.py3kwarning - imported by sys, httplib
 missing module named array.array - imported by array, httplib, future.backports.http.client, setuptools.depends
 missing module named win32con.VER_NT_WORKSTATION - imported by win32con, platform
@@ -140,11 +146,14 @@ missing module named IronPythonConsole - imported by pyreadline.console.ironpyth
 missing module named clr - imported by pyreadline.clipboard.ironpython_clipboard, pyreadline.console.ironpython_console
 missing module named exceptions.ReferenceError - imported by exceptions, weakref
 missing module named itertools.islice - imported by itertools, repr, heapq, future.types.newrange, future.backports.misc
+missing module named inspect.isawaitable - imported by inspect, backports_abc, tornado.gen
+missing module named inspect.getfullargspec - imported by inspect, tornado.util
 missing module named operator.attrgetter - imported by operator, inspect
 missing module named dis.HAVE_ARGUMENT - imported by dis, setuptools.depends
 missing module named dis.EXTENDED_ARG - imported by dis, setuptools.depends
-missing module named cPickle.loads - imported by cPickle, collections
-missing module named cPickle.dumps - imported by cPickle, collections
+missing module named cPickle.loads - imported by cPickle, collections, Cookie
+missing module named cPickle.dumps - imported by cPickle, collections, Cookie
+missing module named cPickle.PicklingError - imported by cPickle, multiprocessing.managers
 missing module named itertools.imap - imported by itertools, heapq, collections
 missing module named itertools.chain - imported by itertools, heapq, collections, future.backports.misc, decimal
 missing module named itertools.starmap - imported by itertools, collections, future.backports.misc
@@ -154,7 +163,7 @@ missing module named itertools.ifilter - imported by itertools, sets
 missing module named itertools.tee - imported by itertools, heapq
 missing module named itertools.izip - imported by itertools, heapq, matplotlib.dates, matplotlib.mlab, matplotlib.delaunay.triangulate
 missing module named itertools.count - imported by itertools, heapq, future.backports.misc
-missing module named collections.OrderedDict - imported by collections, unittest.util, future.backports.misc, ConfigParser
+missing module named collections.OrderedDict - imported by collections, unittest.util, future.backports.misc, ConfigParser, singledispatch_helpers
 missing module named collections.namedtuple - imported by collections, inspect, unittest.util, difflib, urlparse, doctest, future.backports.urllib.parse, decimal
 missing module named operator.itemgetter - imported by operator, collections, heapq, future.backports.misc, numpy.lib.npyio, matplotlib.figure, matplotlib.axes
 missing module named operator.eq - imported by operator, collections, future.backports.misc
@@ -171,7 +180,7 @@ missing module named _weakref.getweakrefs - imported by _weakref, weakref
 missing module named _weakref.getweakrefcount - imported by _weakref, weakref
 missing module named _weakref.ProxyType - imported by _weakref, weakref
 missing module named _weakref.CallableProxyType - imported by _weakref, weakref
-missing module named binascii.hexlify - imported by binascii, random
+missing module named binascii.hexlify - imported by binascii, random, tornado.process
 missing module named binascii.a2b_uu - imported by binascii, encodings.uu_codec
 missing module named binascii.b2a_uu - imported by binascii, encodings.uu_codec
 missing module named os.urandom - imported by os, random
@@ -185,6 +194,8 @@ missing module named math.log - imported by math, random, PIL.GimpGradientFile
 missing module named math.e - imported by math, random
 missing module named math.pi - imported by math, random, PIL.GimpGradientFile, matplotlib.backends.backend_pdf
 missing module named math.floor - imported by math, matplotlib.backends.backend_pdf
+missing module named math.copysign - imported by math, dateutil.relativedelta
+missing module named math.gcd - imported by math, dateutil.rrule
 missing module named errno.EINVAL - imported by errno, StringIO
 missing module named _io.DEFAULT_BUFFER_SIZE - imported by _io, io
 missing module named _io.BytesIO - imported by _io, io
@@ -204,7 +215,7 @@ missing module named _warnings.filters - imported by _warnings, warnings
 missing module named _warnings.once_registry - imported by _warnings, warnings
 missing module named _warnings.default_action - imported by _warnings, warnings
 missing module named _warnings.warn - imported by _warnings, warnings
-missing module named cStringIO.StringIO - imported by cStringIO, gettext, pprint, socket, email.parser, email.message, tempfile, quopri, httplib, urllib, email.generator, email.iterators, shlex, pickle, plistlib, tarfile, urllib2, SocketServer, compiler.pycodegen, pkg_resources, csv, matplotlib.mathtext, matplotlib.backends.backend_pdf, xml.sax, encodings.uu_codec, encodings.quopri_codec
+missing module named cStringIO.StringIO - imported by cStringIO, gettext, pprint, socket, email.parser, email.message, tempfile, quopri, httplib, urllib, email.generator, email.iterators, shlex, pickle, plistlib, tarfile, urllib2, SocketServer, compiler.pycodegen, pkg_resources, csv, matplotlib.mathtext, matplotlib.backends.backend_pdf, xml.sax, tornado.template, encodings.uu_codec, encodings.quopri_codec
 missing module named zipimport.zipimporter - imported by zipimport, pkgutil
 missing module named _sysconfigdata.build_time_vars - imported by _sysconfigdata, distutils.sysconfig, sysconfig
 missing module named _sysconfigdata - imported by distutils.sysconfig, sysconfig
@@ -253,6 +264,7 @@ missing module named os.utime - imported by os, pkg_resources
 missing module named os.mkdir - imported by os, pkg_resources
 missing module named os.unlink - imported by os, pkg_resources
 missing module named os.rename - imported by os, pkg_resources
+missing module named imp.get_loader - imported by imp, runpy
 missing module named imp.reload - imported by imp, matplotlib
 missing module named imp.find_module - imported by imp, setuptools.command.easy_install
 missing module named imp.get_suffixes - imported by imp, setuptools.command.easy_install
@@ -263,6 +275,8 @@ missing module named imp.PY_SOURCE - imported by imp, setuptools.depends
 missing module named _sre.MAXREPEAT - imported by _sre, sre_constants
 missing module named re._compile - imported by re, sre
 missing module named re.__all__ - imported by re, sre
+missing module named time.gmtime - imported by time, Cookie
+missing module named time.monotonic - imported by time, tornado.platform.auto
 missing module named zipimport._zip_directory_cache - imported by zipimport, setuptools.command.easy_install
 missing module named os.chmod - imported by os, setuptools.command.easy_install
 missing module named riscosenviron._Environ - imported by riscosenviron, os
@@ -300,7 +314,7 @@ missing module named matplotlib.checkdep_ghostscript - imported by matplotlib, m
 missing module named matplotlib.is_interactive - imported by matplotlib, matplotlib.backend_bases
 missing module named matplotlib.ttconv.convert_ttf_to_ps - imported by matplotlib.ttconv, matplotlib.backends.backend_ps
 missing module named matplotlib.transforms.Bbox - imported by matplotlib.transforms, matplotlib.path, matplotlib.artist, matplotlib.lines, matplotlib.text, matplotlib.image, matplotlib.legend, matplotlib.offsetbox, matplotlib.table, matplotlib.projections.geo, matplotlib.projections.polar, matplotlib.tight_layout, matplotlib.tight_bbox, matplotlib.backends.backend_pdf, matplotlib.figure, matplotlib.backends.backend_agg, matplotlib.backend_bases, matplotlib.backends.backend_cairo, matplotlib.backends.backend_template
-missing module named matplotlib.figure.Figure - imported by matplotlib.figure, matplotlib.image, matplotlib.legend, matplotlib.pyplot, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_agg, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gtk3agg, matplotlib.backends.backend_gtkagg, matplotlib.backends.backend_gdk, matplotlib.backends.backend_gtk, matplotlib.backends.backend_cairo, matplotlib.backends.backend_qt4agg, matplotlib.backends.backend_qt4, matplotlib.backends.backend_tkagg, matplotlib.backends.backend_wx, matplotlib.backends.backend_wxagg, matplotlib.backends.backend_template
+missing module named matplotlib.figure.Figure - imported by matplotlib.figure, matplotlib.image, matplotlib.legend, matplotlib.pyplot, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_agg, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gtk3agg, matplotlib.backends.backend_gtkagg, matplotlib.backends.backend_gdk, matplotlib.backends.backend_gtk, matplotlib.backends.backend_cairo, matplotlib.backends.backend_qt4agg, matplotlib.backends.backend_qt4, matplotlib.backends.backend_tkagg, matplotlib.backends.backend_wx, matplotlib.backends.backend_wxagg, matplotlib.backends.backend_webagg, matplotlib.backends.backend_template
 missing module named matplotlib.backends.backend_agg.FigureCanvasAgg - imported by matplotlib.backends.backend_agg, matplotlib.image, matplotlib.tight_layout, matplotlib.backend_bases, matplotlib.backends.backend_gtkagg, matplotlib.backends.backend_qt4agg, matplotlib.backends.backend_tkagg, matplotlib.backends.backend_wxagg
 missing module named matplotlib.backend_bases.NonGuiException - imported by matplotlib.backend_bases, matplotlib.figure
 missing module named matplotlib.transforms.Affine2D - imported by matplotlib.transforms, matplotlib.path, matplotlib.markers, matplotlib.text, matplotlib.projections.geo, matplotlib.projections.polar, matplotlib.tight_bbox, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.figure, matplotlib.textpath, matplotlib.backend_bases, matplotlib.backends.backend_ps, matplotlib.finance, matplotlib.backends.backend_gdk, matplotlib.backends.backend_cairo, matplotlib.backends.backend_wx
@@ -526,7 +540,7 @@ missing module named cookielib.FileCookieJar - imported by cookielib, _LWPCookie
 missing module named cookielib.iso2time - imported by cookielib, _LWPCookieJar
 missing module named _dummy_threading.__all__ - imported by _dummy_threading, dummy_threading
 missing module named _dummy_threading - imported by dummy_threading
-missing module named sys.modules - imported by sys, dummy_threading
+missing module named sys.modules - imported by sys, dummy_threading, xmlrpclib
 missing module named 'test.support' - imported by future.moves.test.support
 missing module named future.standard_library.suspend_hooks - imported by future.standard_library, future.moves.test.support
 missing module named future.utils.raise_with_traceback - imported by future.utils, future.backports.urllib.request, future.backports.urllib.parse
@@ -537,14 +551,14 @@ missing module named _datetime.__doc__ - imported by _datetime, future.backports
 missing module named _datetime - imported by future.backports.datetime
 missing module named future.utils.native_str - imported by future.utils, future.backports.datetime
 missing module named reprlib.recursive_repr - imported by reprlib, future.backports.misc
-missing module named _dummy_thread.get_ident - imported by _dummy_thread, future.backports.misc
-missing module named _thread.get_ident - imported by _thread, future.backports.misc
+missing module named _dummy_thread.get_ident - imported by _dummy_thread, future.backports.misc, singledispatch_helpers
+missing module named _thread.get_ident - imported by _thread, future.backports.misc, singledispatch_helpers
 missing module named future.utils.iteritems - imported by future.utils, future.backports.misc
 missing module named future.utils.itervalues - imported by future.utils, future.backports.misc
 missing module named future.utils.PY26 - imported by future.utils, future.backports.misc, future.builtins.newround, future.builtins.newsuper
 missing module named future.utils.native - imported by future.utils, future.types.newint
 missing module named future.utils.isint - imported by future.utils, future.types.newint
-missing module named future.utils.PY3 - imported by future.utils, future.types.newbytes, future.types.newstr, future.types.newint, future.standard_library, future.backports.urllib.request, future.backports.email.feedparser, future.backports.misc, future.moves.test, future.moves.test.support, future.moves.dbm, future.moves.dbm.ndbm, future.moves.dbm.dumb, future.moves.dbm.gnu, future.builtins.newsuper, future.builtins
+missing module named future.utils.PY3 - imported by future.utils, future.types.newbytes, future.types.newstr, future.types.newint, future.standard_library, future.backports.urllib.request, future.backports.email.feedparser, future.backports.misc, future.moves.test, future.moves.test.support, future.moves.dbm, future.moves.dbm.ndbm, future.moves.dbm.dumb, future.moves.dbm.gnu, future.builtins.newsuper, future.builtins, future.moves.html, html.entities, future.moves.html.entities
 missing module named __builtin__.pow - imported by __builtin__, future.builtins.misc
 missing module named __builtin__.unichr - imported by __builtin__, future.builtins.misc
 missing module named future_builtins.oct - imported by future_builtins, future.builtins.misc
@@ -673,8 +687,10 @@ missing module named 'urllib.error'.URLError - imported by 'urllib.error', numpy
 missing module named 'urllib.error' - imported by numpy.lib._datasource
 missing module named 'urllib.request'.urlopen - imported by 'urllib.request', numpy.lib._datasource
 missing module named 'urllib.request' - imported by numpy.lib._datasource
-missing module named 'urllib.parse'.urlparse - imported by 'urllib.parse', numpy.lib._datasource
-missing module named 'urllib.parse' - imported by numpy.lib._datasource
+missing module named 'urllib.parse'.urlparse - imported by 'urllib.parse', numpy.lib._datasource, tornado.websocket
+missing module named 'urllib.parse' - imported by numpy.lib._datasource, tornado.escape, tornado.httputil, tornado.web, tornado.simple_httpclient, tornado.websocket
+missing module named 'urllib.parse'.urlencode - imported by 'urllib.parse', tornado.httputil, tornado.web
+missing module named 'urllib.parse'.parse_qs - imported by 'urllib.parse', tornado.escape
 missing module named _symtable.DEF_IMPORT - imported by _symtable, symtable
 missing module named _symtable.LOCAL - imported by _symtable, symtable
 missing module named _symtable.OPT_IMPORT_STAR - imported by _symtable, symtable
@@ -738,6 +754,10 @@ missing module named numpy.recarray - imported by numpy, numpy.ma.mrecords
 missing module named numpy.array - imported by numpy, numpy.ma.core, numpy.ma.extras, numpy.ma.mrecords, numpy.ctypeslib
 missing module named numpy.bool_ - imported by numpy, numpy.ma.core, numpy.ma.mrecords
 missing module named numpy.dtype - imported by numpy, numpy.ma.mrecords, numpy.ctypeslib
+missing module named _json.make_encoder - imported by _json, json.encoder
+missing module named _json.encode_basestring_ascii - imported by _json, json.encoder
+missing module named _json.scanstring - imported by _json, json.decoder
+missing module named _json.make_scanner - imported by _json, json.scanner
 missing module named dateutil.tz.tzfile - imported by dateutil.tz, dateutil.zoneinfo
 missing module named _csv.Dialect - imported by _csv, csv
 missing module named _csv.__doc__ - imported by _csv, csv
@@ -857,6 +877,60 @@ missing module named glib.Source - imported by glib, gobject
 missing module named glib.GError - imported by glib, gobject
 missing module named glib.timeout_add_seconds - imported by glib, gobject
 missing module named glib.uri_list_extract_uris - imported by glib, gobject
+missing module named 'tornado.speedups'.websocket_mask - imported by 'tornado.speedups', tornado.util
+missing module named 'tornado.speedups' - imported by tornado.util
+missing module named typing.Tuple - imported by typing, tornado.util
+missing module named typing.Match - imported by typing, tornado.util
+missing module named typing.Callable - imported by typing, tornado.util
+missing module named typing.Any - imported by typing, tornado.util
+missing module named typing.Optional - imported by typing, tornado.util
+missing module named typing.AnyStr - imported by typing, tornado.util
+missing module named typing.Dict - imported by typing, tornado.util
+missing module named typing.Mapping - imported by typing, tornado.util
+missing module named typing.Union - imported by typing, tornado.util
+missing module named typing.cast - imported by typing, tornado.util
+missing module named typing - imported by tornado.util, tornado.escape, tornado.concurrent, tornado.httputil, tornado.web
+missing module named tornado.log.define_logging_options - imported by tornado.log, tornado.options
+missing module named _curses - imported by curses, curses.has_key
+missing module named concurrent.futures.ThreadPoolExecutor - imported by concurrent.futures, tornado.netutil
+missing module named concurrent.futures - imported by concurrent, tornado.concurrent, tornado.netutil
+missing module named concurrent - imported by tornado.concurrent, concurrent.futures
+missing module named ipaddress - imported by backports.ssl_match_hostname
+missing module named monotonic.monotonic - imported by monotonic, tornado.platform.auto
+missing module named monotonic - imported by tornado.platform.auto
+missing module named monotime - imported by tornado.platform.auto
+missing module named trollius - imported by tornado.platform.asyncio
+missing module named asyncio - imported by tornado.platform.asyncio
+missing module named 'collections.abc'.Generator - imported by 'collections.abc', tornado.gen
+missing module named 'collections.abc' - imported by tornado.gen, backports_abc
+missing module named ordereddict.OrderedDict - imported by ordereddict, singledispatch_helpers
+missing module named ordereddict - imported by singledispatch_helpers
+missing module named tornado.gen.convert_yielded - imported by tornado.gen, tornado.ioloop, tornado.platform.asyncio
+missing module named tornado.httpclient._RequestProxy - imported by tornado.httpclient, tornado.simple_httpclient
+missing module named tornado.httpclient.AsyncHTTPClient - imported by tornado.httpclient, tornado.simple_httpclient
+missing module named tornado.httpclient.HTTPError - imported by tornado.httpclient, tornado.simple_httpclient
+missing module named tornado.httpclient.HTTPResponse - imported by tornado.httpclient, tornado.simple_httpclient
+missing module named tornado.httpclient.main - imported by tornado.httpclient, tornado.simple_httpclient
+missing module named tornado.ioloop.IOLoop - imported by tornado.ioloop, tornado.platform.kqueue, tornado.platform.select, tornado.gen, tornado.platform.asyncio, tornado.netutil, tornado.web, tornado.tcpserver, tornado.httpclient, tornado.tcpclient, tornado.websocket
+missing module named http.client.responses - imported by http.client, tornado.httputil
+missing module named tornado.ioloop.PollIOLoop - imported by tornado.ioloop, tornado.platform.epoll, tornado.platform.kqueue, tornado.platform.select
+missing module named _multiprocessing.win32 - imported by _multiprocessing, multiprocessing.forking, multiprocessing.connection, multiprocessing.reduction, multiprocessing.heap
+missing module named multiprocessing.RLock - imported by multiprocessing, multiprocessing.sharedctypes
+missing module named multiprocessing.pool.ThreadPool - imported by multiprocessing.pool, multiprocessing.dummy
+missing module named multiprocessing.TimeoutError - imported by multiprocessing, multiprocessing.pool, multiprocessing.dummy
+missing module named multiprocessing.cpu_count - imported by multiprocessing, multiprocessing.pool, multiprocessing.dummy
+missing module named multiprocessing.Pipe - imported by multiprocessing, multiprocessing.queues
+missing module named _multiprocessing.SemLock - imported by _multiprocessing, multiprocessing.synchronize
+missing module named _multiprocessing.PipeConnection - imported by _multiprocessing, multiprocessing.forking
+missing module named _multiprocessing.Connection - imported by _multiprocessing, multiprocessing.forking
+missing module named multiprocessing.Pool - imported by multiprocessing, multiprocessing.managers
+missing module named multiprocessing.active_children - imported by multiprocessing, multiprocessing.managers
+missing module named _xmlrpclib - imported by xmlrpclib
+missing module named multiprocessing.current_process - imported by multiprocessing, multiprocessing.connection, multiprocessing.managers, multiprocessing.reduction
+missing module named multiprocessing.AuthenticationError - imported by multiprocessing, multiprocessing.connection
+missing module named multiprocessing.Process - imported by multiprocessing, multiprocessing.managers, multiprocessing.pool
+missing module named multiprocessing.process.active_children - imported by multiprocessing.process, multiprocessing.util, multiprocessing
+missing module named multiprocessing.process.current_process - imported by multiprocessing.process, multiprocessing.util, multiprocessing, multiprocessing.synchronize
 missing module named matplotlib.widgets.SubplotTool - imported by matplotlib.widgets, matplotlib.pyplot, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gtk, matplotlib.backends.backend_qt4, matplotlib.backends.backend_tkagg, matplotlib.backends.backend_wx
 missing module named matplotlib.widgets.Widget - imported by matplotlib.widgets, matplotlib.pyplot
 missing module named matplotlib.widgets.Button - imported by matplotlib.widgets, matplotlib.pyplot
@@ -878,7 +952,7 @@ missing module named matplotlib.get_backend - imported by matplotlib, matplotlib
 missing module named matplotlib.interactive - imported by matplotlib, matplotlib.pyplot
 missing module named matplotlib.__version__ - imported by matplotlib, matplotlib.figure, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backends.backend_ps
 missing module named matplotlib.get_data_path - imported by matplotlib, matplotlib.mathtext, matplotlib.backends.backend_pdf
-missing module named matplotlib.rcParams - imported by matplotlib, matplotlib.ticker, matplotlib.path, matplotlib.artist, matplotlib.lines, matplotlib.markers, matplotlib.text, matplotlib.font_manager, matplotlib.textpath, matplotlib.mathtext, matplotlib.backends.backend_agg, matplotlib.figure, matplotlib.image, matplotlib.texmanager, matplotlib.dviread, matplotlib.axis, matplotlib.legend, matplotlib.offsetbox, matplotlib.pyplot, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backend_bases, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gdk, matplotlib.backends.backend_gtk, matplotlib.backends.qt4_compat, matplotlib.backends.windowing, matplotlib.backends.backend_wx
+missing module named matplotlib.rcParams - imported by matplotlib, matplotlib.ticker, matplotlib.path, matplotlib.artist, matplotlib.lines, matplotlib.markers, matplotlib.text, matplotlib.font_manager, matplotlib.textpath, matplotlib.mathtext, matplotlib.backends.backend_agg, matplotlib.figure, matplotlib.image, matplotlib.texmanager, matplotlib.dviread, matplotlib.axis, matplotlib.legend, matplotlib.offsetbox, matplotlib.pyplot, matplotlib.backends.backend_pdf, matplotlib.backends.backend_svg, matplotlib.backend_bases, matplotlib.backends.backend_ps, matplotlib.backends.backend_pgf, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gdk, matplotlib.backends.backend_gtk, matplotlib.backends.qt4_compat, matplotlib.backends.windowing, matplotlib.backends.backend_wx, matplotlib.backends.backend_webagg
 missing module named matplotlib.verbose - imported by matplotlib, matplotlib.finance, matplotlib.mlab, matplotlib.lines, matplotlib.backends.backend_agg, matplotlib.blocking_input, matplotlib.backends.backend_svg, matplotlib.backends.backend_ps, matplotlib.backends.backend_gtk3, matplotlib.backends.backend_gtk, matplotlib.backends.backend_qt4, matplotlib.backends.qt4_compat, matplotlib.backends.backend_wx
 missing module named matplotlib.get_cachedir - imported by matplotlib, matplotlib.finance, matplotlib.font_manager
 missing module named matplotlib.pylab.figure - imported by matplotlib.pylab, matplotlib.cbook
@@ -952,7 +1026,6 @@ missing module named numpy.distutils.misc_util.get_data_files - imported by nump
 missing module named numpy.distutils.misc_util.get_script_files - imported by numpy.distutils.misc_util, numpy.distutils.command.build_scripts
 missing module named numpy.distutils.misc_util.is_string - imported by numpy.distutils.misc_util, numpy.distutils.command.build_py, numpy.distutils.command.build_scripts, numpy.distutils.fcompiler, numpy.distutils.command.build_src, numpy.distutils.system_info, numpy.distutils.core, numpy.distutils.log
 missing module named __config__ - imported by numpy.distutils
-missing module named _curses - imported by curses, curses.has_key
 missing module named numpy.intp - imported by numpy, numpy.ctypeslib
 missing module named numpy.integer - imported by numpy, numpy.ctypeslib
 missing module named numpy.polynomial.laguerre.Laguerre - imported by numpy.polynomial.laguerre, numpy.polynomial
