@@ -31,8 +31,8 @@ Count = 1
 Step = 10
 SizeW = $(FilmW)
 SizeH = $(FilmH)
-FilmDirection = $(FildDir)
-;Direction = "srcLine"
+;FilmDirection = $(FildDir)
+Direction = "srcLine"
 logFileName = "results/$(GenName).log"
 
 [OBJECT]
