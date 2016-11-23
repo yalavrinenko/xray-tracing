@@ -25,11 +25,11 @@ def mstr(val):
         return val
     if (type(val) == int):
         return "%d" % val
-    return "%0.7g" % val
+    return "%0.6g" % val
 
 
 def genSetOfWave(wMin, wMax, depth, maxDepth, depthLimit):
-    wCentral = round((wMin + wMax) * 0.5, 6)
+    wCentral = round((wMin + wMax) * 0.5, 5)
 
     if (depth == maxDepth):
         return [wCentral]
@@ -121,6 +121,9 @@ class systemConfig:
     exitThreadFlags = False
     exitMainCompThread = False
 
+    sys_geom_ax = None
+    sys_geom_fig = None
+
     def crystClear(self):
         print    ("Cryst. Par. clear")
         self.DistrFileName = {}
@@ -141,12 +144,18 @@ class systemConfig:
         S = CR[1] + (R ** 2.0 - H ** 2.0) ** 0.5
 
         detector_center = np.array([D * np.cos(phi), CR[1] + R - D * np.sin(phi)])
-        detector_norm_line = detector_center - np.array([0, S])
+        #detector_norm_line = detector_center - np.array([0, S])
+        detector_norm_line = detector_center - np.array(SR)
+
         detector_norm_line /= la.norm(detector_norm_line)
-        detector_cross_line = np.array([-detector_norm_line[1], detector_norm_line[0]])
+        #detector_cross_line = np.array([-detector_norm_line[1], detector_norm_line[0]])
+        detector_cross_line = np.array([detector_norm_line[0], detector_norm_line[1]])
 
         waves = []
         position = []
+
+        self.limit_line_cross_point = []
+        self.limit_line_position = []
 
         for mult in [-1.0, 1.0]:
             CrossR = np.array([mult * H, S])
@@ -169,14 +178,21 @@ class systemConfig:
             cross_t = np.dot(A.getI(), b)
 
             cross_point = cross_t[1] * detector_cross_line
+            self.limit_line_cross_point.append(cross_point)
+
             cross_position = la.norm(cross_point)
             position += [mult * cross_position]
+            self.limit_line_position.append(mult*cross_position)
+
+        self.limit_wave_length = [np.max(waves), np.min(waves)]
+
+        self.plot_system_conf(self.sys_geom_ax, self.sys_geom_fig)
 
         return [np.max(waves), np.min(waves), position[1], position[0]]
 
     def dumpPatter(self, oFile):
         with open("sys/pattern.par", "r") as iFile:
-            lines = iFile.readlines();
+            lines = iFile.readlines()
             oFile.writelines(lines)
 
     def prepareComputation(self):
@@ -210,7 +226,7 @@ class systemConfig:
             outFile.write("$RSize = " + mstr(self.DistrSize[idx]) + "\n")
             outFile.write("$RStep = " + mstr(self.DistrStep[idx]) + "\n") 
             outFile.write("$SrcDist = " + mstr(self.SrcDist) + "\n")
-            outFile.write("$SrcCone = " + mstr(self.SrcCone*0.5) + "\n")
+            outFile.write("$SrcCone = " + mstr(self.SrcCone * 0.5) + "\n")
             outFile.write("$DDist  = " + mstr(self.DstDist) + "\n")
             outFile.write("$FilmA  = " + mstr(self.FilmAngle) + "\n")
             outFile.write("$FildDir = " + mstr(self.ToFilmDirection) + "\n")
@@ -250,6 +266,10 @@ class systemConfig:
     def __init__(self, logWindow):
         self.outText = logWindow
         self.isCanceled = False
+        self.limit_line_cross_point = []
+        self.limit_wave_length = []
+        self.limit_line_position = []
+
         if sys.platform.startswith('linux'):
             self.rayTraceLib = CDLL("./cpp/build/libRaytrace.so")
             print ('OS Linux')
@@ -288,7 +308,8 @@ class systemConfig:
         data += "Detector size W x H= " + mstr(self.FilmSizeW) + " X " + mstr(self.FilmSizeH) + " [mm]\n"
         data += "Detector angle = " + mstr(self.FilmAngle) + " [deg]\n"
         data += "Crystal W x H = " + mstr(self.crystalW) + " X " + mstr(self.crystalH) + " [mm]\n"
-        data += "Source cone = " + mstr(self.SrcCone) + " [deg]\n"
+        data += "Source cone = " + mstr(self.SrcCone * 0.5) + " [deg]\n"
+        data += "Source solid angle = " + mstr(2.0 * np.pi * (1 - np.cos(self.SrcCone * 0.5 / 2.0 * np.pi / 180.0))) + " [sr]\n"
         data += "Source size W x H= " + mstr(self.SrcSizeW) + " X " + mstr(self.SrcSizeH) + " [mm]\n"
 
         if (not self.SlitPos == 0):
@@ -322,6 +343,7 @@ class systemConfig:
         data += "Detector size W x H= " + mstr(self.FilmSizeW) + " X " + mstr(self.FilmSizeH) + " [mm]\n"
         data += "Central wavelength = " + mstr(self.centralWave) + " [A]\n"
         data += "Source distance = " + mstr(self.SrcDist) + " [mm]\n"
+        data += "Source solid angle = " + mstr(2.0 * np.pi * (1 - np.cos(self.SrcCone * 0.5 / 2.0))) + " [sr]\n"
 
         for i in self.DistrSize:
             if (self.DistrSize[i] != 0):
@@ -340,12 +362,73 @@ class systemConfig:
         self.isCanceled = True
         self.rayTraceLib.terminate()
 
+    def plot_system_conf(self, figure_ax, figure_fig):
+        figure_ax.clear()
+
+        circle = lambda alpha, R: [R*np.cos(alpha), R*np.sin(alpha)]
+        #plot crystall
+        phi_max = np.arcsin(0.5*self.crystalW / self.crystalR)
+        phis = np.arange(-phi_max, phi_max, 0.001)
+        figure_ax.plot(*circle(phis + np.pi / 2.0, self.crystalR), color="red", linewidth=5)
+
+        #plot source
+        elipse = lambda alpha, size, shift: [size[0]*np.cos(alpha) + shift[0],
+                                             size[1]*np.sin(alpha) + shift[1]]
+        b_phi = self.BraggA * np.pi / 180.0
+        source_pos = [-self.SrcDist * np.cos(b_phi), -self.SrcDist * np.sin(b_phi) - self.crystalR]
+        figure_ax.plot(*elipse(np.arange(-np.pi, np.pi, 0.001), [self.SrcSizeW, self.SrcSizeH], source_pos),
+                       color="blue")
+
+        #plot detector
+        line = lambda steps, r0, direction: [steps * direction[0] + r0[0], steps * direction[1] + r0[1]]
+        detector_center = np.array([self.DstDist * np.cos(b_phi), -self.DstDist * np.sin(b_phi) + self.crystalR])
+
+        detector_norm_line = detector_center - np.array(source_pos)
+        detector_norm_line /= la.norm(detector_norm_line)
+        detector_half_size = np.max(np.abs(self.limit_line_position)) * 1.5
+
+        step = np.arange(-detector_half_size, detector_half_size, 0.1)
+        figure_ax.plot(*line(step, detector_center, detector_norm_line), color="green", linewidth=5)
+
+        #plot object
+
+        #plot lines
+        dh = (self.crystalR ** 2.0 - self.crystalW ** 2.0 / 4.0)**0.5
+        cross_point_1 = [-self.crystalW / 2.0, dh]
+        cross_point_2 = [self.crystalW / 2.0, dh]
+
+        step = self.limit_line_position[0]
+        detector_cross_1 = line(step, detector_center, detector_norm_line)
+        step = self.limit_line_position[1]
+        detector_cross_2 = line(step, detector_center, detector_norm_line)
+
+        figure_ax.plot([source_pos[0], cross_point_1[0], detector_cross_1[0]],
+                       [source_pos[1], cross_point_1[1], detector_cross_1[1]], color="blue")
+
+        figure_ax.plot([source_pos[0], cross_point_2[0], detector_cross_2[0]],
+                       [source_pos[1], cross_point_2[1], detector_cross_2[1]], color="red")
+
+        #plot Roland circle
+        sh_circle = lambda alpha, R, shift: [R * np.cos(alpha) - shift[0], R * np.sin(alpha) - shift[1]]
+        RowlandCenter = [0.0, -self.crystalR / 2.0]
+        phis = np.arange(-np.pi, np.pi, 0.001)
+        figure_ax.plot(*sh_circle(phis, self.crystalR / 2.0, RowlandCenter), color="black", linestyle="--")
+
+        #plot normal to crystal and start of the system
+        step = np.arange(0, 2.0 * self.crystalR, 1)
+        figure_ax.plot(*line(step, [0.0, self.crystalR], [0.0, -1.0]), color="black", linewidth=2, linestyle="--")
+
+        figure_fig.canvas.draw()
+
     def progressLogger(self, ew, es):
-        self.progressInfoOut.set_fraction(0.0)
+        self.progressInfoOut[0].set_fraction(0.0)
+        self.progressInfoOut[1].set_fraction(0.0)
         self.isCanceled = False
 
         while not self.exitMainCompThread and not self.isCanceled:
             ptr = c_char_p.in_dll(self.rayTraceLib, "plinkedLibraryOutput")
+            progress_minor = c_long.in_dll(self.rayTraceLib, "linkedLibraryMinorOutput").value
+
             if ptr.value != None:
                 progress = ptr.value.split(":")[0]
                 progress = progress.replace("[", "")
@@ -353,11 +436,15 @@ class systemConfig:
                 try:
                     current = int(progress.split("/")[0])
                     total = int(progress.split("/")[1])
-                    self.progressInfoOut.set_fraction(float(current) / float(total))
-                    self.progressInfoOut.set_text(ptr.value)
+                    self.progressInfoOut[0].set_fraction(float(current) / float(total))
+                    self.progressInfoOut[1].set_fraction(float(progress_minor) / float(self.RayCount))
+
+                    self.progressInfoOut[0].set_text(ptr.value)
+                    self.progressInfoOut[1].set_text(str(progress_minor) + "/" + str(self.RayCount))
                 except ValueError:
                     current = 0
-                    self.progressInfoOut.set_text(ptr.value)
+                    self.progressInfoOut[0].set_text(ptr.value)
+                    self.progressInfoOut[1].set_text("0")
 
             Gtk.main_iteration()
 
@@ -457,8 +544,11 @@ class systemConfig:
                 list += [glob.glob("results\\" + pFileName + "\\" + "*.dmp")]
 
         print(list)
+        try:
+            zero_wave_index = self.WaveLengths.index(self.zeroWave)
+        except ValueError:
+            zero_wave_index = self.WaveLengths.index(round(self.zeroWave, 5))
 
-        zero_wave_index = self.WaveLengths.index(self.zeroWave)
         dzero_wave = self.dWaveLength[zero_wave_index]
         self.resPlot.plotFilm(list, self.zeroWave, self.crystal2d, self.Orders, mainOrder, dzero_wave)
 
@@ -587,9 +677,9 @@ class systemConfig:
                         dwave_length = WaveLength
 
                     Name += [El + " " + Line + " " + Type]
-                    Wls += [round(float(WaveLength.replace(',', '.')), 6)]
-                    dWls += [round(float(dwave_length.replace(',', '.')), 6)]
-                    Intens += [round(float(line_intensity.replace(',', '.')), 3)]
+                    Wls += [round(float(WaveLength.replace(',', '.')), 5)]
+                    dWls += [round(float(dwave_length.replace(',', '.')), 1)]
+                    Intens += [round(float(line_intensity.replace(',', '.')), 1)]
 
         return Name, Wls, dWls, Intens
 

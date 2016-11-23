@@ -12,7 +12,7 @@
 #include "Trace.hpp"
 #include "InputOutput.hpp"
 #include "tMirror.hpp"
- #include "Ray-tracing.hpp"
+#include "Ray-tracing.hpp"
 
 #define DEBUGMSG(A) cout << A << endl
 
@@ -27,6 +27,7 @@ using namespace std;
 
 string linkedLibraryOutput;
 const char* plinkedLibraryOutput;
+long linkedLibraryMinorOutput;
 bool isTerminated;
 
 void terminate(){
@@ -236,6 +237,8 @@ int RayTracing(int argc, char* argv) {
 
 	//
 
+    linkedLibraryOutput = "["+to_string(0)+"/"+to_string(p->waveLenghtCount)+"]:\t";
+
 	for (int w = 0; w < p->waveLenghtCount && !isTerminated; w++) {
 
 		waveInput currentWaveLenght = p->waveLenghts[w];
@@ -261,6 +264,7 @@ int RayTracing(int argc, char* argv) {
 		mirror->initRayCounter();
 
 		int rayByIter = p->rayByIter;
+        linkedLibraryMinorOutput = 0;
 
 		while (generatedRay < p->rayCount * currentWaveLenght.intensity && rayByIter > 0 && !isTerminated) {
 
@@ -279,6 +283,7 @@ int RayTracing(int argc, char* argv) {
 
 			delete[] ray;
 			generatedRay += rayByIter;
+			linkedLibraryMinorOutput = generatedRay;
 		}
 
 		double rCast = generatedRay;

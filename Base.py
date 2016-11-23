@@ -12,6 +12,8 @@ from confCompute import *
 import numpy as np
 import matplotlib.pyplot as plt
 
+DEFAULT_ORDER = 1
+
 if sys.platform.startswith('linux'):
     from gi.repository import Gtk
     from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
@@ -38,7 +40,7 @@ def mstr(val):
         return val
     if (type(val) == int):
         return "%d" % val
-    return "%0.7g" % val
+    return "%0.6g" % val
 
 
 class spGeneral:
@@ -50,15 +52,16 @@ class spGeneral:
         print ('Init class spGeneral')
 
     def updWaveLength(self):
+
         toAdd = []
         toAddInt = []
         toAddWw = []
         toAddOrder = []
         for wl in self.wlSelStore:
             if (not wl[1] == 0):
-                toAdd += [round(wl[1], 6)]
-                toAddInt += [round(wl[11], 2)]
-                toAddWw += [round(wl[10], 4)]
+                toAdd += [round(wl[1], 5)]
+                toAddInt += [round(wl[11], 1)]
+                toAddWw += [round(wl[10], 1)]
                 toAddOrder += [wl[8]]
 
         self.sys.setWaveLength(toAdd, toAddInt, toAddWw, toAddOrder)
@@ -97,8 +100,8 @@ class spGeneral:
         self.entry_srcDist.set_text(self.sys.get_srcDist())
         self.entry_Bragg.set_text(self.sys.get_bragg())
 
-        if (self.isCentralLineSelected):
-            self.setWaveLimits()
+        #if self.isCentralLineSelected:
+        #    self.setWaveLimits()
 
         self.updWaveLength()
 
@@ -157,7 +160,7 @@ class spGeneral:
         self.entry_srcDist.set_text(self.sys.get_srcDist())
         self.entry_Bragg.set_text(self.sys.get_bragg())
 
-        if (self.isCentralLineSelected):
+        if self.isCentralLineSelected:
             self.setWaveLimits()
 
         self.updWaveLength()
@@ -179,16 +182,19 @@ class spGeneral:
         self.updWaveLength()
 
     def on_entry3_changed(self, obj):
-        self.sys.centralWave = float(self.entry_cwl.get_text())
-        self.sys.SrcDist = float(self.entry_srcDist.get_text())
-        self.sys.updateConfigNCW()
-        self.entry_srcDist.set_text(self.sys.get_srcDist())
-        self.entry_Bragg.set_text(self.sys.get_bragg())
+        try:
+            self.sys.centralWave = float(self.entry_cwl.get_text())
+            self.sys.SrcDist = float(self.entry_srcDist.get_text())
+            self.sys.updateConfigNCW()
+            self.entry_srcDist.set_text(self.sys.get_srcDist())
+            self.entry_Bragg.set_text(self.sys.get_bragg())
 
-        self.isCentralLineSelected = True
-        self.setWaveLimits()
+            self.isCentralLineSelected = True
+            self.setWaveLimits()
 
-        self.updWaveLength()
+            self.updWaveLength()
+        except ValueError:
+            pass
 
     def on_entry13_changed(self, obj):
         self.sys.BraggA = float(self.entry_Bragg.get_text())
@@ -238,13 +244,16 @@ class spGeneral:
         self.sys.crystClear()
 
         for sLine in fLines:
-            if (isRead == 1):
+            if sLine == "" or sLine == "\n" or '#' in sLine:
+                continue
+
+            if isRead == 1:
                 data = sLine.split()
                 distrOrder = int(data[0]) - 1
                 self.sys.crystal2d[distrOrder] = float(data[1])
                 self.sys.setDistrFile(data[2], distrOrder)
 
-            if (not sLine.find("***") == -1):
+            if not sLine.find("***") == -1:
                 self.sys.crystal2d = {}
                 isRead = 1
 
@@ -269,7 +278,7 @@ class spGeneral:
         self.updWaveLength()
 
         if (len(self.wlSelStore) == int(obj2) + 1):
-            self.wlSelStore.append([mstr(int(obj2) + 1), 0, 0, 0, 0, 0, 0, 0, self.sys.mainOrder, 0, 0, 1.0])
+            self.wlSelStore.append([mstr(int(obj2) + 1), 0, 0, 0, 0, 0, 0, 0, DEFAULT_ORDER, 0, 0, 1.0])
 
     def on_button11_clicked(self, obj1):
         additional_order_line = []
@@ -320,7 +329,7 @@ class spGeneral:
         selected = self.TreeVievPrep.get_selection()
         model, titer = selected.get_selected()
         if titer is not None:
-            toAppend = [model.get_value(titer, 0), model.get_value(titer, 1), 0, 0, 0, 0, 0, 0, self.sys.mainOrder, 0,
+            toAppend = [model.get_value(titer, 0), model.get_value(titer, 1), 0, 0, 0, 0, 0, 0, DEFAULT_ORDER, 0,
                         model.get_value(titer, 2), model.get_value(titer, 3)]
             self.wlSelStore.append(toAppend)
 
@@ -330,7 +339,7 @@ class spGeneral:
         selected = self.TreeVievPrep.get_selection()
         model, titer = selected.get_selected()
         if titer is not None:
-            toAppend = [model.get_value(titer, 0), model.get_value(titer, 1), 0, 0, 0, 0, 0, 0, self.sys.mainOrder, 0,
+            toAppend = [model.get_value(titer, 0), model.get_value(titer, 1), 0, 0, 0, 0, 0, 0, DEFAULT_ORDER, 0,
                         model.get_value(titer, 2), model.get_value(titer, 3)]
             self.wlSelStore.append(toAppend)
 
@@ -394,7 +403,7 @@ class spGeneral:
         else:
             self.sys.zeroWave = float(zeroWaveTex[1])
 
-        self.label_zeroWave.set_text(" " + u'\u03BB' + "  = " + mstr(self.sys.zeroWave))
+        #self.label_zeroWave.set_text(" " + u'\u03BB' + "  = " + mstr(self.sys.zeroWave))
 
         if self.sys.isCompute != 0:
             order = self.entry_zeroOrder.get_text()
@@ -563,7 +572,7 @@ class spGeneral:
         else:
             self.sys.zeroWave = float(zeroWaveTex[1])
 
-        self.label_zeroWave.set_text(" " + u'\u03BB' + " = " + mstr(self.sys.zeroWave))
+        #self.label_zeroWave.set_text(" " + u'\u03BB' + " = " + mstr(self.sys.zeroWave))
 
         wlCount = len(self.sys.WaveLengths) - 2
 
@@ -571,6 +580,8 @@ class spGeneral:
         ##########################
         self.sys.Orders = [int(a) for a in self.entry_zeroOrder.get_text().split()]
         deforder = int(self.entry_zeroOrder.get_text()) if int(self.entry_zeroOrder.get_text()) in self.sys.Orders else self.sys.Orders[0]
+
+        self.sys.isCompute = 0
 
         self.on_entry14_changed(self.entry_zeroOrder)
 
@@ -581,7 +592,7 @@ class spGeneral:
         self.winProgress.hide()
 
         self.FilmResult = {}
-        self.sys.zeroWave = round(self.sys.zeroWave, 6)
+        self.sys.zeroWave = round(self.sys.zeroWave, 5)
 
         for order in self.sys.Orders:
             pFileName = "Order_" + mstr(order)
@@ -793,7 +804,7 @@ class spGeneral:
         self.sw2 = self.builder.get_object('scrolledwindow6')
         self.sw3 = self.builder.get_object('scrolledwindow7')
 
-        self.waveRes = self.builder.get_object('scrolledwindow5')
+        self.system_geometry = self.builder.get_object('scrolledwindow5')
         self.xRes = self.builder.get_object('scrolledwindow8')
 
         self.outBuf = self.outText.get_buffer()
@@ -802,7 +813,14 @@ class spGeneral:
 
         self.sys = systemConfig(self.outBuf)
 
-        self.sys.progressInfoOut = self.builder.get_object('progressbar1');
+        self.sys.progressInfoOut = [self.builder.get_object('progressbar1'), self.builder.get_object('progressbar2')]
+
+        self.sys_geom_fig = plt.figure(figsize=(10, 10), dpi=100, facecolor="white")
+        self.sys_geom_ax = self.sys_geom_fig.add_subplot(111)
+        self.sys_geom_ax.set_xlabel("[mm]", labelpad=-33)
+        self.sys_geom_ax.set_ylabel("[mm]")
+        reflCanvas = FigureCanvas(self.sys_geom_fig)
+        self.system_geometry.add_with_viewport(reflCanvas)
 
         self.reflFig = plt.figure(figsize=(10, 10), dpi=100)
         self.reflAx = self.reflFig.add_subplot(111)
@@ -851,8 +869,11 @@ class spGeneral:
 
         self.sys.resPlot = self.resOut
 
+        self.sys.sys_geom_ax = self.sys_geom_ax
+        self.sys.sys_geom_fig = self.sys_geom_fig
+
         if not sys.platform.startswith("linux"):
-        	Gtk.rc_reset_styles(Gtk.settings_get_for_screen(self.win.get_screen()))
+            Gtk.rc_reset_styles(Gtk.settings_get_for_screen(self.win.get_screen()))
 
         self.win.show_all()
 

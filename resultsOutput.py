@@ -23,7 +23,7 @@ def mstr(val):
         return val
     if (type(val) == int):
         return "%d" % val
-    return "%0.7g" % val
+    return "%0.6g" % val
 
 
 def readFile(file, x, y, z, colors):
@@ -387,11 +387,13 @@ class resPlot():
                 max_nbins_x = 100
                 max_nbins_z = 100
                 print ("Max value error. NBINS is incorrect\n")
+            if max_nbins_x * max_nbins_z <= 1000000:
+                H, xe, ze = numpy.histogram2d(-numpy.array(x), z, bins=(max_nbins_x, max_nbins_z))
+                xv, zv = numpy.meshgrid(xe, ze)
 
-            H, xe, ze = numpy.histogram2d(x, z, bins=(max_nbins_x, max_nbins_z))
-            xv, zv = numpy.meshgrid(xe, ze)
-
-            self.filmAxix.pcolormesh(xv, zv, numpy.transpose(H), cmap='Greys')
+                self.filmAxix.pcolormesh(xv, zv, numpy.transpose(H), cmap='Greys')
+            else:
+                self.filmAxix.text(0.25, 0.25, "Image size so huge!")
 
             self.filmFig.canvas.draw()
 
