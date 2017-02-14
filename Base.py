@@ -12,6 +12,7 @@ from confCompute import *
 import numpy as np
 import matplotlib.pyplot as plt
 
+global DEFAULT_ORDER
 DEFAULT_ORDER = 1
 
 if sys.platform.startswith('linux'):
@@ -233,6 +234,9 @@ class spGeneral:
     def on_filechooserbutton3_file_set(self, obj):
         self.saveFile = obj.get_filenames()[0]
 
+    def on_filechooserbutton_db_file_set(self, obj):
+        self.sys.lineBasePath = obj.get_filenames()[0]
+
     def on_filechooserbutton2_file_set(self, obj):
         FileName = self.chButton2.get_filenames()
 
@@ -278,12 +282,14 @@ class spGeneral:
         self.updWaveLength()
 
         if (len(self.wlSelStore) == int(obj2) + 1):
-            self.wlSelStore.append([mstr(int(obj2) + 1), 0, 0, 0, 0, 0, 0, 0, DEFAULT_ORDER, 0, 0, 1.0])
+            self.wlSelStore.append([mstr(int(obj2) + 1), 0, 0, 0, 0, 0, 0, 0, self.DEFAULT_ORDER, 0, 0, 1.0])
 
     def on_button11_clicked(self, obj1):
         additional_order_line = []
         Orders = [int(a) for a in self.entry_Orders.get_text().split()]
-        MainOrder = int(self.entry_zeroOrder.get_text())
+
+        max_crystal_2d = max(self.sys.crystal2d.values())
+
         current_lines_names = []
         CurrentLines = []
         for line in self.wlSelStore:
@@ -303,7 +309,7 @@ class spGeneral:
 
                     new_line = [new_line[0], new_line[1], 0, 0, 0, 0, 0, 0, order, 0, new_line[10],
                                 current_line[11] * float(current_order) / float(order)]
-                    if not new_line[0] in current_lines_names:
+                    if not new_line[0] in current_lines_names and new_line[1] <= max_crystal_2d:
                         additional_order_line.append(new_line)
 
         for new_line in additional_order_line:
@@ -329,7 +335,7 @@ class spGeneral:
         selected = self.TreeVievPrep.get_selection()
         model, titer = selected.get_selected()
         if titer is not None:
-            toAppend = [model.get_value(titer, 0), model.get_value(titer, 1), 0, 0, 0, 0, 0, 0, DEFAULT_ORDER, 0,
+            toAppend = [model.get_value(titer, 0), model.get_value(titer, 1), 0, 0, 0, 0, 0, 0, self.DEFAULT_ORDER, 0,
                         model.get_value(titer, 2), model.get_value(titer, 3)]
             self.wlSelStore.append(toAppend)
 
@@ -339,7 +345,7 @@ class spGeneral:
         selected = self.TreeVievPrep.get_selection()
         model, titer = selected.get_selected()
         if titer is not None:
-            toAppend = [model.get_value(titer, 0), model.get_value(titer, 1), 0, 0, 0, 0, 0, 0, DEFAULT_ORDER, 0,
+            toAppend = [model.get_value(titer, 0), model.get_value(titer, 1), 0, 0, 0, 0, 0, 0, self.DEFAULT_ORDER, 0,
                         model.get_value(titer, 2), model.get_value(titer, 3)]
             self.wlSelStore.append(toAppend)
 
@@ -359,7 +365,7 @@ class spGeneral:
         self.updWaveLength()
 
     def on_button9_clicked(self, obj):
-        if (self.isCentralLineSelected):
+        if self.isCentralLineSelected:
             self.setWaveLimits()
 
         [w1, w2, p1, p2] = self.sys.calcLimWaveLength(int(self.entry_zeroOrder.get_text()))
@@ -623,16 +629,17 @@ class spGeneral:
     def on_entry14_changed(self, obj):
         try:
             self.sys.mainOrder = int(self.entry_zeroOrder.get_text())
+            self.DEFAULT_ORDER = self.sys.mainOrder
         except ValueError:
             pass
         self.updWaveLength()
-        if (isfloat(obj.get_text()) and self.sys.isCompute):
-            if (not self.sys.isCompute == 0):
+        if isfloat(obj.get_text()) and self.sys.isCompute:
+            if not self.sys.isCompute == 0:
                 order = self.entry_zeroOrder.get_text()
 
                 Orders = [int(a) for a in self.entry_zeroOrder.get_text().split()]
 
-                if (self.isCentralLineSelected):
+                if self.isCentralLineSelected:
                     self.setWaveLimits()
                     self.updWaveLength()
 
@@ -644,7 +651,7 @@ class spGeneral:
                     else:
                         list += [glob.glob("results\\" + pFileName + "\\" + "*.dmp")]
 
-                if (not len(list) == 0):
+                if not len(list) == 0:
                     zero_wave_index = self.sys.WaveLengths.index(self.sys.zeroWave)
                     dzero_wave = self.sys.dWaveLength[zero_wave_index]
                     self.sys.resPlot.plotFilm(list, self.sys.zeroWave, self.sys.crystal2d, Orders,
@@ -724,7 +731,7 @@ class spGeneral:
                 if idx == -1:
                     continue
 
-                self.wlSelStore[idx][5] = float(wl[1])
+                self.wlSelStore[idx][5] = -float(wl[1])
 
                 # self.wlSelStore[idx][6]=float(wl[2])/self.sys.SrcSizeW
 
@@ -732,6 +739,7 @@ class spGeneral:
                 self.wlSelStore[idx][7] = float(wl[3])
 
     def initWindow(self):
+        self.DEFAULT_ORDER = 1
         self.builder = Gtk.Builder()
         self.builder.add_objects_from_file('sys/spectr.glade', ('liststore1', 'liststore2', 'liststore3', 'window1',
                                                                 'filechooserdialog1', 'pwindow',
@@ -854,14 +862,11 @@ class spGeneral:
         self.xResAx.set_ylabel("Counts, [n]")
         reflCanvas = FigureCanvas(self.xResFig)
         self.xRes.add_with_viewport(reflCanvas)
-
-        #    
+        #
         self.wResAx = self.xResAx.twiny()
 
         self.wResAx.set_xlabel("Wavelength, [A]", labelpad=-33)
         #
-
-
         self.resOut = resPlot(self.fAx, self.fFig,
                               self.mAx, self.mFig,
                               self.rAx, self.rFig,

@@ -203,14 +203,8 @@
               <object class="GtkTable" id="table4">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="n_rows">2</property>
                 <property name="n_columns">2</property>
-                <child>
-                  <object class="GtkLabel" id="label16">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Search Wavelengths</property>
-                  </object>
-                </child>
                 <child>
                   <object class="GtkEntry" id="entry12">
                     <property name="visible">True</property>
@@ -227,7 +221,42 @@
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="right_attach">2</property>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
                     <property name="y_options"/>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label16">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Search Wavelengths</property>
+                  </object>
+                  <packing>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label43">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Wave base</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkFileChooserButton" id="filechooserbutton3">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="create_folders">False</property>
+                    <property name="width_chars">0</property>
+                    <signal name="file-set" handler="on_filechooserbutton_db_file_set" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+                    <property name="y_options">GTK_EXPAND | GTK_SHRINK</property>
                   </packing>
                 </child>
               </object>
@@ -1590,6 +1619,7 @@
         </child>
         <child>
           <object class="GtkVBox" id="vbox2">
+            <property name="width_request">800</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="spacing">6</property>
@@ -1611,7 +1641,6 @@ line</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="xalign">1</property>
                         <property name="image_position">top</property>
                         <signal name="clicked" handler="on_button3_clicked" swapped="no"/>
                       </object>
@@ -1627,7 +1656,6 @@ line</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="xalign">1</property>
                         <property name="image_position">top</property>
                         <signal name="clicked" handler="on_button4_clicked" swapped="no"/>
                       </object>
@@ -1638,16 +1666,14 @@ line</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="button9">
-                        <property name="label" translatable="yes">Generate  
-Waves</property>
+                      <object class="GtkButton" id="button11">
+                        <property name="label" translatable="yes">Add
+additional 
+orders</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="tooltip_text" translatable="yes">Generate Wave in reflection range</property>
-                        <property name="xalign">1</property>
-                        <property name="image_position">top</property>
-                        <signal name="clicked" handler="on_button9_clicked" swapped="no"/>
+                        <signal name="clicked" handler="on_button11_clicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1656,15 +1682,15 @@ Waves</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="button11">
-                        <property name="label" translatable="yes">Add
-additional 
-orders</property>
+                      <object class="GtkButton" id="button15">
+                        <property name="label" translatable="yes">Delete 
+additional
+lines</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="xalign">1</property>
-                        <signal name="clicked" handler="on_button11_clicked" swapped="no"/>
+                        <property name="image_position">top</property>
+                        <signal name="clicked" handler="on_button15_clicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1679,7 +1705,6 @@ lines</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="xalign">1</property>
                         <property name="image_position">top</property>
                         <signal name="clicked" handler="on_button10_clicked" swapped="no"/>
                       </object>
@@ -1687,24 +1712,6 @@ lines</property>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
                         <property name="position">4</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="button15">
-                        <property name="label" translatable="yes">Delete 
-additional
-lines</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="xalign">1</property>
-                        <property name="image_position">top</property>
-                        <signal name="clicked" handler="on_button15_clicked" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">False</property>
-                        <property name="position">5</property>
                       </packing>
                     </child>
                     <child>
@@ -1721,7 +1728,7 @@ lines</property>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
-                        <property name="position">6</property>
+                        <property name="position">5</property>
                       </packing>
                     </child>
                   </object>

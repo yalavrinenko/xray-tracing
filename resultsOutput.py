@@ -190,7 +190,7 @@ class resPlot():
         self.filmAxix.set_ylim(y[0], y[1])
         self.filmFig.canvas.draw()
 
-    def plotWaveLengthUp(self, wl, line_intensity, line_order, limits=[]):
+    def plotWaveLengthUp(self, wl, line_intensity, line_order, limits=[], isUnlimited=True):
         mrefl = -1
         for key in self.wList.iterkeys():
             mrefl = max(max(self.reflList[key]), mrefl)
@@ -203,17 +203,18 @@ class resPlot():
 
         self.reflAxix.bar(wl, hl, 0.0001, color=line_colors, edgecolor=line_colors)
 
-        if (limits != []):
+        if isUnlimited == False and limits != []:
             self.reflAxix.set_xlim([min(limits) * 0.95, max(limits) * 1.05])
-            hlimits = [mrefl for i in limits]
-            self.reflAxix.bar(limits, hlimits, 0.006, color='red', edgecolor='red')
+
+        hlimits = [mrefl for i in limits]
+        self.reflAxix.bar(limits, hlimits, 0.006, color='red', edgecolor='red')
 
         for key in self.wList.iterkeys():
             self.reflAxix.plot(self.wList[key], self.reflList[key], u'o')
 
         self.reflFig.canvas.draw()
 
-    def plotWaveLength(self, wl, line_intensity, line_order, limits=[]):
+    def plotWaveLength(self, wl, line_intensity, line_order, limits=[], isUnlimited=True):
 
         self.reflAxix.clear()
 
@@ -229,10 +230,11 @@ class resPlot():
 
         self.reflAxix.bar(wl, hl, 0.0001, color=line_colors, edgecolor=line_colors)
 
-        if (limits != []):
+        if isUnlimited == False and limits != []:
             self.reflAxix.set_xlim([min(limits) * 0.95, max(limits) * 1.05])
-            hlimits = [mrefl for i in limits]
-            self.reflAxix.bar(limits, hlimits, 0.006, color='red', edgecolor='red')
+
+        hlimits = [mrefl for i in limits]
+        self.reflAxix.bar(limits, hlimits, 0.006, color='red', edgecolor='red')
 
         for key in self.wList.iterkeys():
             self.reflAxix.plot(self.wList[key], self.reflList[key], u'o')

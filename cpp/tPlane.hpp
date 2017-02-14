@@ -26,11 +26,11 @@ public:
 	tPlane(Vec3d _N,Vec3d _r0);
 	tPlane(Vec3d _N,Vec3d _r0,double _lim_area);
 
-	double cross(tRay ray);
+	virtual double cross(tRay ray);
 
 	tRay crossAndGen(tRay ray,double &t);
 
-	Vec3d crossPoint(tRay);
+    Vec3d crossPoint(tRay);
 };
 
 class tDumpPlane{

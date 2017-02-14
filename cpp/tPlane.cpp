@@ -81,7 +81,7 @@ tRay tPlane::crossAndGen(tRay ray, double &t) {
 
 	Vec3d newDirection = dirTangential - dirNormal;
 
-	P = 	RadToGrad( acos(dot2(newDirection,N)/(sqrt(dot(newDirection))*sqrt(dot(N)))) );
+	P = RadToGrad( acos(dot2(newDirection,N)/(sqrt(dot(newDirection))*sqrt(dot(N)))) );
 
 	tRay toRet(point, newDirection, ray.lambda);
 	toRet.I = ray.I;

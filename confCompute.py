@@ -92,6 +92,7 @@ class systemConfig:
     FilmDistFromCenter = 0.0
     ToFilmDirection = 0.0
     FilmAngle = 0.0
+    FilmRotationAngle = 0.0
     FilmSizeW = 400
     FilmSizeH = 400
 
@@ -123,6 +124,8 @@ class systemConfig:
 
     sys_geom_ax = None
     sys_geom_fig = None
+
+    lineBasePath = "Input/trans-db.txt"
 
     def crystClear(self):
         print    ("Cryst. Par. clear")
@@ -299,14 +302,16 @@ class systemConfig:
         data += "Ray count / ray per iteration " + mstr(self.RayCount) + "/" + mstr(self.RayByIter) + "\n"
         data += "Crystal type = " + self.CrystType + "\n"
         data += "Crystal R = " + mstr(self.crystalR) + " [mm]\n"
-        data += "Scattering Angle = " + mstr(self.BraggA) + " [deg]\n"
+        data += "Bragg Angle = " + mstr(self.BraggA) + " [deg]\n"
+        data += "Incident Angle = " + mstr(90.0 - self.BraggA) + " [deg]\n"
         data += "Source distance = " + mstr(self.SrcDist) + " [mm]\n"
         data += "Detector distance = " + mstr(self.DstDist) + " [mm]\n"
         data += "Central wavelength = " + mstr(self.centralWave) + " [A]\n"
         data += "Detector distance from center = " + mstr(self.FilmDistFromCenter) + " [mm]\n"
         data += "Detector direction from center = " + mstr(self.ToFilmDirection) + " [deg]\n"
         data += "Detector size W x H= " + mstr(self.FilmSizeW) + " X " + mstr(self.FilmSizeH) + " [mm]\n"
-        data += "Detector angle = " + mstr(self.FilmAngle) + " [deg]\n"
+        data += "Detector angle = " + mstr(self.FilmRotationAngle) + " [deg]\n"
+        data += "FRO angle = " + mstr(180.0 - self.ToFilmDirection) + " [deg]\n"
         data += "Crystal W x H = " + mstr(self.crystalW) + " X " + mstr(self.crystalH) + " [mm]\n"
         data += "Source cone = " + mstr(self.SrcCone * 0.5) + " [deg]\n"
         data += "Source solid angle = " + mstr(2.0 * np.pi * (1 - np.cos(self.SrcCone * 0.5 / 2.0 * np.pi / 180.0))) + " [sr]\n"
@@ -329,9 +334,10 @@ class systemConfig:
 
     def prepearHead(self):
         data = "[OUTPUT]\n"
-        data += "Scattering Angle = " + mstr(self.BraggA) + " [deg]\n"
-        data += "FRO angle = " + mstr(self.ToFilmDirection) + " [deg]\n"
-        data += "Detector angle = " + mstr(self.FilmAngle) + " [deg]\n"
+        data += "Bragg Angle = " + mstr(self.BraggA) + " [deg]\n"
+        data += "Incident Angle = " + mstr(90.0 - self.BraggA) + " [deg]\n"
+        data += "FRO angle = " + mstr(180.0 - self.ToFilmDirection) + " [deg]\n"
+        data += "Detector angle = " + mstr(self.FilmRotationAngle) + " [deg]\n"
         data += "Detector to crystal = " + mstr(self.DstDist) + " [mm]\n"
         data += "Detector to center = " + mstr(self.FilmDistFromCenter) + " [mm]\n"
 
@@ -397,9 +403,9 @@ class systemConfig:
         cross_point_1 = [-self.crystalW / 2.0, dh]
         cross_point_2 = [self.crystalW / 2.0, dh]
 
-        step = self.limit_line_position[0]
-        detector_cross_1 = line(step, detector_center, detector_norm_line)
         step = self.limit_line_position[1]
+        detector_cross_1 = line(step, detector_center, detector_norm_line)
+        step = self.limit_line_position[0]
         detector_cross_2 = line(step, detector_center, detector_norm_line)
 
         figure_ax.plot([source_pos[0], cross_point_1[0], detector_cross_1[0]],
@@ -493,7 +499,8 @@ class systemConfig:
 
                 Result[int(pFileName.split('_')[1])] = self.resPlot.plotReflResults("results/" + pFileName + ".log")
 
-                self.resPlot.plotWaveLengthUp(self.WaveLengths, self.WaveIntensity, self.WaveOrders, self.WaveLimits)
+                self.resPlot.plotWaveLengthUp(self.WaveLengths, self.WaveIntensity, self.WaveOrders, self.WaveLimits,
+                                              self.WaveAutoscale)
                 self.resPlot.plotMirror("results/" + pFileName + ".dump", self.crystalW, self.crystalH)
 
                 self.isCompute = len(parFiles)
@@ -519,7 +526,8 @@ class systemConfig:
                 try:
                     Result[int(pFileName.split('_')[1])] = self.resPlot.plotReflResults(
                         "results\\" + pFileName + ".log")
-                    self.resPlot.plotWaveLengthUp(self.WaveLengths, self.WaveIntensity, self.WaveOrders, self.WaveLimits)
+                    self.resPlot.plotWaveLengthUp(self.WaveLengths, self.WaveIntensity, self.WaveOrders,
+                                                  self.WaveLimits, self.WaveAutoscale)
                     self.resPlot.plotMirror("results\\" + pFileName + ".dump", self.crystalW, self.crystalH)
                 except (ValueError):
                     return False
@@ -606,6 +614,8 @@ class systemConfig:
         Gamma2 = math.asin(self.crystalR * math.sin(phi) / (2 * self.FilmDistFromCenter))
         self.FilmAngle = (Gamma - Gamma2) * 180.0 / math.pi
 
+        self.GetRotationAngle(phi)
+
         theta = self.BraggA * math.pi / 180.0
         H = self.crystalR - math.sqrt(self.crystalR ** 2 - self.crystalW ** 2 / 4.0)
         dh = H * math.tan(math.pi / 2.0 - theta)
@@ -635,6 +645,8 @@ class systemConfig:
         Gamma2 = math.asin(self.crystalR * math.sin(phi) / (2 * self.FilmDistFromCenter))
         self.FilmAngle = (Gamma - Gamma2) * 180.0 / math.pi;
 
+        self.GetRotationAngle(phi)
+
         theta = self.BraggA * math.pi / 180.0
         H = self.crystalR - math.sqrt(self.crystalR ** 2 - self.crystalW ** 2 / 4.0)
         dh = H * math.tan(math.pi / 2.0 - theta)
@@ -655,10 +667,11 @@ class systemConfig:
         dWls = []
         Intens = []
         self.WaveLengths = []
-        with open("sys/trans-db.txt", "r") as f:
+        with open(self.lineBasePath, "r") as f:
             linesData = f.readlines()
         for elem in elems:
             for l in linesData:
+                l = l.replace("\t", " ")
                 lsp = l.split()
                 if (len(lsp) >= 4 and elem in l):
                     El = lsp[0]
@@ -689,10 +702,8 @@ class systemConfig:
         self.dWaveLength = list(WaveWidth)
         self.WaveOrders = list(LineOrder)
 
-        if self.WaveAutoscale == True:
-            self.resPlot.plotWaveLength(self.WaveLengths, self.WaveIntensity, self.WaveOrders)
-        else:
-            self.resPlot.plotWaveLength(self.WaveLengths, self.WaveIntensity, self.WaveOrders, self.WaveLimits)
+        self.resPlot.plotWaveLength(self.WaveLengths, self.WaveIntensity, self.WaveOrders,
+                                    self.WaveLimits if len(self.WaveLengths) > 0 else [], self.WaveAutoscale)
 
     def computFSSR1(self):
         centralWave = self.centralWave
@@ -723,7 +734,8 @@ class systemConfig:
         sGamma = self.SrcDist * math.sin(2 * phi) / L
         Gamma = math.asin(1.0 if math.fabs(sGamma) > 1 else sGamma)
         Gamma2 = math.asin(self.crystalR * math.sin(phi) / (2 * self.FilmDistFromCenter))
-        self.FilmAngle = (Gamma - Gamma2) * 180.0 / math.pi;
+        self.FilmAngle = (Gamma - Gamma2) * 180.0 / math.pi
+        self.GetRotationAngle(phi)
 
         theta = self.BraggA * math.pi / 180.0
 
@@ -739,3 +751,26 @@ class systemConfig:
         self.SrcCone *= 180.0 / math.pi * 1.05
 
         self.dispData()
+
+
+    def vectorLenght(self, v):
+        return (v[0]**2 + v[1]**2) ** 0.5
+
+    def GetRotationAngle(self, phi):
+        Cp = [0.0, -self.crystalR / 2.0]
+        Sp = [-self.SrcDist * math.sin(phi), - self.SrcDist * math.cos(phi)]
+        Dp = [self.DstDist * math.sin(phi), - self.DstDist * math.cos(phi)]
+
+        Dn = [Dp[0] - Sp[0], Dp[1] - Sp[1]]
+        Dn = [-Dn[1], Dn[0]]
+        CDp = [Cp[0] - Dp[0], Cp[1] - Dp[1]]
+
+        Dnl = self.vectorLenght(Dn)
+        CDpl = self.vectorLenght(CDp)
+
+        Dn = [d / Dnl for d in Dn]
+        CDp = [d / CDpl for d in CDp]
+
+        RotAngleCos = (Dn[0] * CDp[0] + Dn[1] * CDp[1])
+
+        self.FilmRotationAngle = math.acos(RotAngleCos) * 180.0 / math.pi
