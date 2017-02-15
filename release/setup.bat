@@ -6,8 +6,8 @@ mkdir dist\Ray-tracing\sys
 mkdir dist\Ray-tracing\par
 mkdir dist\Ray-tracing\results
 
-echo ".par" dist\Ray-tracing\par\.par
-echo ".results" dist\Ray-tracing\results\.results
+echo ".par" > dist\Ray-tracing\par\.par
+echo ".results" > dist\Ray-tracing\results\.results
 
 copy ..\sys\spectr.glade dist\Ray-tracing\sys
 copy ..\sys\pattern.par dist\Ray-tracing\sys
