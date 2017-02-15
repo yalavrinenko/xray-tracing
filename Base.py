@@ -51,6 +51,7 @@ class spGeneral:
 
     def __init__(self):
         print ('Init class spGeneral')
+        Gtk.rc_add_default_file("gtkrc")
 
     def updWaveLength(self):
 
