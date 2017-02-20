@@ -289,6 +289,8 @@ class spGeneral:
         additional_order_line = []
         Orders = [int(a) for a in self.entry_Orders.get_text().split()]
 
+        Orders.append(int(self.entry_zeroOrder.get_text()))
+
         max_crystal_2d = max(self.sys.crystal2d.values())
 
         current_lines_names = []
@@ -420,7 +422,8 @@ class spGeneral:
 
             list = []
             for o in Orders:
-                pFileName = "Order_" + mstr(o)
+                #pFileName = "Order_" + mstr(o)
+                pFileName = "Order_1" #+ mstr(order)
                 if sys.platform.startswith('linux'):
                     list += [glob.glob("results/" + pFileName + "/" + "*.dmp")]
                 else:
@@ -592,7 +595,11 @@ class spGeneral:
 
         self.on_entry14_changed(self.entry_zeroOrder)
 
+        tmp = self.sys.mainOrder
+        self.sys.mainOrder = 1
         parFiles = self.sys.prepareComputation()
+        self.sys.mainOrder = tmp
+
         self.Res = self.sys.execRayTrace(parFiles, deforder)
 
         ########################## 
@@ -602,7 +609,8 @@ class spGeneral:
         self.sys.zeroWave = round(self.sys.zeroWave, 5)
 
         for order in self.sys.Orders:
-            pFileName = "Order_" + mstr(order)
+            #pFileName = "Order_" + mstr(order)
+            pFileName = "Order_1" #+ mstr(order)
             if sys.platform.startswith('linux'):
                 list = glob.glob("results/" + pFileName + "/" + "*.dmp")
             else:
@@ -630,7 +638,7 @@ class spGeneral:
     def on_entry14_changed(self, obj):
         try:
             self.sys.mainOrder = int(self.entry_zeroOrder.get_text())
-            self.DEFAULT_ORDER = self.sys.mainOrder
+            self.sys.resPlot.reflection_order = self.sys.mainOrder
         except ValueError:
             pass
         self.updWaveLength()
@@ -646,7 +654,8 @@ class spGeneral:
 
                 list = []
                 for o in Orders:
-                    pFileName = "Order_" + mstr(o)
+                    #pFileName = "Order_" + mstr(o)
+                    pFileName = "Order_1" #+ mstr(order)
                     if sys.platform.startswith('linux'):
                         list += [glob.glob("results/" + pFileName + "/" + "*.dmp")]
                     else:

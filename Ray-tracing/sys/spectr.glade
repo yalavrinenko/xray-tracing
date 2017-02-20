@@ -1736,8 +1736,7 @@
                     <property name="layout_style">edge</property>
                     <child>
                       <object class="GtkButton" id="button3">
-                        <property name="label" translatable="yes">Add new   
-line</property>
+                        <property name="label" translatable="yes">Add new line</property>
                         <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1769,9 +1768,7 @@ line</property>
                     </child>
                     <child>
                       <object class="GtkButton" id="button11">
-                        <property name="label" translatable="yes">Add
-additional 
-orders</property>
+                        <property name="label" translatable="yes">Add additional orders</property>
                         <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1786,9 +1783,7 @@ orders</property>
                     </child>
                     <child>
                       <object class="GtkButton" id="button15">
-                        <property name="label" translatable="yes">Delete 
-additional
-lines</property>
+                        <property name="label" translatable="yes">Delete additional lines</property>
                         <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1804,8 +1799,7 @@ lines</property>
                     </child>
                     <child>
                       <object class="GtkButton" id="button10">
-                        <property name="label" translatable="yes">Clear all    
-lines</property>
+                        <property name="label" translatable="yes">Clear all lines</property>
                         <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>

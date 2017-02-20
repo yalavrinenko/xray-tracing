@@ -26,7 +26,7 @@ def mstr(val):
     return "%0.6g" % val
 
 
-def readFile(file, x, y, z, colors):
+def readFile(file, x, y, z, colors, reflection_order):
     with open(file, 'r') as f:
         f.readline()
 
@@ -85,7 +85,7 @@ def readFile(file, x, y, z, colors):
             x.append(wx)
             y.append(wy)
             z.append(wz)
-            colors.append(c)
+            colors.append(c / reflection_order)
 
         print (file, len(x))
 
@@ -94,6 +94,7 @@ class resPlot():
     wList = {}
     reflList = {}
     pixel_size = 0.0001
+    reflection_order = 1
 
     def __init__(self, fAx, fFf, mAx, mFf, rAx, rFf, wrAx, xrA, xrF, oB):
         self.MAX_ORDER = 20
@@ -191,6 +192,9 @@ class resPlot():
         self.filmFig.canvas.draw()
 
     def plotWaveLengthUp(self, wl, line_intensity, line_order, limits=[], isUnlimited=True):
+        #wl = [w / self.reflection_order for w in wl_i]
+        #limits = [ l / self.reflection_order for l in limits_i]
+
         mrefl = -1
         for key in self.wList.iterkeys():
             mrefl = max(max(self.reflList[key]), mrefl)
@@ -215,6 +219,9 @@ class resPlot():
         self.reflFig.canvas.draw()
 
     def plotWaveLength(self, wl, line_intensity, line_order, limits=[], isUnlimited=True):
+
+        #wl = [w / self.reflection_order for w in wl_i]
+        #limits = [ l / self.reflection_order for l in limits_i]
 
         self.reflAxix.clear()
 
@@ -324,7 +331,7 @@ class resPlot():
         y = []
         z = []
         colors = []
-        readFile(file, x, y, z, colors)
+        readFile(file, x, y, z, colors, self.reflection_order)
 
         self.dispCurve = {}
         coeff = []
@@ -368,7 +375,7 @@ class resPlot():
             y = []
             z = []
             colors = []
-            readFile(file, x, y, z, colors)
+            readFile(file, x, y, z, colors, self.reflection_order)
 
             targetOrder = dispOrders[i]
 
