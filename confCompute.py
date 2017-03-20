@@ -566,6 +566,7 @@ class systemConfig:
         self.outText.set_text(text)
 
     def setDistrFile(self, fileName, distrOrder):
+        fileName = fileName.strip()
         with open(fileName, 'r') as f:
             lines = f.readlines()
         x = []

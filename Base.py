@@ -11,6 +11,7 @@ from resultsOutput import *
 from confCompute import *
 import numpy as np
 import matplotlib.pyplot as plt
+import ConfigParser
 
 global DEFAULT_ORDER
 DEFAULT_ORDER = 1
@@ -231,6 +232,7 @@ class spGeneral:
         self.chButton2.destroy()
         self.win.destroy()
         self.ImageSaveWindow.destroy()
+        self.ConfigSaveWindow.destroy()
 
     def on_filechooserbutton3_file_set(self, obj):
         self.saveFile = obj.get_filenames()[0]
@@ -240,7 +242,10 @@ class spGeneral:
 
     def on_filechooserbutton2_file_set(self, obj):
         FileName = self.chButton2.get_filenames()
+        self.setCrystal2d(FileName)
 
+    def setCrystal2d(self, FileName):
+        self.Crystal2dFile = FileName;
         fPtr = open(FileName[0], "r+")
         fLines = fPtr.readlines()
 
@@ -722,8 +727,9 @@ class spGeneral:
 
         return -1
 
-    def addDataToTable(self, order):
-        if (order in self.Res):
+    def addDataToTable(self, m_order):
+        #if (order in self.Res):
+        for order in self.Res.keys():
             for i, el in enumerate(self.Res[order]):
                 idx = self.getIdxInSelStore(el[0])
 
@@ -734,7 +740,8 @@ class spGeneral:
                 self.wlSelStore[idx][3] = int(el[2])
                 self.wlSelStore[idx][4] = float(el[3])
 
-        if (order in self.FilmResult):
+        #if (order in self.FilmResult):
+        for order in self.FilmResult.keys():
             for wl in self.FilmResult[order]:
                 idx = self.getIdxInSelStore(wl[0])
 
@@ -753,12 +760,13 @@ class spGeneral:
         self.builder = Gtk.Builder()
         self.builder.add_objects_from_file('sys/spectr.glade', ('liststore1', 'liststore2', 'liststore3', 'window1',
                                                                 'filechooserdialog1', 'pwindow',
-                                                                'filechooserdialog2', ''))
+                                                                'filechooserdialog2', 'filechooserdialog3', ''))
         self.win = self.builder.get_object('window1')
         self.winProgress = self.builder.get_object('pwindow')
 
         self.fileChoose = self.builder.get_object('filechooserdialog1')
         self.ImageSaveWindow = self.builder.get_object('filechooserdialog2')
+        self.ConfigSaveWindow = self.builder.get_object('filechooserdialog3')
 
         self.wlStore = self.builder.get_object('liststore1')
         self.wlSelStore = self.builder.get_object('liststore2')
@@ -894,6 +902,77 @@ class spGeneral:
 
         Gtk.main()
 
+    def on_button9_clicked_cb(self, obj):
+        self.ConfigSaveWindow.show_all()
+
+    def button17_clicked_cb(self, obj):
+        self.ConfigSaveWindow.hide()
+        save_file_patter = self.ConfigSaveWindow.get_filename()
+        self.SaveConfiguration(save_file_patter)
+
+    def button18_clicked_cb(self, obj):
+        self.ConfigSaveWindow.hide()
+
+    def on_filechooserbutton4_file_set(self, obj):
+        filename = obj.get_filenames()[0]
+        self.LoadConfiguration(filename)
+
+    def SaveConfiguration(self, config_name):
+        config = ConfigParser.RawConfigParser();
+
+        config.add_section("Files");
+        config.set("Files", "CrystalFile",self.Crystal2dFile[0])
+        config.set("Files", "DBFile", self.sys.lineBasePath)
+
+        config.add_section("Source")
+        config.set("Source", "CentralWave", str(self.sys.centralWave))
+        config.set("Source", "Distance", str(self.sys.SrcDist))
+
+        config.add_section("Simulation")
+        config.set("Simulation", "MainOrder", self.entry_zeroOrder.get_text())
+        config.set("Simulation", "AdditionOrder", self.entry_Orders.get_text())
+        config.set("Simulation", "RefferLine", self.entry_zeroWave.get_text())
+        config.set("Simulation", "BraggAngle", self.entry_Bragg.get_text())
+
+        config.add_section("Lines")
+
+        config.set("Lines", "Count", str(len(self.wlSelStore)))
+        idx = 0
+        for wl in self.wlSelStore:
+            line = ""
+            if (not wl[1] == 0):
+                line = ":".join(str(w) for w in wl)
+            config.set("Lines", "Line"+str(idx), line)
+            idx += 1
+
+        with open(config_name, 'wb') as configfile:
+            config.write(configfile)
+
+    def LoadConfiguration(self, config_name):
+        config = ConfigParser.RawConfigParser()
+        config.read(config_name)
+
+        self.setCrystal2d([config.get("Files", "CrystalFile")])
+        self.sys.lineBasePath = config.get("Files", "DBFile")
+
+        self.entry_cwl.set_text(config.get("Source", "CentralWave"))
+        self.entry_srcDist.set_text(config.get("Source", "Distance"))
+
+        self.entry_zeroOrder.set_text(config.get("Simulation", "MainOrder"))
+        self.entry_Orders.set_text(config.get("Simulation", "AdditionOrder"))
+        self.entry_zeroWave.set_text(config.get("Simulation", "RefferLine"))
+        self.entry_Bragg.set_text(config.get("Simulation", "BraggAngle"))
+
+        count = config.getint("Lines", "Count")
+        idx = 0
+        while idx < count:
+            line = config.get("Lines", "Line"+str(idx))
+            w = line.split(":")
+            toAppend = [w[0]] + [float(e) if e not in ["False", "True"] else 1 if e == "True" else 0 for e in w[1:]]
+            self.wlSelStore.append(toAppend)
+            idx += 1
+
+        self.updWaveLength()
 
 if __name__ == '__main__':
     s = spGeneral()

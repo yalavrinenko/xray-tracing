@@ -27,6 +27,7 @@ def mstr(val):
 
 
 def readFile(file, x, y, z, colors, reflection_order):
+    reflection_order = 1
     with open(file, 'r') as f:
         f.readline()
 
