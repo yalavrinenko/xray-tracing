@@ -1,5 +1,3 @@
-#pyi-makespec.exe --onedir ..\Base.py -n Ray-tracing
-#@pause
 pyinstaller.exe --onedir --distpath ..\ Ray-tracing.spec
 
 mkdir ..\Ray-tracing\sys
