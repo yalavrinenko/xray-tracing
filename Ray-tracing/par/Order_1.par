@@ -1,0 +1,115 @@
+$GenName = Order_1
+$rayCnt = 1000000
+$rayByIt = 100000
+$cR = 150
+$wA = 46
+$hA = 12
+$ScattAngle = 51.3531
+$Cr2D = 8.512
+$DistrWidth = 0.22
+$RFile = Input/quartz100.curve
+$RSize = 441
+$RStep = 0.001
+$SrcDist = 532.626
+$SrcCone = 5.18288
+$DDist  = 117.151
+$FilmA  = 51.353
+$FildDir = 102.706
+$WLCount  = 15
+$SrcSizeW = 0.05
+$SrcSizeH = 0.05
+$FilmH = 400
+$FilmW = 500
+$SlitPos = 0
+$SlitW = 0
+$SlitH = 0
+$MrType = Sphere
+
+
+
+angleType = "dec"
+rayCount = $(rayCnt)
+rayByIter = $(rayByIt)
+
+[MIRROR]
+MirrorType = $(MrType)
+R = $(cR)
+Theta = 90 			
+Psi = 90 			
+wAperture = $(wA)
+hAperture = $(hA)
+ScatteringAngle = $(ScattAngle)
+dumpFile = "results/$(GenName).dump"
+Crystal2D = $(Cr2D)
+distributionWidth = $(DistrWidth)
+refFile = $(RFile)
+refSize = $(RSize)
+refStep = $(RStep)
+
+[SRC]
+Distance = $(SrcDist)
+Size_W = $(SrcSizeW)
+Size_H = $(SrcSizeH)
+Aperture = $(SrcCone)
+Type="Sphere"
+
+[OUTPUT]
+dumpPlaneNamePattern = "results/$(GenName)/"
+startPoint = $(DDist) 
+Count = 1
+Step = 10
+SizeW = $(FilmW)
+SizeH = $(FilmH)
+;FilmDirection = $(FildDir)
+Direction = "srcLine"
+logFileName = "results/$(GenName).log"
+
+[OBJECT]
+Type = slit ; mesh
+Position = $(SlitPos)
+Size = 1000
+Prop1 = $(SlitW)
+Prop2 = $(SlitH)
+
+
+[SRC]
+waveLenghtCount = $(WLCount) 
+wave1 = 6.64795
+dwave1 = 0.005
+iwave1 = 2.8
+wave2 = 6.1028
+dwave2 = 0.005
+iwave2 = 0.6
+wave3 = 6.1754
+dwave3 = 0.005
+iwave3 = 0.5
+wave4 = 6.3137
+dwave4 = 0.005
+iwave4 = 0.8
+wave5 = 6.6343
+dwave5 = 0.005
+iwave5 = 1
+wave6 = 6.4173
+dwave6 = 0.005
+iwave6 = 0.5
+wave7 = 6.4975
+dwave7 = 0.005
+iwave7 = 2
+wave8 = 6.68799
+dwave8 = 0.005
+iwave8 = 0.5
+wave9 = 6.742
+dwave9 = 0.005
+iwave9 = 2
+wave10 = 6.753
+dwave10 = 0.005
+iwave10 = 0.5
+wave11 = 7.1709
+dwave11 = 0.005
+iwave11 = 2
+wave12 = 5.95561
+dwave12 = 0.00595561
+iwave12 = 0
+wave13 = 7.23204
+dwave13 = 0.00723204
+iwave13 = 0
