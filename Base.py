@@ -24,6 +24,7 @@ else:
     from matplotlib.backends.backend_gtkagg import FigureCanvasGTKAgg as FigureCanvas
 
 
+
 def isfloat(value):
     try:
         float(value)

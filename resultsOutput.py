@@ -12,6 +12,7 @@ import matplotlib.colors as mat_colors
 from random import  shuffle
 import random
 from libtiff import TIFF
+#from libtiff import TIFFfile, TIFFimage
 
 
 def mstr(val):
@@ -144,10 +145,14 @@ class resPlot():
             self.SaveTiff(name + "_mirror.tiff", H)
 
 
-    def SaveTiff(self, name, data):
+    def SaveTiff(self, name, imgdata):
         tiff = TIFF.open(name, mode='w')
-        tiff.write_image(data)
+        tiff.write_image(imgdata)
         tiff.close()
+        #print(imgdata)
+        #tiff = TIFFimage(imgdata)
+        #tiff.write_file(name, compression='none')
+        #del tiff
 
     def shrDataToZeroWave(self, x, w, dWave, zeroWave):
         coord = 0
