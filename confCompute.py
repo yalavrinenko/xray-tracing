@@ -85,6 +85,7 @@ class systemConfig:
     SrcSizeH = 0.1
 
     SrcCone = 0.0
+    SolidCone = 0.0
 
     RayCount = 10000
     RayByIter = 1000
@@ -147,11 +148,11 @@ class systemConfig:
         S = CR[1] + (R ** 2.0 - H ** 2.0) ** 0.5
 
         detector_center = np.array([D * np.cos(phi), CR[1] + R - D * np.sin(phi)])
-        #detector_norm_line = detector_center - np.array([0, S])
+        # detector_norm_line = detector_center - np.array([0, S])
         detector_norm_line = detector_center - np.array(SR)
 
         detector_norm_line /= la.norm(detector_norm_line)
-        #detector_cross_line = np.array([-detector_norm_line[1], detector_norm_line[0]])
+        # detector_cross_line = np.array([-detector_norm_line[1], detector_norm_line[0]])
         detector_cross_line = np.array([detector_norm_line[0], detector_norm_line[1]])
 
         waves = []
@@ -185,7 +186,7 @@ class systemConfig:
 
             cross_position = la.norm(cross_point)
             position += [mult * cross_position]
-            self.limit_line_position.append(mult*cross_position)
+            self.limit_line_position.append(mult * cross_position)
 
         self.limit_wave_length = [np.max(waves), np.min(waves)]
 
@@ -227,9 +228,9 @@ class systemConfig:
             outFile.write("$DistrWidth = " + mstr(self.DistrHW[idx]) + "\n")
             outFile.write("$RFile = " + self.DistrFileName[idx] + "\n")
             outFile.write("$RSize = " + mstr(self.DistrSize[idx]) + "\n")
-            outFile.write("$RStep = " + mstr(self.DistrStep[idx]) + "\n") 
+            outFile.write("$RStep = " + mstr(self.DistrStep[idx]) + "\n")
             outFile.write("$SrcDist = " + mstr(self.SrcDist) + "\n")
-            outFile.write("$SrcCone = " + mstr(self.SrcCone * 0.5) + "\n")
+            outFile.write("$SrcCone = " + mstr(self.SrcCone) + "\n")
             outFile.write("$DDist  = " + mstr(self.DstDist) + "\n")
             outFile.write("$FilmA  = " + mstr(self.FilmAngle) + "\n")
             outFile.write("$FildDir = " + mstr(self.ToFilmDirection) + "\n")
@@ -313,8 +314,9 @@ class systemConfig:
         data += "Detector angle = " + mstr(self.FilmRotationAngle) + " [deg]\n"
         data += "FRO angle = " + mstr(180.0 - self.ToFilmDirection) + " [deg]\n"
         data += "Crystal W x H = " + mstr(self.crystalW) + " X " + mstr(self.crystalH) + " [mm]\n"
-        data += "Source cone = " + mstr(self.SrcCone * 0.5) + " [deg]\n"
-        data += "Source solid angle = " + mstr(2.0 * np.pi * (1 - np.cos(self.SrcCone * 0.5 / 2.0 * np.pi / 180.0))) + " [sr]\n"
+        data += "Source cone = " + mstr(self.SrcCone) + " [deg]\n"
+        data += "Source solid angle = " + mstr(self.SolidCone) + " [sr]\n"
+
         data += "Source size W x H= " + mstr(self.SrcSizeW) + " X " + mstr(self.SrcSizeH) + " [mm]\n"
 
         if (not self.SlitPos == 0):
@@ -333,7 +335,20 @@ class systemConfig:
         self.outText.set_text(data)
 
     def prepearHead(self):
-        data = "[OUTPUT]\n"
+        data = "";
+        data += "[INPUT]\n"
+        data += "Crystal type = " + self.CrystType + "\n"
+        data += "Crystal 2d = " + mstr(self.crystal2d[self.mainOrder - 1]) + " [A]\n"
+        data += "Crystal radius R = " + mstr(self.crystalR) + " [mm]\n"
+        data += "Crystal W x H = " + mstr(self.crystalW) + " X " + mstr(self.crystalH) + " [mm]\n"
+        data += "Source size W x H= " + mstr(self.SrcSizeW) + " X " + mstr(self.SrcSizeH) + " [mm]\n"
+        data += "Detector size W x H= " + mstr(self.FilmSizeW) + " X " + mstr(self.FilmSizeH) + " [mm]\n"
+        data += "Central wavelength = " + mstr(self.centralWave) + " [A]\n"
+        data += "Source distance = " + mstr(self.SrcDist) + " [mm]\n"
+        data += "Main reflection order m = " + mstr(self.mainOrder) + "\n"
+        data += "Source solid angle = " + mstr(self.SolidCone) + " [sr]\n"
+
+        data += "\n\n[OUTPUT]\n"
         data += "Bragg Angle = " + mstr(self.BraggA) + " [deg]\n"
         data += "Incident Angle = " + mstr(90.0 - self.BraggA) + " [deg]\n"
         data += "FRO angle = " + mstr(180.0 - self.ToFilmDirection) + " [deg]\n"
@@ -341,27 +356,19 @@ class systemConfig:
         data += "Detector to crystal = " + mstr(self.DstDist) + " [mm]\n"
         data += "Detector to center = " + mstr(self.FilmDistFromCenter) + " [mm]\n"
 
-        data += "\n\n[INPUT]\n"
-        data += "Crystal type = " + self.CrystType + "\n"
-        data += "Crystal 2d = " + mstr(self.crystal2d[self.mainOrder -1]) + " [A]\n"
-        data += "Crystal W x H = " + mstr(self.crystalW) + " X " + mstr(self.crystalH) + " [mm]\n"
-        data += "Source size W x H= " + mstr(self.SrcSizeW) + " X " + mstr(self.SrcSizeH) + " [mm]\n"
-        data += "Detector size W x H= " + mstr(self.FilmSizeW) + " X " + mstr(self.FilmSizeH) + " [mm]\n"
-        data += "Central wavelength = " + mstr(self.centralWave) + " [A]\n"
-        data += "Source distance = " + mstr(self.SrcDist) + " [mm]\n"
-        data += "Source solid angle = " + mstr(2.0 * np.pi * (1 - np.cos(self.SrcCone * 0.5 / 2.0))) + " [sr]\n"
+        data += "\n\n[RESULTS]\n"
 
+        return data
+
+    def AddCrystalInformation(self, data):
         for i in self.DistrSize:
-            if (self.DistrSize[i] != 0):
+            if self.DistrSize[i] != 0:
                 data += "\n[REFL. FUNCTION IN " + mstr(i + 1) + " ORDER]\n"
                 data += "Crystal 2d = " + mstr(self.crystal2d[i]) + " [A]\n"
                 data += "REFL. File Name = " + self.DistrFileName[i] + "\n"
                 data += "REFL. HW = " + mstr(self.DistrHW[i]) + " [deg]\n"
                 data += "REFL. Step = " + mstr(self.DistrStep[i]) + "\n"
                 data += "REFL. Size = " + mstr(self.DistrSize[i]) + " [points]\n"
-
-        data += "\n\n[RESULTS]\n"
-
         return data
 
     def TerminateCalculation(self):
@@ -371,21 +378,21 @@ class systemConfig:
     def plot_system_conf(self, figure_ax, figure_fig):
         figure_ax.clear()
 
-        circle = lambda alpha, R: [R*np.cos(alpha), R*np.sin(alpha)]
-        #plot crystall
-        phi_max = np.arcsin(0.5*self.crystalW / self.crystalR)
+        circle = lambda alpha, R: [R * np.cos(alpha), R * np.sin(alpha)]
+        # plot crystall
+        phi_max = np.arcsin(0.5 * self.crystalW / self.crystalR)
         phis = np.arange(-phi_max, phi_max, 0.001)
         figure_ax.plot(*circle(phis + np.pi / 2.0, self.crystalR), color="red", linewidth=5)
 
-        #plot source
-        elipse = lambda alpha, size, shift: [size[0]*np.cos(alpha) + shift[0],
-                                             size[1]*np.sin(alpha) + shift[1]]
+        # plot source
+        elipse = lambda alpha, size, shift: [size[0] * np.cos(alpha) + shift[0],
+                                             size[1] * np.sin(alpha) + shift[1]]
         b_phi = self.BraggA * np.pi / 180.0
         source_pos = [-self.SrcDist * np.cos(b_phi), -self.SrcDist * np.sin(b_phi) - self.crystalR]
         figure_ax.plot(*elipse(np.arange(-np.pi, np.pi, 0.001), [self.SrcSizeW, self.SrcSizeH], source_pos),
                        color="blue")
 
-        #plot detector
+        # plot detector
         line = lambda steps, r0, direction: [steps * direction[0] + r0[0], steps * direction[1] + r0[1]]
         detector_center = np.array([self.DstDist * np.cos(b_phi), -self.DstDist * np.sin(b_phi) + self.crystalR])
 
@@ -396,10 +403,10 @@ class systemConfig:
         step = np.arange(-detector_half_size, detector_half_size, 0.1)
         figure_ax.plot(*line(step, detector_center, detector_norm_line), color="green", linewidth=5)
 
-        #plot object
+        # plot object
 
-        #plot lines
-        dh = (self.crystalR ** 2.0 - self.crystalW ** 2.0 / 4.0)**0.5
+        # plot lines
+        dh = (self.crystalR ** 2.0 - self.crystalW ** 2.0 / 4.0) ** 0.5
         cross_point_1 = [-self.crystalW / 2.0, dh]
         cross_point_2 = [self.crystalW / 2.0, dh]
 
@@ -414,13 +421,13 @@ class systemConfig:
         figure_ax.plot([source_pos[0], cross_point_2[0], detector_cross_2[0]],
                        [source_pos[1], cross_point_2[1], detector_cross_2[1]], color="red")
 
-        #plot Roland circle
+        # plot Roland circle
         sh_circle = lambda alpha, R, shift: [R * np.cos(alpha) - shift[0], R * np.sin(alpha) - shift[1]]
         RowlandCenter = [0.0, -self.crystalR / 2.0]
         phis = np.arange(-np.pi, np.pi, 0.001)
         figure_ax.plot(*sh_circle(phis, self.crystalR / 2.0, RowlandCenter), color="black", linestyle="--")
 
-        #plot normal to crystal and start of the system
+        # plot normal to crystal and start of the system
         step = np.arange(0, 2.0 * self.crystalR, 1)
         figure_ax.plot(*line(step, [0.0, self.crystalR], [0.0, -1.0]), color="black", linewidth=2, linestyle="--")
 
@@ -434,6 +441,10 @@ class systemConfig:
         while not self.exitMainCompThread and not self.isCanceled:
             ptr = c_char_p.in_dll(self.rayTraceLib, "plinkedLibraryOutput")
             progress_minor = c_long.in_dll(self.rayTraceLib, "linkedLibraryMinorOutput").value
+            progress_total = c_long.in_dll(self.rayTraceLib, "linkedLibraryTotalOutput").value
+
+            if progress_total <= 0:
+                progress_total = self.RayCount
 
             if ptr.value != None:
                 progress = ptr.value.split(":")[0]
@@ -443,10 +454,10 @@ class systemConfig:
                     current = int(progress.split("/")[0])
                     total = int(progress.split("/")[1])
                     self.progressInfoOut[0].set_fraction(float(current) / float(total))
-                    self.progressInfoOut[1].set_fraction(float(progress_minor) / float(self.RayCount))
+                    self.progressInfoOut[1].set_fraction(float(progress_minor) / float(progress_total))
 
                     self.progressInfoOut[0].set_text(ptr.value)
-                    self.progressInfoOut[1].set_text(str(progress_minor) + "/" + str(self.RayCount))
+                    self.progressInfoOut[1].set_text(str(progress_minor) + "/" + str(progress_total))
                 except ValueError:
                     current = 0
                     self.progressInfoOut[0].set_text(ptr.value)
@@ -585,7 +596,7 @@ class systemConfig:
 
     def updateConfigNCW(self):
 
-        centralWave = self.centralWave 
+        centralWave = self.centralWave
         '''* self.mainOrder / (
             self.crystal2d[0] / self.crystal2d[self.mainOrder - 1])
         '''
@@ -626,8 +637,11 @@ class systemConfig:
         d = L ** 2 + l ** 2 - 2 * L * l * math.sin(math.pi - theta)
         d = d ** 0.5
 
-        self.SrcCone = 2 * math.asin(l / d * math.sin(math.pi - theta))
-        self.SrcCone *= 180.0 / math.pi * 1.05
+        cone_cos = self.SrcDist / ((self.SrcDist**2 + self.crystalW**2)**0.5)
+        self.SrcCone = math.acos(cone_cos)
+        self.SrcCone *= 1.05
+        self.SolidCone = 2.0 * math.pi * (1.0 - cone_cos)
+        self.SrcCone *= 180.0 / math.pi
 
         self.dispData()
 
@@ -657,8 +671,11 @@ class systemConfig:
         d = L ** 2 + l ** 2 - 2 * L * l * math.sin(math.pi - theta)
         d = d ** 0.5
 
-        self.SrcCone = 2 * math.asin(l / d * math.sin(math.pi - theta))
-        self.SrcCone *= 180.0 / math.pi * 1.05
+        cone_cos = self.SrcDist / ((self.SrcDist ** 2 + self.crystalW ** 2) ** 0.5)
+        self.SrcCone = math.acos(cone_cos)
+        self.SrcCone *= 1.05
+        self.SolidCone = 2.0 * math.pi * (1.0 - cone_cos)
+        self.SrcCone *= 180.0 / math.pi
 
         self.dispData()
 
@@ -716,7 +733,7 @@ class systemConfig:
         sTheta = centralWave / (self.crystal2d[self.mainOrder - 1] / self.mainOrder)
         if (sTheta > 1.0):
             self.dispError("Bad central wave for selected order. Use wavelength less than " + mstr(
-                (self.crystal2d[self.mainOrder - 1] / self.mainOrder) ) + " [A]")
+                (self.crystal2d[self.mainOrder - 1] / self.mainOrder)) + " [A]")
             return
 
         self.BraggA = math.asin(sTheta) * 180.0 / math.pi
@@ -748,14 +765,16 @@ class systemConfig:
         d = L ** 2 + l ** 2 - 2 * L * l * math.sin(math.pi - theta)
         d = d ** 0.5
 
-        self.SrcCone = 2 * math.asin(l / d * math.sin(math.pi - theta))
-        self.SrcCone *= 180.0 / math.pi * 1.05
+        cone_cos = self.SrcDist / ((self.SrcDist ** 2 + self.crystalW ** 2) ** 0.5)
+        self.SrcCone = math.acos(cone_cos)
+        self.SrcCone *= 1.05
+        self.SolidCone = 2.0 * math.pi * (1.0 - cone_cos)
+        self.SrcCone *= 180.0 / math.pi
 
         self.dispData()
 
-
     def vectorLenght(self, v):
-        return (v[0]**2 + v[1]**2) ** 0.5
+        return (v[0] ** 2 + v[1] ** 2) ** 0.5
 
     def GetRotationAngle(self, phi):
         Cp = [0.0, -self.crystalR / 2.0]

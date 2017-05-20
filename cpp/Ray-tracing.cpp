@@ -28,6 +28,7 @@ using namespace std;
 string linkedLibraryOutput;
 const char* plinkedLibraryOutput;
 long linkedLibraryMinorOutput;
+long linkedLibraryTotalOutput;
 bool isTerminated;
 
 void terminate(){
@@ -265,6 +266,7 @@ int RayTracing(int argc, char* argv) {
 
 		int rayByIter = p->rayByIter;
         linkedLibraryMinorOutput = 0;
+        linkedLibraryTotalOutput = p->rayCount * currentWaveLenght.intensity;
 
 		while (generatedRay < p->rayCount * currentWaveLenght.intensity && rayByIter > 0 && !isTerminated) {
 

@@ -11,6 +11,7 @@ import matplotlib.cm as mat_cm
 import matplotlib.colors as mat_colors
 from random import  shuffle
 import random
+from libtiff import TIFF
 
 
 def mstr(val):
@@ -115,6 +116,9 @@ class resPlot():
 
         self.outBuf = oB
 
+        self.LastDetectorFile = ""
+        self.LastMirrorFile = ""
+
         color_norm = mat_colors.Normalize(vmin=0, vmax=self.MAX_ORDER)
         scalar_map = mat_cm.ScalarMappable(norm=color_norm, cmap='gnuplot2')
         self.color_map = []
@@ -123,6 +127,27 @@ class resPlot():
 
         random.seed(1298)
         shuffle(self.color_map)
+
+    def SaveFigsToTiff(self, name):
+        x=[]
+        y=[]
+        z=[]
+        colors=[]
+        if not self.LastDetectorFile == "":
+            readFile(self.LastDetectorFile, x, y, z, colors, self.reflection_order)
+
+            [xh, yh, H] = self.CreateHistogram(x,y,z)
+            self.SaveTiff(name+"_detector.tiff", H)
+        if not  self.LastMirrorFile == "":
+            [x, y, z, c] = self.ReadMirrorData(self.LastMirrorFile)
+            [xh, yh, H] = self.CreateHistogram(x, y, z)
+            self.SaveTiff(name + "_mirror.tiff", H)
+
+
+    def SaveTiff(self, name, data):
+        tiff = TIFF.open(name, mode='w')
+        tiff.write_image(data)
+        tiff.close()
 
     def shrDataToZeroWave(self, x, w, dWave, zeroWave):
         coord = 0
@@ -171,7 +196,7 @@ class resPlot():
         data = ""
         data += "\n\n[RESULTS FOR REF.  " + u'\u03BB' + "=" + mstr(zeroWave) + "A ]\n"
 
-        self.dispCurve[int(zeroWave * 1e+6)] = "Exeption" if isExeption else " " + u'\u03BB' + " = " + mstr(
+        self.dispCurve[int(zeroWave * 1e+6)] = "Unable to construct curve" if isExeption else " " + u'\u03BB' + " = " + mstr(
             res[0]) + "X**2 + " + mstr(res[1]) + "X + " + mstr(res[2])
 
         data += self.dispCurve[int(zeroWave * 1e+6)]
@@ -361,6 +386,7 @@ class resPlot():
 
         self.wResAxix.clear()
         self.xResAxix.clear()
+        self.filmAxix.clear()
 
         self.wResAxix.set_xlabel("Wavelength, [A]", labelpad=-33)
         self.wResAxix.set_ylabel("Counts, [n]")
@@ -377,6 +403,7 @@ class resPlot():
             z = []
             colors = []
             readFile(file, x, y, z, colors, self.reflection_order)
+            self.LastDetectorFile = ""
 
             targetOrder = dispOrders[i]
 
@@ -396,12 +423,12 @@ class resPlot():
             except ValueError:
                 max_nbins_x = 100
                 max_nbins_z = 100
-                print ("Max value error. NBINS is incorrect\n")
-            if max_nbins_x * max_nbins_z <= 1000000:
-                H, xe, ze = numpy.histogram2d(-numpy.array(x), z, bins=(max_nbins_x, max_nbins_z))
-                xv, zv = numpy.meshgrid(xe, ze)
+                self.filmAxix.text(0.25, 0.25, "Max value error. NBINS is incorrect\n")
+            if max_nbins_x * max_nbins_z <= 5000000:
+                [xv, zv, H] = self.CreateHistogram(x, y, z)
 
-                self.filmAxix.pcolormesh(xv, zv, numpy.transpose(H), cmap='Greys')
+                self.filmAxix.pcolormesh(xv, zv, H, cmap='Greys')
+                self.LastDetectorFile = file
             else:
                 self.filmAxix.text(0.25, 0.25, "Image size so huge!")
 
@@ -431,16 +458,39 @@ class resPlot():
 
             self.xResFig.canvas.draw()
 
-    def plotMirror(self, fileName, W, H):
-        with open(fileName, 'r') as f:
-	        f.readline()
-	        f.readline()
-	        f.readline()
-	        f.readline()
-	        f.readline()
-	        f.readline()
+    def CreateHistogram(self, x, y, z):
+        try:
+            x_dist = abs(max(x) - min(x))
+            z_dist = abs(max(z) - min(z))
 
-	        lines = f.readlines()
+            max_nbins_x = int(x_dist / self.pixel_size)
+            max_nbins_z = int(z_dist / self.pixel_size)
+
+            if max_nbins_x <= 0:
+                max_nbins_x = 1
+            if max_nbins_z <= 0:
+                max_nbins_z = 1
+
+        except ValueError:
+            max_nbins_x = 100
+            max_nbins_z = 100
+
+
+        H, xe, ze = numpy.histogram2d(-numpy.array(x), z, bins=(max_nbins_x, max_nbins_z))
+        xv, zv = numpy.meshgrid(xe, ze)
+
+        return [xv, zv, numpy.transpose(H)]
+
+    def ReadMirrorData(self, fileName):
+        with open(fileName, 'r') as f:
+            f.readline()
+            f.readline()
+            f.readline()
+            f.readline()
+            f.readline()
+            f.readline()
+
+            lines = f.readlines()
 
         x = []
         y = []
@@ -458,11 +508,19 @@ class resPlot():
             z.append(wz)
             colors.append(c)
 
+        return [x, y, z, colors]
+
+    def plotMirror(self, fileName, W, H):
+        self.LastMirrorFile = ""
+
+        [x, y, z, colors] = self.ReadMirrorData(fileName)
+
         print(fileName, len(x))
 
         self.mirrorAxix.set_xlim(-W / 2.0, W / 2.0)
         self.mirrorAxix.set_ylim(-H / 2.0, H / 2.0)
 
         CAX = self.mirrorAxix.scatter(x, z, marker=',', c=colors)
+        self.LastMirrorFile = fileName
         # self.mirrorFig.colorbar(CAX,orientation='horizontal')
         self.mirrorFig.canvas.draw()

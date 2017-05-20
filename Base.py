@@ -463,23 +463,10 @@ class spGeneral:
 
         save_file_patter = self.ImageSaveWindow.get_filename()
 
-        film_file_name = save_file_patter + "_film.png"
-        self.sys.resPlot.filmFig.savefig(film_file_name, dpi=600)
-
-        mirror_file_name = save_file_patter + "_mirror.png"
-        self.sys.resPlot.mirrorFig.savefig(mirror_file_name, dpi=600)
+        self.resOut.SaveFigsToTiff(save_file_patter)
 
         spectrum_file_name = save_file_patter + "_spectr.eps"
         self.sys.resPlot.xResFig.savefig(spectrum_file_name)
-
-        spectrum_file_name_txt = save_file_patter + "_spectr.txt"
-
-        file_object = open(spectrum_file_name_txt, "w+")
-        for line in self.sys.resPlot.xResAxix.lines:
-            xd = line.get_xdata()
-            yd = line.get_ydata()
-            file_object.write("New line\n")
-            file_object.write(xd, yd)
 
     def on_button7_clicked(self, obj):
         self.saveFile = self.fileChoose.get_filename()
@@ -677,33 +664,37 @@ class spGeneral:
     def dumpDataToLog(self):
         data = self.sys.prepearHead()
 
-        data += "Reference line = " + self.entry_zeroWave.get_text() + "\n";
-        data += "Dispersion curve for " + self.entry_zeroOrder.get_text() + " order = [" + self.dispCurve + "]\n"
-
         self.setWaveLimits()
 
         data += "Reflection limits for " + self.entry_zeroOrder.get_text() + " order\n"
         data += "Min wavelength = " + self.MinWl[0].get_text() + "\tPosition = " + self.MinWl[1].get_text() + "\n"
-        data += "Min wavelength = " + self.MaxWl[0].get_text() + "\tPosition = " + self.MaxWl[1].get_text() + "\n"
+        data += "Max wavelength = " + self.MaxWl[0].get_text() + "\tPosition = " + self.MaxWl[1].get_text() + "\n"
+        data += "Reference line = " + self.entry_zeroWave.get_text() + "\n";
+        data += "Dispersion curve: " + self.dispCurve + "\n"
 
         data += "***************************************************************\n"
-        data += "Name\tWavelength\tCaptured\tReflected\tReflectivity\tCoords\tMagnification\tFWHM\tOrder\t"
-        data += "isRefLine\tLine Width\tLine intencity\n"
+        data += "Name\tWavelength\tEmitted\tReflected\tEfficiency\tXCoords\tMagnification\tFWHM\tOrder\t"
+        data += "Line Width\n"
 
         for order in self.sys.Orders:
             self.addDataToTable(order)
-            data += "Order:\t" + mstr(order) + "\n"
             for i, el in enumerate(self.wlSelStore):
-                for d in el:
+                emitted = el[11] * self.sys.RayCount
+                toTable = [el[0], el[1], emitted, el[3], el[3] / emitted * (self.sys.SolidCone / 4.0 * math.pi),
+                           el[5], el[6], el[7], el[8]]
+
+                for d in toTable:
                     data += mstr(d) + "\t"
                 data += "\n"
 
         order = int(self.entry_zeroOrder.get_text()) if int(self.entry_zeroOrder.get_text()) in self.sys.Orders else self.sys.Orders[0]
         self.addDataToTable(order)
 
-        data += "\n\nAll Dispersion curves in " +self.entry_zeroOrder.get_text() + " order:\n"
+        data += "\n\nDispercion curves for the following reference lines\n"
         for key, value in self.resOut.dispCurve.items():
-            data += "For u'\u03BB' = "+mstr(key / 1e+6) + ":\t" + value + "\n"
+            data += "For L_ref = "+mstr(key / 1e+6) + ":\t" + value + "\n"
+
+        data = self.sys.AddCrystalInformation(data)
 
         if self.isSave == 1:
             if self.saveFile == '':
@@ -832,6 +823,10 @@ class spGeneral:
 
         self.system_geometry = self.builder.get_object('scrolledwindow5')
         self.xRes = self.builder.get_object('scrolledwindow8')
+
+        self.DbFileSelectionButtont = self.builder.get_object('filechooserbutton3')
+        self.DbFileSelectionButtont.set_filenames = ["./Input/trans-db.txt"]
+
 
         self.outBuf = self.outText.get_buffer()
 
