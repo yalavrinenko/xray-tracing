@@ -2,7 +2,7 @@ Input File Name = par/Order_1.par
 
 [VAR SECTION]------------------------------------
 
-rayCount = 1000000
+rayCount = 100000
 isRad = 0
 rayByIter = 100000
 sourceDistance = 532.626000
@@ -79,47 +79,47 @@ Dist	=	532.626
 Set wave lenght	=	6.64795
 Set wave dlenght	=	0.005
 Set wave intensity	=	2.8
-[lambda gen catch relf I]=	6.64795	2.8e+006	234195	2455	0.0104827
+[lambda gen catch relf I]=	6.64795	280000	23291	246	0.010562
 Set wave lenght	=	6.1028
 Set wave dlenght	=	0.005
 Set wave intensity	=	0.6
-[lambda gen catch relf I]=	6.1028	600000	49840	454	0.00910915
+[lambda gen catch relf I]=	6.1028	60000	4914	43	0.00875051
 Set wave lenght	=	6.1754
 Set wave dlenght	=	0.005
 Set wave intensity	=	0.5
-[lambda gen catch relf I]=	6.1754	500000	41963	388	0.00924624
+[lambda gen catch relf I]=	6.1754	50000	4211	29	0.00688673
 Set wave lenght	=	6.3137
 Set wave dlenght	=	0.005
 Set wave intensity	=	0.8
-[lambda gen catch relf I]=	6.3137	800000	66882	632	0.00944948
+[lambda gen catch relf I]=	6.3137	80000	6767	68	0.0100488
 Set wave lenght	=	6.6343
 Set wave dlenght	=	0.005
 Set wave intensity	=	1
-[lambda gen catch relf I]=	6.6343	1e+006	83298	865	0.0103844
+[lambda gen catch relf I]=	6.6343	100000	8528	98	0.0114916
 Set wave lenght	=	6.4173
 Set wave dlenght	=	0.005
 Set wave intensity	=	0.5
-[lambda gen catch relf I]=	6.4173	500000	41678	419	0.0100533
+[lambda gen catch relf I]=	6.4173	50000	4245	36	0.00848057
 Set wave lenght	=	6.4975
 Set wave dlenght	=	0.005
 Set wave intensity	=	2
-[lambda gen catch relf I]=	6.4975	2e+006	166810	1790	0.0107308
+[lambda gen catch relf I]=	6.4975	200000	16629	152	0.00914066
 Set wave lenght	=	6.68799
 Set wave dlenght	=	0.005
 Set wave intensity	=	0.5
-[lambda gen catch relf I]=	6.68799	500000	42019	416	0.00990028
+[lambda gen catch relf I]=	6.68799	50000	4250	38	0.00894118
 Set wave lenght	=	6.742
 Set wave dlenght	=	0.005
 Set wave intensity	=	2
-[lambda gen catch relf I]=	6.742	2e+006	167387	1813	0.0108312
+[lambda gen catch relf I]=	6.742	200000	16515	178	0.0107781
 Set wave lenght	=	6.753
 Set wave dlenght	=	0.005
 Set wave intensity	=	0.5
-[lambda gen catch relf I]=	6.753	500000	41831	452	0.0108054
+[lambda gen catch relf I]=	6.753	50000	4218	50	0.011854
 Set wave lenght	=	7.1709
 Set wave dlenght	=	0.005
 Set wave intensity	=	2
-[lambda gen catch relf I]=	7.1709	2e+006	167003	1759	0.0105327
+[lambda gen catch relf I]=	7.1709	200000	16997	168	0.0098841
 Set wave lenght	=	5.95561
 Set wave dlenght	=	0.00595561
 Set wave intensity	=	0
@@ -131,4 +131,4 @@ Set wave intensity	=	0
 Done!
  Cleaning memory...
 Clean!
-Working time:	81 sec.
+Working time:	8 sec.

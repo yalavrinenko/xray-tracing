@@ -1,5 +1,5 @@
 $GenName = Order_1
-$rayCnt = 1000000
+$rayCnt = 100000
 $rayByIt = 100000
 $cR = 150
 $wA = 46

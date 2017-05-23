@@ -13,3 +13,6 @@ copy ..\sys\spectr.glade ..\Ray-tracing\sys
 copy ..\sys\pattern.par ..\Ray-tracing\sys
 copy ..\sys\trans-db.txt ..\Ray-tracing\sys
 xcopy ..\Input ..\Ray-tracing\Input
+xcopy ..\libtiff ..\Ray-tracing\libtiff
+
+@pause
