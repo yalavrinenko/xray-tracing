@@ -145,7 +145,8 @@ class resPlot():
             self.SaveTiff(name + "_mirror.tiff", H)
 
 
-    def SaveTiff(self, name, imgdata):
+    def SaveTiff(self, name, rawdata):
+    	imgdata = rawdata.astype(numpy.uint16)
         tiff = TIFF.open(name, mode='w')
         tiff.write_image(imgdata)
         tiff.close()
