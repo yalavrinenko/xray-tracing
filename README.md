@@ -1,5 +1,7 @@
 # xray-tracing
 
+### Новые версии доступны в https://github.com/yalavrinenko/WPF-XRay-Tracing
+
 #### Версия от 20.06.2017
 
 0. Сейчас в output файле значение Source solid angle чаще всего составляет единицы срад.
